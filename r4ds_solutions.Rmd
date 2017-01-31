@@ -1,0 +1,259 @@
+---
+title: "Exercises"
+author: "Julian During"
+date: "15 Januar 2017"
+output: 
+  github_document: 
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    toc_depth: 2
+---
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(modelr)
+```
+
+
+# Program
+
+## Vectors
+
+### Describe the difference between `is.finite(x)` and `!is.infinite(x)`
+```{r}
+tibble(
+  input = c(4, Inf, -Inf, NA, NaN),
+  is_finite = is.finite(input), 
+  not_is_infinite = !is.infinite(input)
+)
+```
+
+### Read the source code for `dplyr::near()`. How does it work?
+
+
+```{r}
+dplyr::near
+```
+
+Look at the absolute deviation of two numbers and compare if it is smaller than
+the square root of the machines precision of doubles.
+
+### How many values can an integer vector take? How many can a double vector take?
+
+Integer: +/- 2*10^9
+Double: +/- 1.797693e+308
+
+### Brainstorm at least 4 functions, that allow you to convert a double to an integer?
+
+* `as.integer`
+* `L`
+
+### What functions from the readr package allow you to turn a string into logical, integer, and double vector?
+
+`parse_logical`, `parse_integer`, `parse_double`
+
+### What does `mean(is.na(x))` tell you about a vector x? What about `sum(!is.finite(x))`?
+
+* The percentage of NA values
+* Number of infinite elemts
+
+### Carefully read the documentation of `is.vector()`. What does it actually test for? Why does `is.atomic()` not agree with the definition of atomic vectors above?
+
+* Test if a vector has no attributes (other than name)?
+* An object can be atomic but not a vector
+
+
+### Compare and contrast `setNames()` with `purrr::set_names()`.
+
+```{r}
+setNames
+purrr::set_names
+```
+
+`purrr::set_names` checks if object is vector and also compares lengths 
+-> no refactoring
+
+### Create functions that take a vector as input and returns:
+
+* The last value. Should you use [ or [[?
+
+```{r}
+last_value <- function(x) {
+  x[length(x)]
+}
+last_value(c(a = 1, b = 2, c = 3))
+```
+
+
+* The elements at even numbered positions.
+```{r}
+even_pos <- function(x) {
+  x[1:length(x) %% 2 == 0]
+}
+even_pos(c(1,3,3,4,5,6,8))
+```
+
+*Every element except the last value.
+```{r}
+not_last_value <- function(x) {
+  x[-length(x)]
+}
+not_last_value(c(1,2,3,4,5))
+```
+
+*Only even numbers (and no missing values).
+
+```{r}
+even_numbers <- function(x) {
+  x[(x %% 2 == 0) & (!is.na(x))]
+}
+even_numbers(c(1,2,3,4,5,6,NA,NA))
+```
+
+### Why is `x[-which(x > 0)]` not the same as `x[x <= 0]`?
+
+Indexing by number / boolean.
+
+### What happens when you subset with a positive integer that’s bigger than the length of the vector? What happens when you subset with a name that doesn’t exist?
+
+```{r}
+x <- c(a = 1, b = 2, c = 3)
+x[4]
+x["d"]
+```
+
+### Draw the following lists as nested sets:
+
+* `list(a, b, list(c, d), list(e, f))`
+
+![](ListDrawing1.png)
+
+* `list(list(list(list(list(list(a))))))`
+![](ListDrawing2.png)
+
+### What happens if you subset a tibble as if you’re subsetting a list? What are the key differences between a list and a tibble?
+
+If you subset a tibble, you always get a tibble back.
+
+### What does hms::hms(3600) return? How does it print? What primitive type is the augmented vector built on top of? What attributes does it use?
+
+```{r}
+hour <- hms::hms(3600)
+hour
+typeof(hour)
+attributes(hour)
+```
+
+### Try and make a tibble that has columns with different lengths. What happens?
+
+* Error
+
+### Based on the definition above, is it ok to have a list as a column of a tibble?
+
+```{r}
+tibble::tibble(
+  a = c(1, 2, 3),
+  b = list(c(3, 4, 5), 2, 3)
+)
+```
+
+# Model
+
+## Model Basics
+
+### What happens if you repeat the analysis of `sim2` using a model without an intercept. What happens to the model equation? What happens to the predictions?
+
+```{r}
+sim2
+
+ggplot(sim2, aes(x = x, y = y)) +
+  geom_point()
+
+mod2 <- lm(y ~ x - 1, data = sim2)
+
+grid <- sim2 %>% 
+  data_grid(x) %>% 
+  add_predictions(mod2)
+grid
+
+ggplot(sim2, aes(x)) + 
+  geom_point(aes(y = y)) +
+  geom_point(data = grid, aes(y = pred), colour = "red", size = 4)
+```
+
+* Nothing different happens
+
+### For `sim4`, which of `mod1` and `mod2` is better? I think mod2 does a slightly better job at removing patterns, but it’s pretty subtle. Can you come up with a plot to support my claim?
+
+```{r}
+mod1 <- lm(y ~ x1 + x2, data = sim4)
+mod2 <- lm(y ~ x1 * x2, data = sim4)
+sim4_res <- sim4 %>% 
+  gather_residuals(mod1, mod2)
+
+sim4_res %>% 
+  ggplot(aes(x = x1, y = resid, color = x2)) + 
+    geom_point() +
+    facet_grid(model ~ x2)
+```
+
+## Model Buildung
+
+### In the plot of `lcarat` vs. `lprice`, there are some bright vertical strips. What do they represent?
+
+
+```{r}
+diamonds2 <- diamonds %>% 
+  filter(carat <= 2.5) %>% 
+  mutate(lprice = log2(price), lcarat = log2(carat))
+
+ggplot(diamonds2, aes(x = lcarat, y = lprice)) + 
+  geom_hex(bins = 50)
+
+diamonds2 %>% 
+  filter(lcarat > -2, lcarat < -1.5) 
+```
+
+* Many diamonds get a carat value rounded up to the next higher unit, so that 
+they can be sold for more money
+
+### If `log(price) = a_0 + a_1 * log(carat), what does that say about the relationship between `price` and `carat`?
+
+* That the price is exponentnially growing with carat.
+
+### Extract the diamonds that have very high and very low residuals. Is there anything unusual about these diamonds? Are the particularly bad or good, or do you think these are pricing errors?
+
+```{r}
+mod_diamond2 <- lm(
+  lprice ~ lcarat + color + cut + clarity, 
+  data = diamonds2
+)
+
+diamonds2 <- diamonds2 %>% 
+  add_residuals(mod_diamond2, "lresid2") 
+
+diamonds2 %>% 
+  top_n(lresid2, n = 5)
+
+diamonds2 %>% 
+  top_n(lresid2, n = -5)
+
+ggplot(diamonds2, aes(x = lcarat, y = lprice)) + 
+  geom_hex(bins = 50) + 
+  geom_point(data = diamonds2 %>% top_n(lresid2, n = 10), color = "green") + 
+  geom_point(data = diamonds2 %>% top_n(lresid2, n = -10), color = "red")
+
+ggplot(diamonds2, aes(lcarat, lresid2)) +
+  geom_point()
+```
+
+
+* The diamonds, that we have understimated, seem to have a very similar carat 
+number
+* The overestimated diamonds don't have a similar carat number
+
+### Does the final model, `mod_diamonds2`, do a good job of predicting diamond prices? Would you trust it to tell you how much to spend if you were buying a diamond?
+
+* There is still some pattern in the residuals left. Maybe include shape information (brillants??)?
+Formula: Gewicht in Karat = Durchmesser^3 * 0.0037
