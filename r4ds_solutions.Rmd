@@ -3,11 +3,7 @@ title: "Exercises"
 author: "Julian During"
 date: "15 Januar 2017"
 output: 
-  github_document: 
-    number_sections: yes
-    toc: yes
-    toc_float: yes
-    toc_depth: 2
+  github_document
 ---
 
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
