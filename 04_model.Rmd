@@ -1,0 +1,118 @@
+---
+title: "Model"
+author: "Julian During"
+date: "2 Februar 2017"
+output: 
+  html_document: 
+    keep_md: yes
+    number_sections: yes
+---
+
+
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(modelr)
+```
+
+# Model Basics
+
+## What happens if you repeat the analysis of `sim2` using a model without an intercept. What happens to the model equation? What happens to the predictions?
+
+```{r}
+sim2
+
+ggplot(sim2, aes(x = x, y = y)) +
+  geom_point()
+
+mod2 <- lm(y ~ x - 1, data = sim2)
+
+grid <- sim2 %>% 
+  data_grid(x) %>% 
+  add_predictions(mod2)
+grid
+
+ggplot(sim2, aes(x)) + 
+  geom_point(aes(y = y)) +
+  geom_point(data = grid, aes(y = pred), colour = "red", size = 4)
+```
+
+* Nothing different happens
+
+## For `sim4`, which of `mod1` and `mod2` is better? I think mod2 does a slightly better job at removing patterns, but it’s pretty subtle. Can you come up with a plot to support my claim?
+
+```{r}
+mod1 <- lm(y ~ x1 + x2, data = sim4)
+mod2 <- lm(y ~ x1 * x2, data = sim4)
+sim4_res <- sim4 %>% 
+  gather_residuals(mod1, mod2)
+
+sim4_res %>% 
+  ggplot(aes(x = x1, y = resid, color = x2)) + 
+    geom_point() +
+    facet_grid(model ~ x2)
+```
+
+## Model Buildung
+
+## In the plot of `lcarat` vs. `lprice`, there are some bright vertical strips. What do they represent?
+
+
+```{r}
+diamonds2 <- diamonds %>% 
+  filter(carat <= 2.5) %>% 
+  mutate(lprice = log2(price), lcarat = log2(carat))
+
+ggplot(diamonds2, aes(x = lcarat, y = lprice)) + 
+  geom_hex(bins = 50)
+
+diamonds2 %>% 
+  filter(lcarat > -2, lcarat < -1.5) 
+```
+
+* Many diamonds get a carat value rounded up to the next higher unit, so that 
+they can be sold for more money
+
+## If `log(price) = a_0 + a_1 * log(carat)`, what does that say about the relationship between `price` and `carat`?
+
+* That the price is exponentnially growing with carat.
+
+## Extract the diamonds that have very high and very low residuals. Is there anything unusual about these diamonds? Are the particularly bad or good, or do you think these are pricing errors?
+
+```{r}
+mod_diamond2 <- lm(
+  lprice ~ lcarat + color + cut + clarity, 
+  data = diamonds2
+)
+
+diamonds2 <- diamonds2 %>% 
+  add_residuals(mod_diamond2, "lresid2") 
+
+diamonds2 %>% 
+  top_n(lresid2, n = 5)
+
+diamonds2 %>% 
+  top_n(lresid2, n = -5)
+
+ggplot(diamonds2, aes(x = lcarat, y = lprice)) + 
+  geom_hex(bins = 50) + 
+  geom_point(data = diamonds2 %>% top_n(lresid2, n = 10), color = "green") + 
+  geom_point(data = diamonds2 %>% top_n(lresid2, n = -10), color = "red")
+
+ggplot(diamonds2, aes(lcarat, lresid2)) +
+  geom_point()
+```
+
+
+* The diamonds, that we have understimated, seem to have a very similar carat 
+number
+* The overestimated diamonds don't have a similar carat number
+
+## Does the final model, `mod_diamonds2`, do a good job of predicting diamond prices? Would you trust it to tell you how much to spend if you were buying a diamond?
+
+* There is still some pattern in the residuals left. Maybe include shape information (brillants??)?
+Formula: Gewicht in Karat = Durchmesser^3 * 0.0037
+
+## Use your Google sleuthing skills to brainstorm why there were fewer than expected flights on Jan 20, May 26, and Sep 1. (Hint: they all have the same explanation.) How would these days generalise to another year?
+
+* No idea
