@@ -15,6 +15,7 @@ library(tidyverse)
 library(modelr)
 library(nycflights13)
 library(lubridate)
+library(splines)
 ```
 
 # Model Basics
@@ -118,7 +119,8 @@ Formula: Gewicht in Karat = Durchmesser^3 * 0.0037
 
 ## Use your Google sleuthing skills to brainstorm why there were fewer than expected flights on Jan 20, May 26, and Sep 1. (Hint: they all have the same explanation.) How would these days generalise to another year?
 
-* No idea
+* Days before a public holiday that fall on a Sunday. This doesn't generalise well 
+to another year.
 
 ## Create a new variable that splits the `wday` variable into terms, but only for Saturdays, i.e. it should have `Thurs`, `Fri`, but `Sat-summer`, `Sat-spring`, `Sat-fall`. How does this model compare with the model with every combination of wday and term?
 
@@ -130,11 +132,20 @@ term <- function(date) {
   )
 }
 
+#Helper function for later use
+public_holiday <- function(date) {
+  nyc_public_holidays <- c(
+    "20130101", "20130121", "20130218", "20130527", 
+    "20130704", "20130902", "20131014", "20131111", "20131128", "20131225")
+  nyc_public_holidays <- ymd(nyc_public_holidays)
+  return(date %in% nyc_public_holidays)
+}
+
 daily <- flights %>% 
   mutate(
     date = make_date(year, month, day)) %>% 
   group_by(date) %>% 
-  summarise(n = n()) 
+  summarise(n = n(), mean_dist = sum(distance) / n) 
 
 daily
 ```
@@ -161,16 +172,87 @@ make_vars <- function(data) {
     mutate(
       term = term(date),
       wday = wday2(date), 
-      wday_term = if_else(wday == "Sat", paste(wday, "_", term), as.character(wday))
+      holiday = public_holiday(date), 
+      wday_term = if_else(wday == "Sat", paste0(wday, "_", term), as.character(wday)), 
+      wday_term_holiday = if_else(holiday, paste0(wday_term, "_", "hol"), wday_term), 
+      month = month(date)
     )
 }
 
 mod4 <- MASS::rlm(n ~ wday_term, data = make_vars(daily))
+```
+
+```{r}
+make_vars(daily) %>% 
+  gather_residuals(mod_book = mod3, sat_term_model = mod4) %>% 
+  ggplot(aes(date, resid, color = model)) +
+    geom_line(alpha = 0.75)
+```
+
+The new model doesn't seem to fit the data as well, as the model from the book.
+Especially during summer holidays.
+
+##Create a new wday variable that combines the day of week, term (for Saturdays), and public holidays. What do the residuals of that model look like?
+
+```{r}
+mod5 <- MASS::rlm(n ~ wday_term_holiday, data = make_vars(daily))
 
 make_vars(daily) %>% 
-  add_residuals(mod4, "resid") %>% 
-  ggplot(aes(date, resid)) + 
-  geom_hline(yintercept = 0, size = 2, colour = "white") + 
-  geom_line()
+  gather_residuals(sat_term_model = mod4, sat_term_hol_model = mod5) %>% 
+  ggplot(aes(date, resid, color = model)) +
+    geom_line(alpha = 0.75)
+```
+
+The outliers don't seem to be that drastic. In April there might be a false 
+public holiday.
+
+
+## What happens if you fit a day of week effect that varies by month (i.e. `n ~ wday * month`)? Why is this not very helpful?
+
+```{r}
+mod6 <- MASS::rlm(n ~ wday * month, data = make_vars(daily))
+
+make_vars(daily) %>% 
+  gather_residuals(mod_book = mod3, monthly_wday_mod = mod6) %>% 
+  ggplot(aes(date, resid, color = model)) +
+    geom_line(alpha = 0.75)
+```
+
+It's not very useful, because it ignores the fact, that some months are different 
+from other (for example summer months).
+
+## What would you expect the model `n ~ wday + ns(date, 5)` to look like? Knowing what you know about the data, why would you expect it to be not particularly effective?
+
+```{r}
+mod <- MASS::rlm(n ~ wday + ns(date, 5), data = make_vars(daily))
+
+make_vars(daily) %>% 
+  gather_residuals(mod_book = mod3, ns_mod = mod) %>% 
+  ggplot(aes(date, resid, color = model)) +
+    geom_line(alpha = 0.75)
+```
+
+It ignores the relationsship between Saturdays and term and therefore misses some
+of the pattern in the data.
+
+## We hypothesised that people leaving on Sundays are more likely to be business travellers who need to be somewhere on Monday. Explore that hypothesis by seeing how it breaks down based on distance and time: if it’s true, you’d expect to see more Sunday evening flights to places that are far away.
+
+```{r}
+ggplot(make_vars(daily), aes(x = wday, y = mean_dist)) + 
+  geom_boxplot() 
+```
+
+## It’s a little frustrating that Sunday and Saturday are on separate ends of the plot. Write a small function to set the levels of the factor so that the week starts on Monday.
+
+```{r}
+reorder_wday <- function(wday) {
+  factor(wday, levels = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"))
+}
+
+help_df <- make_vars(daily) %>% 
+  mutate(wday = reorder_wday(wday))
+
+ggplot(help_df, aes(x = wday, y = mean_dist)) + 
+  geom_boxplot() 
 ```
 
