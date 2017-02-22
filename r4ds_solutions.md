@@ -87,7 +87,7 @@ setNames
 ##     names(object) <- nm
 ##     object
 ## }
-## <bytecode: 0x000000001681d258>
+## <bytecode: 0x00000000150545a8>
 ## <environment: namespace:stats>
 ```
 

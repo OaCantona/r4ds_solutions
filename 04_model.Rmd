@@ -13,6 +13,8 @@ output:
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(modelr)
+library(nycflights13)
+library(lubridate)
 ```
 
 # Model Basics
@@ -39,7 +41,7 @@ ggplot(sim2, aes(x)) +
 
 * Nothing different happens
 
-## For `sim4`, which of `mod1` and `mod2` is better? I think mod2 does a slightly better job at removing patterns, but it’s pretty subtle. Can you come up with a plot to support my claim?
+## For `sim4`, which of `mod1` and `mod2` is better? I think `mod2` does a slightly better job at removing patterns, but it’s pretty subtle. Can you come up with a plot to support my claim?
 
 ```{r}
 mod1 <- lm(y ~ x1 + x2, data = sim4)
@@ -49,7 +51,8 @@ sim4_res <- sim4 %>%
 
 sim4_res %>% 
   ggplot(aes(x = x1, y = resid, color = x2)) + 
-    geom_point() +
+    geom_point() + 
+    geom_smooth() +
     facet_grid(model ~ x2)
 ```
 
@@ -116,3 +119,58 @@ Formula: Gewicht in Karat = Durchmesser^3 * 0.0037
 ## Use your Google sleuthing skills to brainstorm why there were fewer than expected flights on Jan 20, May 26, and Sep 1. (Hint: they all have the same explanation.) How would these days generalise to another year?
 
 * No idea
+
+## Create a new variable that splits the `wday` variable into terms, but only for Saturdays, i.e. it should have `Thurs`, `Fri`, but `Sat-summer`, `Sat-spring`, `Sat-fall`. How does this model compare with the model with every combination of wday and term?
+
+```{r, echo=TRUE}
+term <- function(date) {
+  cut(date, 
+    breaks = ymd(20130101, 20130605, 20130825, 20140101),
+    labels = c("spring", "summer", "fall") 
+  )
+}
+
+daily <- flights %>% 
+  mutate(
+    date = make_date(year, month, day)) %>% 
+  group_by(date) %>% 
+  summarise(n = n()) 
+
+daily
+```
+
+Model from the book: 
+
+```{r}
+mod3 <- MASS::rlm(n ~ wday(date, label = TRUE) * term(date), data = daily)
+
+daily %>% 
+  add_residuals(mod3, "resid") %>% 
+  ggplot(aes(date, resid)) + 
+  geom_hline(yintercept = 0, size = 2, colour = "white") + 
+  geom_line()
+```
+
+Own model:
+
+```{r}
+wday2 <- function(x) wday(x, label = TRUE)
+
+make_vars <- function(data) {
+  data %>% 
+    mutate(
+      term = term(date),
+      wday = wday2(date), 
+      wday_term = if_else(wday == "Sat", paste(wday, "_", term), as.character(wday))
+    )
+}
+
+mod4 <- MASS::rlm(n ~ wday_term, data = make_vars(daily))
+
+make_vars(daily) %>% 
+  add_residuals(mod4, "resid") %>% 
+  ggplot(aes(date, resid)) + 
+  geom_hline(yintercept = 0, size = 2, colour = "white") + 
+  geom_line()
+```
+

@@ -79,7 +79,8 @@ sim4_res <- sim4 %>%
 
 sim4_res %>% 
   ggplot(aes(x = x1, y = resid, color = x2)) + 
-    geom_point() +
+    geom_point() + 
+    geom_smooth() +
     facet_grid(model ~ x2)
 ```
 
@@ -206,3 +207,6 @@ Formula: Gewicht in Karat = Durchmesser^3 * 0.0037
 ## Use your Google sleuthing skills to brainstorm why there were fewer than expected flights on Jan 20, May 26, and Sep 1. (Hint: they all have the same explanation.) How would these days generalise to another year?
 
 * No idea
+
+## Create a new variable that splits the wday variable into terms, but only for Saturdays, i.e. it should have Thurs, Fri, but Sat-summer, Sat-spring, Sat-fall. How does this model compare with the model with every combination of wday and term?
+
