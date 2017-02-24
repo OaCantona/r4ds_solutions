@@ -331,3 +331,66 @@ by_country %>%
     geom_line(aes(color = country))
 ```
 
+## List all the functions that you can think of that take a atomic vector and return a list.
+
+* purrr::map
+* lapply
+* stringr::str_split
+
+## Brainstorm useful summary functions that, like `quantile()`, return multiple values.
+
+* summary
+* str
+
+## What’s missing in the following data frame? How does `quantile()` return that missing piece? Why isn’t that helpful here?
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(q = list(quantile(mpg))) %>% 
+  unnest()
+```
+
+The propabilities of the quantiles is missing.
+
+```{r}
+list(quantile(mtcars$mpg))
+names(quantile(mtcars$cyl))
+```
+
+It's returning the probabilities as names of a vector. 
+
+## What does this code do? Why might might it be useful?
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise_each(funs(list))
+```
+
+It groups the data based on the `cyl` variable and puts the remaining variables into a list.
+You could now apply multivalued summary functions. For example:
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise_each(funs(list)) %>% 
+  mutate(q_mpg = map(mpg, quantile)) %>% 
+  unnest(q_mpg)
+```
+
+## Why might the `lengths()` function be useful for creating atomic vector columns from list-columns?
+
+If one wants to unnest multiple list column, one can do a check, if the columns
+contain the same number of elemts.
+
+## List the most common types of vector found in a data frame. What makes lists different?
+
+* character
+* double
+* integer
+* date
+* factor
+
+Lists are different, because they can contain multiple (and different) 
+data types.

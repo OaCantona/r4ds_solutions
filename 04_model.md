@@ -526,3 +526,136 @@ by_country %>%
 
 ![](04_model_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
+## List all the functions that you can think of that take a atomic vector and return a list.
+
+* purrr::map
+* lapply
+* stringr::str_split
+
+## Brainstorm useful summary functions that, like `quantile()`, return multiple values.
+
+* summary
+* str
+
+## What’s missing in the following data frame? How does `quantile()` return that missing piece? Why isn’t that helpful here?
+
+
+```r
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(q = list(quantile(mpg))) %>% 
+  unnest()
+```
+
+```
+## # A tibble: 15 × 2
+##      cyl     q
+##    <dbl> <dbl>
+## 1      4 21.40
+## 2      4 22.80
+## 3      4 26.00
+## 4      4 30.40
+## 5      4 33.90
+## 6      6 17.80
+## 7      6 18.65
+## 8      6 19.70
+## 9      6 21.00
+## 10     6 21.40
+## 11     8 10.40
+## 12     8 14.40
+## 13     8 15.20
+## 14     8 16.25
+## 15     8 19.20
+```
+
+The propabilities of the quantiles is missing.
+
+
+```r
+list(quantile(mtcars$mpg))
+```
+
+```
+## [[1]]
+##     0%    25%    50%    75%   100% 
+## 10.400 15.425 19.200 22.800 33.900
+```
+
+```r
+names(quantile(mtcars$cyl))
+```
+
+```
+## [1] "0%"   "25%"  "50%"  "75%"  "100%"
+```
+
+It's returning the probabilities as names of a vector. 
+
+## What does this code do? Why might might it be useful?
+
+
+```r
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise_each(funs(list))
+```
+
+```
+## # A tibble: 3 × 11
+##     cyl        mpg       disp         hp       drat         wt       qsec
+##   <dbl>     <list>     <list>     <list>     <list>     <list>     <list>
+## 1     4 <dbl [11]> <dbl [11]> <dbl [11]> <dbl [11]> <dbl [11]> <dbl [11]>
+## 2     6  <dbl [7]>  <dbl [7]>  <dbl [7]>  <dbl [7]>  <dbl [7]>  <dbl [7]>
+## 3     8 <dbl [14]> <dbl [14]> <dbl [14]> <dbl [14]> <dbl [14]> <dbl [14]>
+## # ... with 4 more variables: vs <list>, am <list>, gear <list>,
+## #   carb <list>
+```
+
+It groups the data based on the `cyl` variable and puts the remaining variables into a list.
+You could now apply multivalued summary functions. For example:
+
+
+```r
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise_each(funs(list)) %>% 
+  mutate(q_mpg = map(mpg, quantile)) %>% 
+  unnest(q_mpg)
+```
+
+```
+## # A tibble: 15 × 2
+##      cyl q_mpg
+##    <dbl> <dbl>
+## 1      4 21.40
+## 2      4 22.80
+## 3      4 26.00
+## 4      4 30.40
+## 5      4 33.90
+## 6      6 17.80
+## 7      6 18.65
+## 8      6 19.70
+## 9      6 21.00
+## 10     6 21.40
+## 11     8 10.40
+## 12     8 14.40
+## 13     8 15.20
+## 14     8 16.25
+## 15     8 19.20
+```
+
+## Why might the `lengths()` function be useful for creating atomic vector columns from list-columns?
+
+If one wants to unnest multiple list column, one can do a check, if the columns
+contain the same number of elemts.
+
+## List the most common types of vector found in a data frame. What makes lists different?
+
+* character
+* double
+* integer
+* date
+* factor
+
+Lists are different, because they can contain multiple (and different) 
+data types.
