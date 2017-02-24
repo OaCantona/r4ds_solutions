@@ -387,3 +387,142 @@ ggplot(help_df, aes(x = wday, y = mean_dist)) +
 
 ![](04_model_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
+# Many models
+
+## A linear trend seems to be slightly too simple for the overall trend. Can you do better with a quadratic polynomial? How can you interpret the coefficients of the quadratic? (Hint you might want to transform `year` so that it has mean zero.)
+
+
+```r
+library(gapminder)
+gapminder
+```
+
+```
+## # A tibble: 1,704 × 6
+##        country continent  year lifeExp      pop gdpPercap
+##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
+## 1  Afghanistan      Asia  1952  28.801  8425333  779.4453
+## 2  Afghanistan      Asia  1957  30.332  9240934  820.8530
+## 3  Afghanistan      Asia  1962  31.997 10267083  853.1007
+## 4  Afghanistan      Asia  1967  34.020 11537966  836.1971
+## 5  Afghanistan      Asia  1972  36.088 13079460  739.9811
+## 6  Afghanistan      Asia  1977  38.438 14880372  786.1134
+## 7  Afghanistan      Asia  1982  39.854 12881816  978.0114
+## 8  Afghanistan      Asia  1987  40.822 13867957  852.3959
+## 9  Afghanistan      Asia  1992  41.674 16317921  649.3414
+## 10 Afghanistan      Asia  1997  41.763 22227415  635.3414
+## # ... with 1,694 more rows
+```
+
+```r
+country_lin_model <- function(df) {
+  lm(lifeExp ~ year, data = df)
+}
+
+country_quad_model <- function(df) {
+  lm(lifeExp ~ poly(year_trans, 2), data = df)
+}
+
+by_country <- gapminder %>% 
+  mutate(year_trans = year - mean(year)) %>% 
+  group_by(country, continent) %>% 
+  nest() %>% 
+  mutate(
+    model_lm = map(data, country_lin_model), 
+    model_quad = map(data, country_quad_model))
+
+by_country
+```
+
+```
+## # A tibble: 142 × 5
+##        country continent              data model_lm model_quad
+##         <fctr>    <fctr>            <list>   <list>     <list>
+## 1  Afghanistan      Asia <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 2      Albania    Europe <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 3      Algeria    Africa <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 4       Angola    Africa <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 5    Argentina  Americas <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 6    Australia   Oceania <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 7      Austria    Europe <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 8      Bahrain      Asia <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 9   Bangladesh      Asia <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## 10     Belgium    Europe <tibble [12 × 5]> <S3: lm>   <S3: lm>
+## # ... with 132 more rows
+```
+
+Look at the mean r_squared of both models:
+
+
+```r
+by_country %>% 
+  mutate(glance_lin = map(model_lm, glance)) %>% 
+  unnest(glance_lin) %>% 
+  summarise(erg = mean(r.squared))
+```
+
+```
+## # A tibble: 1 × 1
+##         erg
+##       <dbl>
+## 1 0.8663524
+```
+
+```r
+by_country %>% 
+  mutate(glance_quad = map(model_quad, glance)) %>% 
+  unnest(glance_quad) %>% 
+  summarise(erg = mean(r.squared))
+```
+
+```
+## # A tibble: 1 × 1
+##         erg
+##       <dbl>
+## 1 0.9483428
+```
+
+It seems to fit the data better.
+
+How can you interpret the coefficients of the new model?
+
+
+```r
+by_country$model_quad[[1]]$coefficients
+```
+
+```
+##          (Intercept) poly(year_trans, 2)1 poly(year_trans, 2)2 
+##            37.478833            16.462260            -3.444621
+```
+
+The coefficients can be interpretet like this: `y = a_0 + a_1 * x + a_2 * x^2`
+
+## Explore other methods for visualising the distribution of `R^2` per continent. You might want to try the ggbeeswarm package, which provides similar methods for avoiding overlaps as jitter, but uses deterministic methods.
+
+
+```r
+by_country %>% 
+  mutate(glance_lin = map(model_lm, glance)) %>% 
+  unnest(glance_lin, .drop = TRUE) %>% 
+  ggplot(aes(x = continent, y = r.squared)) +
+    geom_beeswarm()
+```
+
+![](04_model_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+
+## To create the last plot (showing the data for the countries with the worst model fits), we needed two steps: we created a data frame with one row per country and then semi-joined it to the original dataset. It’s possible avoid this join if we use `unnest()` instead of `unnest(.drop = TRUE)`. How?
+
+
+```r
+by_country %>% 
+  mutate(glance_lin = map(model_lm, glance), 
+         r.squared = map_dbl(glance_lin, "r.squared")) %>% 
+  filter(r.squared < 0.25) %>% 
+  unnest(data) %>% 
+  ggplot(aes(year, lifeExp)) + 
+    geom_line(aes(color = country))
+```
+
+![](04_model_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+

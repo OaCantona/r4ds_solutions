@@ -16,6 +16,8 @@ library(modelr)
 library(nycflights13)
 library(lubridate)
 library(splines)
+library(broom)
+library(ggbeeswarm)
 ```
 
 # Model Basics
@@ -254,5 +256,78 @@ help_df <- make_vars(daily) %>%
 
 ggplot(help_df, aes(x = wday, y = mean_dist)) + 
   geom_boxplot() 
+```
+
+# Many models
+
+## A linear trend seems to be slightly too simple for the overall trend. Can you do better with a quadratic polynomial? How can you interpret the coefficients of the quadratic? (Hint you might want to transform `year` so that it has mean zero.)
+
+```{r}
+library(gapminder)
+gapminder
+
+country_lin_model <- function(df) {
+  lm(lifeExp ~ year, data = df)
+}
+
+country_quad_model <- function(df) {
+  lm(lifeExp ~ poly(year_trans, 2), data = df)
+}
+
+by_country <- gapminder %>% 
+  mutate(year_trans = year - mean(year)) %>% 
+  group_by(country, continent) %>% 
+  nest() %>% 
+  mutate(
+    model_lm = map(data, country_lin_model), 
+    model_quad = map(data, country_quad_model))
+
+by_country
+```
+
+Look at the mean r_squared of both models:
+
+```{r}
+by_country %>% 
+  mutate(glance_lin = map(model_lm, glance)) %>% 
+  unnest(glance_lin) %>% 
+  summarise(erg = mean(r.squared))
+
+by_country %>% 
+  mutate(glance_quad = map(model_quad, glance)) %>% 
+  unnest(glance_quad) %>% 
+  summarise(erg = mean(r.squared))
+```
+
+It seems to fit the data better.
+
+How can you interpret the coefficients of the new model?
+
+```{r}
+by_country$model_quad[[1]]$coefficients
+```
+
+The coefficients can be interpretet like this: `y = a_0 + a_1 * x + a_2 * x^2`
+
+## Explore other methods for visualising the distribution of `R^2` per continent. You might want to try the ggbeeswarm package, which provides similar methods for avoiding overlaps as jitter, but uses deterministic methods.
+
+```{r}
+by_country %>% 
+  mutate(glance_lin = map(model_lm, glance)) %>% 
+  unnest(glance_lin, .drop = TRUE) %>% 
+  ggplot(aes(x = continent, y = r.squared)) +
+    geom_beeswarm()
+```
+
+## To create the last plot (showing the data for the countries with the worst model fits), we needed two steps: we created a data frame with one row per country and then semi-joined it to the original dataset. It’s possible avoid this join if we use `unnest()` instead of `unnest(.drop = TRUE)`. How?
+
+```{r}
+by_country %>% 
+  mutate(glance_lin = map(model_lm, glance), 
+         r.squared = map_dbl(glance_lin, "r.squared")) %>% 
+  filter(r.squared < 0.25) %>% 
+  unnest(data) %>% 
+  ggplot(aes(year, lifeExp)) + 
+    geom_line(aes(color = country))
 ```
 
