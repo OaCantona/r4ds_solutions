@@ -246,4 +246,77 @@ preg %>%
 ## 4       no female     12
 ```
 
-You need to gather it. The variables are pregnant, sex and number
+You need to gather it. The variables are pregnant, sex and number.
+
+## What do the `extra` and `fill` arguments do in `separate()`? Experiment with the various options for the following two toy datasets.
+
+
+```r
+test1 <- tibble(x = c("a,b,c", "d,e,f,g", "h,i,j"))
+
+test1 %>% 
+  separate(x, c("one", "two", "three"), extra = "drop")
+```
+
+```
+## # A tibble: 3 × 3
+##     one   two three
+## * <chr> <chr> <chr>
+## 1     a     b     c
+## 2     d     e     f
+## 3     h     i     j
+```
+
+```r
+test1 %>% 
+  separate(x, c("one", "two", "three"), extra = "merge")
+```
+
+```
+## # A tibble: 3 × 3
+##     one   two three
+## * <chr> <chr> <chr>
+## 1     a     b     c
+## 2     d     e   f,g
+## 3     h     i     j
+```
+
+```r
+test2 <- tibble(x = c("a,b,c", "d,e", "f,g,i"))
+
+test2 %>% 
+  separate(x, c("one", "two", "three"), fill = "right")
+```
+
+```
+## # A tibble: 3 × 3
+##     one   two three
+## * <chr> <chr> <chr>
+## 1     a     b     c
+## 2     d     e  <NA>
+## 3     f     g     i
+```
+
+```r
+test2 %>% 
+  separate(x, c("one", "two", "three"), fill = "left")
+```
+
+```
+## # A tibble: 3 × 3
+##     one   two three
+## * <chr> <chr> <chr>
+## 1     a     b     c
+## 2  <NA>     d     e
+## 3     f     g     i
+```
+
+## Both `unite()` and `separate()` have a `remove` argument. What does it do? Why would you set it to `FALSE`?
+
+It determines, if the original column should be kept or removed. If you set it
+to `FALSE`, the original column is kept.
+
+## Compare and contrast `separate()` and `extract()`. Why are there three variations of separation (by position, by separator, and with groups), but only one unite?
+
+Extract looks at existing groups (based on a regex) in the data. If not present
+return `NA`.
