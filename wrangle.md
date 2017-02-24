@@ -151,3 +151,99 @@ table2 %>%
 ![](wrangle_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 First you have to include a filter, to show only `type == "cases"`
+
+## Why are `gather()` and `spread()` not perfectly symmetrical? Carefully consider the following example: (Hint: look at the variable types and think about column names.) Both `spread()` and `gather()` have a convert argument. What does it do?
+
+
+```r
+stocks <- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+stocks %>% 
+  spread(key = year, value = return) %>% 
+  gather(key = "year", value = "return", `2015`:`2016`)
+```
+
+```
+## # A tibble: 4 × 3
+##    half  year return
+##   <dbl> <chr>  <dbl>
+## 1     1  2015   1.88
+## 2     2  2015   0.59
+## 3     1  2016   0.92
+## 4     2  2016   0.17
+```
+
+In the `spread` step, the year variable becomes the new column names. 
+Therefore they get turned from integer into characters. 
+If you want to prevent this behavior, you could use the `convert` parameter.
+
+## Why does this code fail?
+
+
+```r
+#table4a %>% 
+#  gather(1999, 2000, key = "year", value = "cases")
+```
+
+Because the years are not quoted. It is mandatory to do this, because these are
+nonsyntactic names.
+
+## Why does spreading this tibble fail? How could you add a new column to fix the problem?
+
+
+```r
+people <- tribble(
+  ~name,             ~key,    ~value,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156
+)
+
+people %>% 
+  mutate(id = c(1, 1, 2, 3, 3)) %>% 
+  spread(key = key, value = value)
+```
+
+```
+## # A tibble: 3 × 4
+##              name    id   age height
+## *           <chr> <dbl> <dbl>  <dbl>
+## 1 Jessica Cordero     3    37    156
+## 2   Phillip Woods     1    45    186
+## 3   Phillip Woods     2    50     NA
+```
+
+Because you have duplicate indentifiers ("Phillip Woods" and "age"). 
+By introducing a unique `id` column, one could fix this problem.
+
+## Tidy the simple tibble below. Do you need to spread or gather it? What are the variables?
+
+
+```r
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+
+preg %>% 
+  gather(key = "sex", value = "number", -pregnant)
+```
+
+```
+## # A tibble: 4 × 3
+##   pregnant    sex number
+##      <chr>  <chr>  <dbl>
+## 1      yes   male     NA
+## 2       no   male     20
+## 3      yes female     10
+## 4       no female     12
+```
+
+You need to gather it. The variables are pregnant, sex and number
