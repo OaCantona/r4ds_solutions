@@ -411,6 +411,7 @@ middle_character("test")
 ```
 
 You have to decide, if you choose the left or right character from the middle.
+You could do this by including an additional parameter in the above function.
 
 ## What does `str_wrap()` do? When might you want to use it?
 
@@ -421,4 +422,82 @@ nicely formated text and only have a fixed width of space available.
 
 It trims leading and trailing whitespaces from a string. 
 The opposite is `str_pad`.
+
+## Write a function that turns (e.g.) a vector `c("a", "b", "c")` into the string `a, b, and c`.Think carefully about what it should do if given a vector of length 0, 1, or 2.
+
+
+```r
+str_add_and <- function(string_vector) {
+  if (length(string_vector) <= 1)
+    return(string_vector)
+  if (length(string_vector) == 2)
+    return(str_c(string_vector, collapse = ", "))
+  last_string <- string_vector[length(string_vector)]
+  front_string <- string_vector[-length(string_vector)]
+  str_c(str_c(front_string, collapse = ", "), last_string, sep = " and ")
+}
+str_add_and(c("a", "b", "c", "d"))
+```
+
+```
+## [1] "a, b, c and d"
+```
+
+```r
+str_add_and(c("a"))
+```
+
+```
+## [1] "a"
+```
+
+```r
+str_add_and(c("a", "b"))
+```
+
+```
+## [1] "a, b"
+```
+
+```r
+str_add_and(c())
+```
+
+```
+## NULL
+```
+
+## Explain why each of these strings don't match a `\`: `"\"`, `"\\"`, `"\\\"`.
+
+* It only uses the special ability of the backslash
+* To create a regex, you need a string
+* In the string, you also need to escape the backslash
+
+## How would you match the sequence `"'\`
+
+
+```r
+str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
+```
+
+<!--html_preserve--><div id="htmlwidget-b29fb74251b80156b039" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b29fb74251b80156b039">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\\u003c/span>bbbb\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+## What patterns will the regular expression `\..\..\..` match? How would you represent it as a string?
+
+
+```r
+str_view(".a.b.c", '\\..\\..\\..')
+```
+
+<!--html_preserve--><div id="htmlwidget-307362df71f4d94e21f2" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-307362df71f4d94e21f2">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c\u003c/span>\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+```r
+writeLines('\\..\\..\\..')
+```
+
+```
+## \..\..\..
+```
 
