@@ -334,3 +334,91 @@ It determines if the missing values should be filled from "down" or "up".
 
 You should first check, that `NA` values are not explicit missing values. 
 In this dataset, the explicit missing values are represented by 0.
+
+# Strings
+
+## In code that doesn't use stringr, you'll often see `paste()` and `paste0()`. What's the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of `NA`?
+
+* `paste0` automatically takes an empty string as `sep` argument
+* str_c
+
+
+```r
+paste0("a", "b", NA, "d")
+```
+
+```
+## [1] "abNAd"
+```
+
+```r
+str_c("a", "b", NA, "d")
+```
+
+```
+## [1] NA
+```
+
+* `str_c` converts to `NA`, if one string is `NA`
+
+##In your own words, describe the difference between the `sep` and `collapse` arguments to `str_c()`.
+
+
+```r
+str_c(c("a", "b"), c("c", "d"), "hello", sep = ",") 
+```
+
+```
+## [1] "a,c,hello" "b,d,hello"
+```
+
+```r
+str_c(c("a", "b"), c("c", "d"), "hello", collapse = ",")
+```
+
+```
+## [1] "achello,bdhello"
+```
+
+The `collapse` argument, collapses the different strings into one big string. 
+`sep` doesn't.
+
+## Use `str_length()` and `str_sub()` to extract the middle character from a string. What will you do if the string has an even number of characters?
+
+
+```r
+test1 <- "hallo"
+test2 <- "test"
+
+middle_character <- function(string) {
+  middle <- (str_length(string) + 1) / 2
+  str_sub(string, start = middle, end = middle)
+}
+
+middle_character("hallo")
+```
+
+```
+## [1] "l"
+```
+
+```r
+middle_character("test")
+```
+
+```
+## [1] "e"
+```
+
+You have to decide, if you choose the left or right character from the middle.
+
+## What does `str_wrap()` do? When might you want to use it?
+
+It determines when to put text in a new line. You might use it, when you want a 
+nicely formated text and only have a fixed width of space available.
+
+## What does `str_trim()` do? What's the opposite of `str_trim()`?
+
+It trims leading and trailing whitespaces from a string. 
+The opposite is `str_pad`.
+

@@ -346,6 +346,55 @@ test2 %&gt;%
 <p>You should first check, that <code>NA</code> values are not explicit missing values. In this dataset, the explicit missing values are represented by 0.</p>
 </div>
 </div>
+<div id="strings" class="section level1">
+<h1><span class="header-section-number">2</span> Strings</h1>
+<div id="in-code-that-doesnt-use-stringr-youll-often-see-paste-and-paste0.-whats-the-difference-between-the-two-functions-what-stringr-function-are-they-equivalent-to-how-do-the-functions-differ-in-their-handling-of-na" class="section level2">
+<h2><span class="header-section-number">2.1</span> In code that doesn’t use stringr, you’ll often see <code>paste()</code> and <code>paste0()</code>. What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of <code>NA</code>?</h2>
+<ul>
+<li><code>paste0</code> automatically takes an empty string as <code>sep</code> argument</li>
+<li>str_c</li>
+</ul>
+<pre class="r"><code>paste0(&quot;a&quot;, &quot;b&quot;, NA, &quot;d&quot;)</code></pre>
+<pre><code>## [1] &quot;abNAd&quot;</code></pre>
+<pre class="r"><code>str_c(&quot;a&quot;, &quot;b&quot;, NA, &quot;d&quot;)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<ul>
+<li><code>str_c</code> converts to <code>NA</code>, if one string is <code>NA</code></li>
+</ul>
+</div>
+<div id="in-your-own-words-describe-the-difference-between-the-sep-and-collapse-arguments-to-str_c." class="section level2">
+<h2><span class="header-section-number">2.2</span> In your own words, describe the difference between the <code>sep</code> and <code>collapse</code> arguments to <code>str_c()</code>.</h2>
+<pre class="r"><code>str_c(c(&quot;a&quot;, &quot;b&quot;), c(&quot;c&quot;, &quot;d&quot;), &quot;hello&quot;, sep = &quot;,&quot;) </code></pre>
+<pre><code>## [1] &quot;a,c,hello&quot; &quot;b,d,hello&quot;</code></pre>
+<pre class="r"><code>str_c(c(&quot;a&quot;, &quot;b&quot;), c(&quot;c&quot;, &quot;d&quot;), &quot;hello&quot;, collapse = &quot;,&quot;)</code></pre>
+<pre><code>## [1] &quot;achello,bdhello&quot;</code></pre>
+<p>The <code>collapse</code> argument, collapses the different strings into one big string. <code>sep</code> doesn’t.</p>
+</div>
+<div id="use-str_length-and-str_sub-to-extract-the-middle-character-from-a-string.-what-will-you-do-if-the-string-has-an-even-number-of-characters" class="section level2">
+<h2><span class="header-section-number">2.3</span> Use <code>str_length()</code> and <code>str_sub()</code> to extract the middle character from a string. What will you do if the string has an even number of characters?</h2>
+<pre class="r"><code>test1 &lt;- &quot;hallo&quot;
+test2 &lt;- &quot;test&quot;
+
+middle_character &lt;- function(string) {
+  middle &lt;- (str_length(string) + 1) / 2
+  str_sub(string, start = middle, end = middle)
+}
+
+middle_character(&quot;hallo&quot;)</code></pre>
+<pre><code>## [1] &quot;l&quot;</code></pre>
+<pre class="r"><code>middle_character(&quot;test&quot;)</code></pre>
+<pre><code>## [1] &quot;e&quot;</code></pre>
+<p>You have to decide, if you choose the left or right character from the middle.</p>
+</div>
+<div id="what-does-str_wrap-do-when-might-you-want-to-use-it" class="section level2">
+<h2><span class="header-section-number">2.4</span> What does <code>str_wrap()</code> do? When might you want to use it?</h2>
+<p>It determines when to put text in a new line. You might use it, when you want a nicely formated text and only have a fixed width of space available.</p>
+</div>
+<div id="what-does-str_trim-do-whats-the-opposite-of-str_trim" class="section level2">
+<h2><span class="header-section-number">2.5</span> What does <code>str_trim()</code> do? What’s the opposite of <code>str_trim()</code>?</h2>
+<p>It trims leading and trailing whitespaces from a string. The opposite is <code>str_pad</code>.</p>
+</div>
+</div>
 
 
 
