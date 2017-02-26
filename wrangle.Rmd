@@ -260,7 +260,7 @@ str_add_and <- function(string_vector) {
   if (length(string_vector) <= 1)
     return(string_vector)
   if (length(string_vector) == 2)
-    return(str_c(string_vector, collapse = ", "))
+    return(str_c(string_vector, collapse = " and "))
   last_string <- string_vector[length(string_vector)]
   front_string <- string_vector[-length(string_vector)]
   str_c(str_c(front_string, collapse = ", "), last_string, sep = " and ")

@@ -431,7 +431,7 @@ str_add_and <- function(string_vector) {
   if (length(string_vector) <= 1)
     return(string_vector)
   if (length(string_vector) == 2)
-    return(str_c(string_vector, collapse = ", "))
+    return(str_c(string_vector, collapse = " and "))
   last_string <- string_vector[length(string_vector)]
   front_string <- string_vector[-length(string_vector)]
   str_c(str_c(front_string, collapse = ", "), last_string, sep = " and ")
@@ -456,7 +456,7 @@ str_add_and(c("a", "b"))
 ```
 
 ```
-## [1] "a, b"
+## [1] "a and b"
 ```
 
 ```r
@@ -480,8 +480,8 @@ str_add_and(c())
 str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
 ```
 
-<!--html_preserve--><div id="htmlwidget-b29fb74251b80156b039" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b29fb74251b80156b039">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\\u003c/span>bbbb\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-289a43d768091ef6c2d3" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-289a43d768091ef6c2d3">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\\u003c/span>bbbb\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## What patterns will the regular expression `\..\..\..` match? How would you represent it as a string?
 
@@ -490,8 +490,8 @@ str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
 str_view(".a.b.c", '\\..\\..\\..')
 ```
 
-<!--html_preserve--><div id="htmlwidget-307362df71f4d94e21f2" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-307362df71f4d94e21f2">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c\u003c/span>\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-14d4335869c17244bbe6" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-14d4335869c17244bbe6">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c\u003c/span>\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 writeLines('\\..\\..\\..')
