@@ -320,3 +320,17 @@ to `FALSE`, the original column is kept.
 
 Extract looks at existing groups (based on a regex) in the data. If not present
 return `NA`.
+
+## Compare and contrast the `fill` arguments to `spread()` and `complete()`.
+
+The fill argument in `spread` will replace explicit missing values. `complete`
+won't do that.
+
+## What does the direction argument to fill() do
+
+It determines if the missing values should be filled from "down" or "up".
+
+## In this case study I set `na.rm = TRUE` just to make it easier to check that we had the correct values. Is this reasonable? Think about how missing values are represented in this dataset. Are there implicit missing values? What’s the difference between an `NA` and `zero`?
+
+You should first check, that `NA` values are not explicit missing values. 
+In this dataset, the explicit missing values are represented by 0.

@@ -126,9 +126,9 @@ $(document).ready(function () {
 <pre class="r"><code>library(tidyverse)
 library(stringr)</code></pre>
 <div id="tidy-data" class="section level1">
-<h1>Tidy Data</h1>
+<h1><span class="header-section-number">1</span> Tidy Data</h1>
 <div id="using-prose-describe-how-the-variables-and-observations-are-organised-in-each-of-the-sample-tables." class="section level2">
-<h2>Using prose, describe how the variables and observations are organised in each of the sample tables.</h2>
+<h2><span class="header-section-number">1.1</span> Using prose, describe how the variables and observations are organised in each of the sample tables.</h2>
 <ul>
 <li><p><code>table1</code> Every observations is a row and every variable is a column.</p></li>
 <li><p><code>table2</code> The variable <code>type</code> determines which variable we are currently looking at.</p></li>
@@ -138,7 +138,7 @@ library(stringr)</code></pre>
 </ul>
 </div>
 <div id="compute-the-rate-for-table2-and-table4a-table4b.-which-representation-is-easiest-to-work-with-which-is-hardest-why" class="section level2">
-<h2>Compute the rate for table2, and table4a + table4b. Which representation is easiest to work with? Which is hardest? Why?</h2>
+<h2><span class="header-section-number">1.2</span> Compute the rate for table2, and table4a + table4b. Which representation is easiest to work with? Which is hardest? Why?</h2>
 <p>How it should look like</p>
 <pre class="r"><code>table1 %&gt;% 
   mutate(rate = cases / population * 10000)</code></pre>
@@ -210,7 +210,7 @@ table4a_tidy %&gt;%
 ## 6       China  2000 1.669488</code></pre>
 </div>
 <div id="recreate-the-plot-showing-change-in-cases-over-time-using-table2-instead-of-table1.-what-do-you-need-to-do-first" class="section level2">
-<h2>Recreate the plot showing change in cases over time using table2 instead of table1. What do you need to do first?</h2>
+<h2><span class="header-section-number">1.3</span> Recreate the plot showing change in cases over time using table2 instead of table1. What do you need to do first?</h2>
 <pre class="r"><code>table2 %&gt;% 
   filter(type == &quot;cases&quot;) %&gt;% 
   ggplot(aes(year, count)) + 
@@ -220,7 +220,7 @@ table4a_tidy %&gt;%
 <p>First you have to include a filter, to show only <code>type == &quot;cases&quot;</code></p>
 </div>
 <div id="why-are-gather-and-spread-not-perfectly-symmetrical-carefully-consider-the-following-example-hint-look-at-the-variable-types-and-think-about-column-names.-both-spread-and-gather-have-a-convert-argument.-what-does-it-do" class="section level2">
-<h2>Why are <code>gather()</code> and <code>spread()</code> not perfectly symmetrical? Carefully consider the following example: (Hint: look at the variable types and think about column names.) Both <code>spread()</code> and <code>gather()</code> have a convert argument. What does it do?</h2>
+<h2><span class="header-section-number">1.4</span> Why are <code>gather()</code> and <code>spread()</code> not perfectly symmetrical? Carefully consider the following example: (Hint: look at the variable types and think about column names.) Both <code>spread()</code> and <code>gather()</code> have a convert argument. What does it do?</h2>
 <pre class="r"><code>stocks &lt;- tibble(
   year   = c(2015, 2015, 2016, 2016),
   half  = c(   1,    2,     1,    2),
@@ -239,13 +239,13 @@ stocks %&gt;%
 <p>In the <code>spread</code> step, the year variable becomes the new column names. Therefore they get turned from integer into characters. If you want to prevent this behavior, you could use the <code>convert</code> parameter.</p>
 </div>
 <div id="why-does-this-code-fail" class="section level2">
-<h2>Why does this code fail?</h2>
+<h2><span class="header-section-number">1.5</span> Why does this code fail?</h2>
 <pre class="r"><code>#table4a %&gt;% 
 #  gather(1999, 2000, key = &quot;year&quot;, value = &quot;cases&quot;)</code></pre>
 <p>Because the years are not quoted. It is mandatory to do this, because these are nonsyntactic names.</p>
 </div>
 <div id="why-does-spreading-this-tibble-fail-how-could-you-add-a-new-column-to-fix-the-problem" class="section level2">
-<h2>Why does spreading this tibble fail? How could you add a new column to fix the problem?</h2>
+<h2><span class="header-section-number">1.6</span> Why does spreading this tibble fail? How could you add a new column to fix the problem?</h2>
 <pre class="r"><code>people &lt;- tribble(
   ~name,             ~key,    ~value,
   #-----------------|--------|------
@@ -268,7 +268,7 @@ people %&gt;%
 <p>Because you have duplicate indentifiers (“Phillip Woods” and “age”). By introducing a unique <code>id</code> column, one could fix this problem.</p>
 </div>
 <div id="tidy-the-simple-tibble-below.-do-you-need-to-spread-or-gather-it-what-are-the-variables" class="section level2">
-<h2>Tidy the simple tibble below. Do you need to spread or gather it? What are the variables?</h2>
+<h2><span class="header-section-number">1.7</span> Tidy the simple tibble below. Do you need to spread or gather it? What are the variables?</h2>
 <pre class="r"><code>preg &lt;- tribble(
   ~pregnant, ~male, ~female,
   &quot;yes&quot;,     NA,    10,
@@ -287,7 +287,7 @@ preg %&gt;%
 <p>You need to gather it. The variables are pregnant, sex and number.</p>
 </div>
 <div id="what-do-the-extra-and-fill-arguments-do-in-separate-experiment-with-the-various-options-for-the-following-two-toy-datasets." class="section level2">
-<h2>What do the <code>extra</code> and <code>fill</code> arguments do in <code>separate()</code>? Experiment with the various options for the following two toy datasets.</h2>
+<h2><span class="header-section-number">1.8</span> What do the <code>extra</code> and <code>fill</code> arguments do in <code>separate()</code>? Experiment with the various options for the following two toy datasets.</h2>
 <pre class="r"><code>test1 &lt;- tibble(x = c(&quot;a,b,c&quot;, &quot;d,e,f,g&quot;, &quot;h,i,j&quot;))
 
 test1 %&gt;% 
@@ -326,12 +326,24 @@ test2 %&gt;%
 ## 3     f     g     i</code></pre>
 </div>
 <div id="both-unite-and-separate-have-a-remove-argument.-what-does-it-do-why-would-you-set-it-to-false" class="section level2">
-<h2>Both <code>unite()</code> and <code>separate()</code> have a <code>remove</code> argument. What does it do? Why would you set it to <code>FALSE</code>?</h2>
+<h2><span class="header-section-number">1.9</span> Both <code>unite()</code> and <code>separate()</code> have a <code>remove</code> argument. What does it do? Why would you set it to <code>FALSE</code>?</h2>
 <p>It determines, if the original column should be kept or removed. If you set it to <code>FALSE</code>, the original column is kept.</p>
 </div>
 <div id="compare-and-contrast-separate-and-extract.-why-are-there-three-variations-of-separation-by-position-by-separator-and-with-groups-but-only-one-unite" class="section level2">
-<h2>Compare and contrast <code>separate()</code> and <code>extract()</code>. Why are there three variations of separation (by position, by separator, and with groups), but only one unite?</h2>
+<h2><span class="header-section-number">1.10</span> Compare and contrast <code>separate()</code> and <code>extract()</code>. Why are there three variations of separation (by position, by separator, and with groups), but only one unite?</h2>
 <p>Extract looks at existing groups (based on a regex) in the data. If not present return <code>NA</code>.</p>
+</div>
+<div id="compare-and-contrast-the-fill-arguments-to-spread-and-complete." class="section level2">
+<h2><span class="header-section-number">1.11</span> Compare and contrast the <code>fill</code> arguments to <code>spread()</code> and <code>complete()</code>.</h2>
+<p>The fill argument in <code>spread</code> will replace explicit missing values. <code>complete</code> won’t do that.</p>
+</div>
+<div id="what-does-the-direction-argument-to-fill-do" class="section level2">
+<h2><span class="header-section-number">1.12</span> What does the direction argument to fill() do</h2>
+<p>It determines if the missing values should be filled from “down” or “up”.</p>
+</div>
+<div id="in-this-case-study-i-set-na.rm-true-just-to-make-it-easier-to-check-that-we-had-the-correct-values.-is-this-reasonable-think-about-how-missing-values-are-represented-in-this-dataset.-are-there-implicit-missing-values-whats-the-difference-between-an-na-and-zero" class="section level2">
+<h2><span class="header-section-number">1.13</span> In this case study I set <code>na.rm = TRUE</code> just to make it easier to check that we had the correct values. Is this reasonable? Think about how missing values are represented in this dataset. Are there implicit missing values? What’s the difference between an <code>NA</code> and <code>zero</code>?</h2>
+<p>You should first check, that <code>NA</code> values are not explicit missing values. In this dataset, the explicit missing values are represented by 0.</p>
 </div>
 </div>
 
