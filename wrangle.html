@@ -428,22 +428,22 @@ str_add_and(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;))</code
 <div id="how-would-you-match-the-sequence" class="section level2">
 <h2><span class="header-section-number">2.8</span> How would you match the sequence <code>&quot;'\</code></h2>
 <pre class="r"><code>str_view('aaaa\&quot;\'\\bbbb', &quot;\\\&quot;\\\'\\\\&quot;)</code></pre>
-<div id="htmlwidget-eec50da5f66428132e61" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eec50da5f66428132e61">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6baf119921f804f2c790" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6baf119921f804f2c790">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="what-patterns-will-the-regular-expression-......-match-how-would-you-represent-it-as-a-string" class="section level2">
 <h2><span class="header-section-number">2.9</span> What patterns will the regular expression <code>\..\..\..</code> match? How would you represent it as a string?</h2>
 <pre class="r"><code>str_view(&quot;.a.b.c&quot;, '\\..\\..\\..')</code></pre>
-<div id="htmlwidget-d191b9ade15309978b84" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d191b9ade15309978b84">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f7f141250408d53b46ec" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f7f141250408d53b46ec">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>writeLines('\\..\\..\\..')</code></pre>
 <pre><code>## \..\..\..</code></pre>
 </div>
 <div id="how-would-you-match-the-literal-string" class="section level2">
 <h2><span class="header-section-number">2.10</span> How would you match the literal string <code>&quot;$^$&quot;</code>?</h2>
 <pre class="r"><code>str_view(&quot;$^$&quot;, &quot;\\$\\^\\$&quot;)</code></pre>
-<div id="htmlwidget-ba092dc76ec811c0bb70" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba092dc76ec811c0bb70">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e6a346428359d6ec228d" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e6a346428359d6ec228d">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="given-the-corpus-of-common-words-in-stringrwords-create-regular-expressions-that-find-all-words-that" class="section level2">
 <h2><span class="header-section-number">2.11</span> Given the corpus of common words in stringr::words, create regular expressions that find all words that:</h2>
@@ -583,8 +583,8 @@ End with ing or ise.</code></pre>
 <div id="create-a-regular-expression-that-will-match-telephone-numbers-as-commonly-written-in-your-country." class="section level2">
 <h2><span class="header-section-number">2.16</span> Create a regular expression that will match telephone numbers as commonly written in your country.</h2>
 <pre class="r"><code>str_view(string = &quot;07431 1234&quot;, &quot;\\d+\\s\\d+&quot;)</code></pre>
-<div id="htmlwidget-623098a81906c58b2a95" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-623098a81906c58b2a95">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-49d18e18987e4d96b900" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-49d18e18987e4d96b900">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="describe-the-equivalents-of-in-mn-form." class="section level2">
 <h2><span class="header-section-number">2.17</span> Describe the equivalents of <code>?</code>, <code>+</code>, <code>*</code> in <code>{m,n}</code> form.</h2>
@@ -677,6 +677,30 @@ Have two or more vowel-consonant pairs in a row.</code></pre>
 <li><code>(.)(.)(.).*\\3\\2\\1</code></li>
 </ul>
 <p>Words, that start and end with the same characters, but in reverse order</p>
+</div>
+<div id="construct-regular-expressions-to-match-words-that" class="section level2">
+<h2><span class="header-section-number">2.21</span> Construct regular expressions to match words that:</h2>
+<ul>
+<li>Start and end with the same character.</li>
+</ul>
+<pre class="r"><code>str_view(c(&quot;abbififa&quot;, &quot;babbififa&quot;), pattern = &quot;^(.).*\\1$&quot;)</code></pre>
+<div id="htmlwidget-edffa2a5ecbd8f0cdccb" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-edffa2a5ecbd8f0cdccb">{"x":{"html":"<ul>\n  <li><span class='match'>abbififa<\/span><\/li>\n  <li>babbififa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)</li>
+</ul>
+<pre class="r"><code>str_view(c(&quot;cucumber&quot;, &quot;church&quot;), pattern = &quot;.*(..).*\\1&quot;)</code></pre>
+<div id="htmlwidget-bf4afd4f3d9f9b85a6a3" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bf4afd4f3d9f9b85a6a3">{"x":{"html":"<ul>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>church<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)</li>
+</ul>
+<pre class="r"><code>str_view(c(&quot;eleven&quot;, &quot;pineapple&quot;, &quot;football&quot;), pattern = &quot;.*(.).*\\1.*\\1.*&quot;)</code></pre>
+<div id="htmlwidget-a5246ab14321c23422aa" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a5246ab14321c23422aa">{"x":{"html":"<ul>\n  <li><span class='match'>eleven<\/span><\/li>\n  <li><span class='match'>pineapple<\/span><\/li>\n  <li>football<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<pre><code>Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+
+Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)</code></pre>
 </div>
 </div>
 

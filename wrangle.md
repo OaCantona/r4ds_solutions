@@ -480,8 +480,8 @@ str_add_and(c())
 str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
 ```
 
-<!--html_preserve--><div id="htmlwidget-eec50da5f66428132e61" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eec50da5f66428132e61">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-6baf119921f804f2c790" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6baf119921f804f2c790">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## What patterns will the regular expression `\..\..\..` match? How would you represent it as a string?
 
@@ -490,8 +490,8 @@ str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
 str_view(".a.b.c", '\\..\\..\\..')
 ```
 
-<!--html_preserve--><div id="htmlwidget-d191b9ade15309978b84" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d191b9ade15309978b84">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-f7f141250408d53b46ec" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f7f141250408d53b46ec">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 writeLines('\\..\\..\\..')
@@ -508,8 +508,8 @@ writeLines('\\..\\..\\..')
 str_view("$^$", "\\$\\^\\$")
 ```
 
-<!--html_preserve--><div id="htmlwidget-ba092dc76ec811c0bb70" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba092dc76ec811c0bb70">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-e6a346428359d6ec228d" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e6a346428359d6ec228d">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Given the corpus of common words in stringr::words, create regular expressions that find all words that:
     Start with “y”.
@@ -722,8 +722,8 @@ Yes.
 str_view(string = "07431 1234", "\\d+\\s\\d+")
 ```
 
-<!--html_preserve--><div id="htmlwidget-623098a81906c58b2a95" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-623098a81906c58b2a95">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-49d18e18987e4d96b900" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-49d18e18987e4d96b900">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ##Describe the equivalents of `?`, `+`, `*` in `{m,n}` form.
 
@@ -834,6 +834,43 @@ characters between them
 
 Words, that start and end with the same characters, but in reverse order
 
+## Construct regular expressions to match words that:
 
+* Start and end with the same character.
+
+
+```r
+str_view(c("abbififa", "babbififa"), pattern = "^(.).*\\1$")
+```
+
+<!--html_preserve--><div id="htmlwidget-edffa2a5ecbd8f0cdccb" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-edffa2a5ecbd8f0cdccb">{"x":{"html":"<ul>\n  <li><span class='match'>abbififa<\/span><\/li>\n  <li>babbififa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+* Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+
+
+```r
+str_view(c("cucumber", "church"), pattern = ".*(..).*\\1")
+```
+
+<!--html_preserve--><div id="htmlwidget-bf4afd4f3d9f9b85a6a3" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bf4afd4f3d9f9b85a6a3">{"x":{"html":"<ul>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>church<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+* Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)
+
+
+```r
+str_view(c("eleven", "pineapple", "football"), pattern = ".*(.).*\\1.*\\1.*")
+```
+
+<!--html_preserve--><div id="htmlwidget-a5246ab14321c23422aa" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a5246ab14321c23422aa">{"x":{"html":"<ul>\n  <li><span class='match'>eleven<\/span><\/li>\n  <li><span class='match'>pineapple<\/span><\/li>\n  <li>football<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+
+
+
+    Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+
+    Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)
 
 

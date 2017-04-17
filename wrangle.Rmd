@@ -425,6 +425,31 @@ characters between them
 
 Words, that start and end with the same characters, but in reverse order
 
+## Construct regular expressions to match words that:
 
+* Start and end with the same character.
+
+```{r}
+str_view(c("abbififa", "babbififa"), pattern = "^(.).*\\1$")
+```
+
+* Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+
+```{r}
+str_view(c("cucumber", "church"), pattern = ".*(..).*\\1")
+```
+
+* Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)
+
+```{r}
+str_view(c("eleven", "pineapple", "football"), pattern = ".*(.).*\\1.*\\1.*")
+```
+
+
+
+
+    Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+
+    Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)
 
 
