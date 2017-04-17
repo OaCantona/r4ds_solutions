@@ -480,8 +480,8 @@ str_add_and(c())
 str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
 ```
 
-<!--html_preserve--><div id="htmlwidget-289a43d768091ef6c2d3" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-289a43d768091ef6c2d3">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\\u003c/span>bbbb\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-eec50da5f66428132e61" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eec50da5f66428132e61">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## What patterns will the regular expression `\..\..\..` match? How would you represent it as a string?
 
@@ -490,8 +490,8 @@ str_view('aaaa\"\'\\bbbb', "\\\"\\\'\\\\")
 str_view(".a.b.c", '\\..\\..\\..')
 ```
 
-<!--html_preserve--><div id="htmlwidget-14d4335869c17244bbe6" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-14d4335869c17244bbe6">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c\u003c/span>\u003c/li>\n\u003c/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-d191b9ade15309978b84" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d191b9ade15309978b84">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 writeLines('\\..\\..\\..')
@@ -500,4 +500,340 @@ writeLines('\\..\\..\\..')
 ```
 ## \..\..\..
 ```
+
+## How would you match the literal string `"$^$"`?
+
+
+```r
+str_view("$^$", "\\$\\^\\$")
+```
+
+<!--html_preserve--><div id="htmlwidget-ba092dc76ec811c0bb70" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ba092dc76ec811c0bb70">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+## Given the corpus of common words in stringr::words, create regular expressions that find all words that:
+    Start with “y”.
+    End with “x”
+    Are exactly three letters long. (Don’t cheat by using str_length()!)
+    Have seven letters or more.
+
+
+```r
+words[str_detect(words, "^y")]
+```
+
+```
+## [1] "year"      "yes"       "yesterday" "yet"       "you"       "young"
+```
+
+
+```r
+words[str_detect(words, "$x")]
+```
+
+```
+## character(0)
+```
+
+
+```r
+words[str_detect(words, "^...$")]
+```
+
+```
+##   [1] "act" "add" "age" "ago" "air" "all" "and" "any" "arm" "art" "ask"
+##  [12] "bad" "bag" "bar" "bed" "bet" "big" "bit" "box" "boy" "bus" "but"
+##  [23] "buy" "can" "car" "cat" "cup" "cut" "dad" "day" "die" "dog" "dry"
+##  [34] "due" "eat" "egg" "end" "eye" "far" "few" "fit" "fly" "for" "fun"
+##  [45] "gas" "get" "god" "guy" "hit" "hot" "how" "job" "key" "kid" "lad"
+##  [56] "law" "lay" "leg" "let" "lie" "lot" "low" "man" "may" "mrs" "new"
+##  [67] "non" "not" "now" "odd" "off" "old" "one" "out" "own" "pay" "per"
+##  [78] "put" "red" "rid" "run" "say" "see" "set" "sex" "she" "sir" "sit"
+##  [89] "six" "son" "sun" "tax" "tea" "ten" "the" "tie" "too" "top" "try"
+## [100] "two" "use" "war" "way" "wee" "who" "why" "win" "yes" "yet" "you"
+```
+
+
+```r
+words[str_detect(words, ".......$")]
+```
+
+```
+##   [1] "absolute"    "account"     "achieve"     "address"     "advertise"  
+##   [6] "afternoon"   "against"     "already"     "alright"     "although"   
+##  [11] "america"     "another"     "apparent"    "appoint"     "approach"   
+##  [16] "appropriate" "arrange"     "associate"   "authority"   "available"  
+##  [21] "balance"     "because"     "believe"     "benefit"     "between"    
+##  [26] "brilliant"   "britain"     "brother"     "business"    "certain"    
+##  [31] "chairman"    "character"   "Christmas"   "colleague"   "collect"    
+##  [36] "college"     "comment"     "committee"   "community"   "company"    
+##  [41] "compare"     "complete"    "compute"     "concern"     "condition"  
+##  [46] "consider"    "consult"     "contact"     "continue"    "contract"   
+##  [51] "control"     "converse"    "correct"     "council"     "country"    
+##  [56] "current"     "decision"    "definite"    "department"  "describe"   
+##  [61] "develop"     "difference"  "difficult"   "discuss"     "district"   
+##  [66] "document"    "economy"     "educate"     "electric"    "encourage"  
+##  [71] "english"     "environment" "especial"    "evening"     "evidence"   
+##  [76] "example"     "exercise"    "expense"     "experience"  "explain"    
+##  [81] "express"     "finance"     "fortune"     "forward"     "function"   
+##  [86] "further"     "general"     "germany"     "goodbye"     "history"    
+##  [91] "holiday"     "hospital"    "however"     "hundred"     "husband"    
+##  [96] "identify"    "imagine"     "important"   "improve"     "include"    
+## [101] "increase"    "individual"  "industry"    "instead"     "interest"   
+## [106] "introduce"   "involve"     "kitchen"     "language"    "machine"    
+## [111] "meaning"     "measure"     "mention"     "million"     "minister"   
+## [116] "morning"     "necessary"   "obvious"     "occasion"    "operate"    
+## [121] "opportunity" "organize"    "original"    "otherwise"   "paragraph"  
+## [126] "particular"  "pension"     "percent"     "perfect"     "perhaps"    
+## [131] "photograph"  "picture"     "politic"     "position"    "positive"   
+## [136] "possible"    "practise"    "prepare"     "present"     "pressure"   
+## [141] "presume"     "previous"    "private"     "probable"    "problem"    
+## [146] "proceed"     "process"     "produce"     "product"     "programme"  
+## [151] "project"     "propose"     "protect"     "provide"     "purpose"    
+## [156] "quality"     "quarter"     "question"    "realise"     "receive"    
+## [161] "recognize"   "recommend"   "relation"    "remember"    "represent"  
+## [166] "require"     "research"    "resource"    "respect"     "responsible"
+## [171] "saturday"    "science"     "scotland"    "secretary"   "section"    
+## [176] "separate"    "serious"     "service"     "similar"     "situate"    
+## [181] "society"     "special"     "specific"    "standard"    "station"    
+## [186] "straight"    "strategy"    "structure"   "student"     "subject"    
+## [191] "succeed"     "suggest"     "support"     "suppose"     "surprise"   
+## [196] "telephone"   "television"  "terrible"    "therefore"   "thirteen"   
+## [201] "thousand"    "through"     "thursday"    "together"    "tomorrow"   
+## [206] "tonight"     "traffic"     "transport"   "trouble"     "tuesday"    
+## [211] "understand"  "university"  "various"     "village"     "wednesday"  
+## [216] "welcome"     "whether"     "without"     "yesterday"
+```
+
+## Create regular expressions to find all words that:
+    Start with a vowel.
+    That only contain consonants. (Hint: thinking about matching “not”-vowels.)
+    End with ed, but not with eed.
+    End with ing or ise.
+
+
+```r
+words[str_detect(words, "^[aeiou]")]
+```
+
+```
+##   [1] "a"           "able"        "about"       "absolute"    "accept"     
+##   [6] "account"     "achieve"     "across"      "act"         "active"     
+##  [11] "actual"      "add"         "address"     "admit"       "advertise"  
+##  [16] "affect"      "afford"      "after"       "afternoon"   "again"      
+##  [21] "against"     "age"         "agent"       "ago"         "agree"      
+##  [26] "air"         "all"         "allow"       "almost"      "along"      
+##  [31] "already"     "alright"     "also"        "although"    "always"     
+##  [36] "america"     "amount"      "and"         "another"     "answer"     
+##  [41] "any"         "apart"       "apparent"    "appear"      "apply"      
+##  [46] "appoint"     "approach"    "appropriate" "area"        "argue"      
+##  [51] "arm"         "around"      "arrange"     "art"         "as"         
+##  [56] "ask"         "associate"   "assume"      "at"          "attend"     
+##  [61] "authority"   "available"   "aware"       "away"        "awful"      
+##  [66] "each"        "early"       "east"        "easy"        "eat"        
+##  [71] "economy"     "educate"     "effect"      "egg"         "eight"      
+##  [76] "either"      "elect"       "electric"    "eleven"      "else"       
+##  [81] "employ"      "encourage"   "end"         "engine"      "english"    
+##  [86] "enjoy"       "enough"      "enter"       "environment" "equal"      
+##  [91] "especial"    "europe"      "even"        "evening"     "ever"       
+##  [96] "every"       "evidence"    "exact"       "example"     "except"     
+## [101] "excuse"      "exercise"    "exist"       "expect"      "expense"    
+## [106] "experience"  "explain"     "express"     "extra"       "eye"        
+## [111] "idea"        "identify"    "if"          "imagine"     "important"  
+## [116] "improve"     "in"          "include"     "income"      "increase"   
+## [121] "indeed"      "individual"  "industry"    "inform"      "inside"     
+## [126] "instead"     "insure"      "interest"    "into"        "introduce"  
+## [131] "invest"      "involve"     "issue"       "it"          "item"       
+## [136] "obvious"     "occasion"    "odd"         "of"          "off"        
+## [141] "offer"       "office"      "often"       "okay"        "old"        
+## [146] "on"          "once"        "one"         "only"        "open"       
+## [151] "operate"     "opportunity" "oppose"      "or"          "order"      
+## [156] "organize"    "original"    "other"       "otherwise"   "ought"      
+## [161] "out"         "over"        "own"         "under"       "understand" 
+## [166] "union"       "unit"        "unite"       "university"  "unless"     
+## [171] "until"       "up"          "upon"        "use"         "usual"
+```
+
+
+```r
+words[str_detect(words, "^[^aeiou]+$")]
+```
+
+```
+## [1] "by"  "dry" "fly" "mrs" "try" "why"
+```
+
+
+
+```r
+words[str_detect(words, "[^e]ed$")]
+```
+
+```
+## [1] "bed"     "hundred" "red"
+```
+
+
+```r
+words[str_detect(words, "ing$|ise$")]
+```
+
+```
+##  [1] "advertise" "bring"     "during"    "evening"   "exercise" 
+##  [6] "king"      "meaning"   "morning"   "otherwise" "practise" 
+## [11] "raise"     "realise"   "ring"      "rise"      "sing"     
+## [16] "surprise"  "thing"
+```
+
+## Empirically verify the rule “i before e except after c”.
+
+
+```r
+words[str_detect(words, "ei|cie")]
+```
+
+```
+## [1] "eight"   "either"  "receive" "science" "society" "weigh"
+```
+
+Rule does not apply?
+
+## Is “q” always followed by a “u”?
+
+
+```r
+words[str_detect(words, "q[^u]")]
+```
+
+```
+## character(0)
+```
+
+Yes.
+
+## Write a regular expression that matches a word if it’s probably written in British English, not American English.
+
+?
+
+## Create a regular expression that will match telephone numbers as commonly written in your country.
+
+
+```r
+str_view(string = "07431 1234", "\\d+\\s\\d+")
+```
+
+<!--html_preserve--><div id="htmlwidget-623098a81906c58b2a95" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-623098a81906c58b2a95">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+##Describe the equivalents of `?`, `+`, `*` in `{m,n}` form.
+
+* `{0,1}`
+* `{1,}`
+* `{0,}`
+
+##Describe in words what these regular expressions match: (read carefully to see if I’m using a regular expression or a string that defines a regular expression.)
+    ^.*$
+    "\\{.+\\}"
+    \d{4}-\d{2}-\d{2}
+    "\\\\{4}"
+    
+* Look for words, that are 0 or more characters long
+* ?
+* Error
+* Look for words, where there are 4 backslashes
+
+##Create regular expressions to find all words that:
+    Start with three consonants.
+    Have three or more vowels in a row.
+    Have two or more vowel-consonant pairs in a row.
+    
+
+```r
+words[str_detect(words, "^[^aeiou]{3}")]
+```
+
+```
+##  [1] "Christ"    "Christmas" "dry"       "fly"       "mrs"      
+##  [6] "scheme"    "school"    "straight"  "strategy"  "street"   
+## [11] "strike"    "strong"    "structure" "system"    "three"    
+## [16] "through"   "throw"     "try"       "type"      "why"
+```
+
+
+```r
+words[str_detect(words, "[aeiou]{3,}")]
+```
+
+```
+## [1] "beauty"   "obvious"  "previous" "quiet"    "serious"  "various"
+```
+
+
+```r
+words[str_detect(words, "([aeiou][^aeiou]){2,}")]
+```
+
+```
+##   [1] "absolute"    "agent"       "along"       "america"     "another"    
+##   [6] "apart"       "apparent"    "authority"   "available"   "aware"      
+##  [11] "away"        "balance"     "basis"       "become"      "before"     
+##  [16] "begin"       "behind"      "benefit"     "business"    "character"  
+##  [21] "closes"      "community"   "consider"    "cover"       "debate"     
+##  [26] "decide"      "decision"    "definite"    "department"  "depend"     
+##  [31] "design"      "develop"     "difference"  "difficult"   "direct"     
+##  [36] "divide"      "document"    "during"      "economy"     "educate"    
+##  [41] "elect"       "electric"    "eleven"      "encourage"   "environment"
+##  [46] "europe"      "even"        "evening"     "ever"        "every"      
+##  [51] "evidence"    "exact"       "example"     "exercise"    "exist"      
+##  [56] "family"      "figure"      "final"       "finance"     "finish"     
+##  [61] "friday"      "future"      "general"     "govern"      "holiday"    
+##  [66] "honest"      "hospital"    "however"     "identify"    "imagine"    
+##  [71] "individual"  "interest"    "introduce"   "item"        "jesus"      
+##  [76] "level"       "likely"      "limit"       "local"       "major"      
+##  [81] "manage"      "meaning"     "measure"     "minister"    "minus"      
+##  [86] "minute"      "moment"      "money"       "music"       "nature"     
+##  [91] "necessary"   "never"       "notice"      "okay"        "open"       
+##  [96] "operate"     "opportunity" "organize"    "original"    "over"       
+## [101] "paper"       "paragraph"   "parent"      "particular"  "photograph" 
+## [106] "police"      "policy"      "politic"     "position"    "positive"   
+## [111] "power"       "prepare"     "present"     "presume"     "private"    
+## [116] "probable"    "process"     "produce"     "product"     "project"    
+## [121] "proper"      "propose"     "protect"     "provide"     "quality"    
+## [126] "realise"     "reason"      "recent"      "recognize"   "recommend"  
+## [131] "record"      "reduce"      "refer"       "regard"      "relation"   
+## [136] "remember"    "report"      "represent"   "result"      "return"     
+## [141] "saturday"    "second"      "secretary"   "secure"      "separate"   
+## [146] "seven"       "similar"     "specific"    "strategy"    "student"    
+## [151] "stupid"      "telephone"   "television"  "therefore"   "thousand"   
+## [156] "today"       "together"    "tomorrow"    "tonight"     "total"      
+## [161] "toward"      "travel"      "unit"        "unite"       "university" 
+## [166] "upon"        "visit"       "water"       "woman"
+```
+
+
+## Describe, in words, what these expressions will match:
+
+* `(.)\1\1`
+
+Nothing, because no escape character
+
+* `"(.)(.)\\2\\1"`
+
+Double letter, that is encapsulated with another letter
+
+* `(..)\1`
+
+Nothing, escape character missing
+
+* `(.).\\1.\\1`
+
+Expression with same letter at the start, end and middle and some filling 
+characters between them
+
+* `(.)(.)(.).*\\3\\2\\1`
+
+Words, that start and end with the same characters, but in reverse order
+
+
+
 
