@@ -446,10 +446,196 @@ str_view(c("eleven", "pineapple", "football"), pattern = ".*(.).*\\1.*\\1.*")
 ```
 
 
+## For each of the following challenges, try solving it by using both a single regular expression, and a combination of multiple str_detect() calls.
+
+* Find all words that start or end with x.
+
+```{r}
+words[str_detect(words, "(x$|^x)")]
+words[str_detect(words, "^x") | str_detect(words, "x$")]
+```
+
+* Find all words that start with a vowel and end with a consonant.
+
+```{r}
+words[str_detect(words, "^[aeiou].{0,}[^aeiou]$")]
+words[str_detect(words, "^[aeiou]") & !str_detect(words, "[aeiou]$")]
+```
 
 
-    Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+*Are there any words that contain at least one of each different vowel?
 
-    Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)
+```{r}
+words[str_detect(words, "a") & str_detect(words, "e") & str_detect(words, "i") & 
+  str_detect(words, "o") & str_detect(words, "u")]
+```
+
+## What word has the highest number of vowels? What word has the highest proportion of vowels? (Hint: what is the denominator?)
+
+```{r}
+df_vowel_count <- tibble(
+  words = words, 
+  vowel_count = str_count(words, "[aeiou]"),
+  word_length = str_length(words),
+  prop = vowel_count / word_length
+)
+
+df_vowel_count %>% filter(vowel_count == max(vowel_count))
+df_vowel_count %>% arrange(desc(prop))
+```
+
+
+## In the previous example, you might have noticed that the regular expression matched “flickered”, which is not a colour. Modify the regex to fix the problem.
+
+```{r}
+sentences
+
+colors <- c("red", "blue", "green", "orange", "yellow", "purple") 
+color_match <- str_c("\\b(", str_c(colors, collapse = "|"), ")\\b")
+
+sentences[str_count(sentences, color_match) > 1]
+```
+
+## From the Harvard sentences data, extract:
+
+* The first word from each sentence.
+
+```{r}
+str_extract(sentences, "[(a-z)|(A-Z)]+")
+```
+
+* All words ending in ing.
+
+```{r}
+ing_pattern <- "\\b[(a-z)|(A-z)]+ing\\b"
+sentences_with_ing <- str_detect(sentences, ing_pattern)
+str_extract_all(sentences[sentences_with_ing], ing_pattern, simplify = TRUE)
+```
+
+* All plurals.
+
+```{r}
+plural_pattern <- "\\b[(a-z)|(A-z)]+s\\b"
+sentences_with_plural <- str_detect(sentences, plural_pattern)
+str_extract_all(sentences[sentences_with_plural], plural_pattern, simplify = TRUE)
+```
+
+## Find all words that come after a “number” like “one”, “two”, “three” etc. Pull out both the number and the word.
+
+```{r}
+numbers <- c("one", "two", "three", "four", "five", "six", "seven", "eight", 
+  "nine", "ten")
+numbers_match <- str_c(numbers, collapse = "|")
+numbers_word_match <- str_c("(", numbers_match, ") ([^ ]+)")
+
+sentences[str_detect(sentences, numbers_word_match)] %>% 
+  str_extract_all(numbers_word_match, simplify = TRUE)
+```
+
+## Find all contractions. Separate out the pieces before and after the apostrophe
+
+```{r}
+contractions_match <- "([^ ]+)'([^ ]+)"
+sentences[str_detect(sentences, contractions_match)] %>% 
+  str_extract_all(contractions_match, simplify = TRUE)
+```
+
+## Replace all forward slashes in a string with backslashes.
+
+```{r}
+test <- "sdfasdf/test"
+str_detect(test, "/")
+str_replace(test, "\\/", "\\")
+```
+
+## Implement a simple version of `str_to_lower()` using `replace_all()`.
+
+```{r}
+duju_to_lower <- function(string) {
+  duju_letters <- letters
+  names(duju_letters) <- toupper(letters)
+  str_replace_all(string, duju_letters)
+}
+
+duju_to_lower("AAbisEEWaioT")
+```
+
+## Switch the first and last letters in words. Which of those strings are still words?
+
+```{r}
+words_switched <- str_replace(words, "(^.)(.{0,})(.$)", "\\3\\2\\1")
+words_switched[str_detect(words, words_switched)]
+```
+
+## Split up a string like "apples, pears, and bananas" into individual components
+
+```{r}
+"apples, pears, and bananas" %>% 
+  str_split(pattern = ", |\\s") %>% 
+  .[[1]]
+```
+
+## Why is it better to split up by `boundary("word")` than `" "`?
+
+For example there could be two whitespaces.
+
+## What does splitting with an empty string ("") do? Experiment, and then read the documentation.
+
+```{r}
+str_split("Hallo was passiert dann?", pattern = "")
+#?str_split
+```
+
+Same as `boundary("character")`
+
+## How would you find all strings containing `\` with `regex()` vs. with `fixed()`?
+
+```{r}
+str_subset(c("a\\b", "ab"), "\\\\")
+#> [1] "a\\b"
+str_subset(c("a\\b", "ab"), fixed("\\"))
+#> [1] "a\\b"
+```
+
+## What are the five most common words in sentences?
+
+```{r}
+df_word_count <- tibble(
+  sentence = sentences, 
+  words = str_extract_all(sentence, boundary("word"))) %>% 
+  unnest(words) %>% 
+  mutate(words = str_to_lower(words)) %>% 
+  group_by(words) %>% 
+  summarise(anz = n()) %>% 
+  arrange(desc(anz)) %>% 
+  top_n(anz, n = 5)
+
+df_word_count
+```
+
+##Find the stringi functions that:
+
+* Count the number of words.
+
+```{r}
+stringi::stri_count_words("Hallo wie geht es dir?")
+```
+
+* Find duplicated strings.
+
+```{r}
+stringi::stri_duplicated(c(
+  "Hallo wie Hallo wie geht es dir", "Hallo", "Tschüss", "Hallo"))
+```
+
+* Generate random text.
+
+```{r}
+stringi::stri_rand_strings(n = 5, length = 12)
+```
+
+## How do you control the language that stri_sort() uses for sorting?
+
+* Through its `locale` argument
 
 

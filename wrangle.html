@@ -428,22 +428,22 @@ str_add_and(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;))</code
 <div id="how-would-you-match-the-sequence" class="section level2">
 <h2><span class="header-section-number">2.8</span> How would you match the sequence <code>&quot;'\</code></h2>
 <pre class="r"><code>str_view('aaaa\&quot;\'\\bbbb', &quot;\\\&quot;\\\'\\\\&quot;)</code></pre>
-<div id="htmlwidget-6baf119921f804f2c790" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6baf119921f804f2c790">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-438467f8b72aa79946a4" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-438467f8b72aa79946a4">{"x":{"html":"<ul>\n  <li>aaaa<span class='match'>\"'\\<\/span>bbbb<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="what-patterns-will-the-regular-expression-......-match-how-would-you-represent-it-as-a-string" class="section level2">
 <h2><span class="header-section-number">2.9</span> What patterns will the regular expression <code>\..\..\..</code> match? How would you represent it as a string?</h2>
 <pre class="r"><code>str_view(&quot;.a.b.c&quot;, '\\..\\..\\..')</code></pre>
-<div id="htmlwidget-f7f141250408d53b46ec" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f7f141250408d53b46ec">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a7f1343d5d75db12c290" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a7f1343d5d75db12c290">{"x":{"html":"<ul>\n  <li><span class='match'>.a.b.c<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>writeLines('\\..\\..\\..')</code></pre>
 <pre><code>## \..\..\..</code></pre>
 </div>
 <div id="how-would-you-match-the-literal-string" class="section level2">
 <h2><span class="header-section-number">2.10</span> How would you match the literal string <code>&quot;$^$&quot;</code>?</h2>
 <pre class="r"><code>str_view(&quot;$^$&quot;, &quot;\\$\\^\\$&quot;)</code></pre>
-<div id="htmlwidget-e6a346428359d6ec228d" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e6a346428359d6ec228d">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d670a41a1c8880f5481f" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d670a41a1c8880f5481f">{"x":{"html":"<ul>\n  <li><span class='match'>$^$<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="given-the-corpus-of-common-words-in-stringrwords-create-regular-expressions-that-find-all-words-that" class="section level2">
 <h2><span class="header-section-number">2.11</span> Given the corpus of common words in stringr::words, create regular expressions that find all words that:</h2>
@@ -583,8 +583,8 @@ End with ing or ise.</code></pre>
 <div id="create-a-regular-expression-that-will-match-telephone-numbers-as-commonly-written-in-your-country." class="section level2">
 <h2><span class="header-section-number">2.16</span> Create a regular expression that will match telephone numbers as commonly written in your country.</h2>
 <pre class="r"><code>str_view(string = &quot;07431 1234&quot;, &quot;\\d+\\s\\d+&quot;)</code></pre>
-<div id="htmlwidget-49d18e18987e4d96b900" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-49d18e18987e4d96b900">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d233e4085216c3a74b5f" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d233e4085216c3a74b5f">{"x":{"html":"<ul>\n  <li><span class='match'>07431 1234<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="describe-the-equivalents-of-in-mn-form." class="section level2">
 <h2><span class="header-section-number">2.17</span> Describe the equivalents of <code>?</code>, <code>+</code>, <code>*</code> in <code>{m,n}</code> form.</h2>
@@ -684,23 +684,1715 @@ Have two or more vowel-consonant pairs in a row.</code></pre>
 <li>Start and end with the same character.</li>
 </ul>
 <pre class="r"><code>str_view(c(&quot;abbififa&quot;, &quot;babbififa&quot;), pattern = &quot;^(.).*\\1$&quot;)</code></pre>
-<div id="htmlwidget-edffa2a5ecbd8f0cdccb" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-edffa2a5ecbd8f0cdccb">{"x":{"html":"<ul>\n  <li><span class='match'>abbififa<\/span><\/li>\n  <li>babbififa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-64c5b9ca4d1d1b762dfe" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-64c5b9ca4d1d1b762dfe">{"x":{"html":"<ul>\n  <li><span class='match'>abbififa<\/span><\/li>\n  <li>babbififa<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)</li>
 </ul>
 <pre class="r"><code>str_view(c(&quot;cucumber&quot;, &quot;church&quot;), pattern = &quot;.*(..).*\\1&quot;)</code></pre>
-<div id="htmlwidget-bf4afd4f3d9f9b85a6a3" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bf4afd4f3d9f9b85a6a3">{"x":{"html":"<ul>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>church<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3ad5a06d49375941fc0c" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3ad5a06d49375941fc0c">{"x":{"html":"<ul>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>church<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)</li>
 </ul>
 <pre class="r"><code>str_view(c(&quot;eleven&quot;, &quot;pineapple&quot;, &quot;football&quot;), pattern = &quot;.*(.).*\\1.*\\1.*&quot;)</code></pre>
-<div id="htmlwidget-a5246ab14321c23422aa" style="width:960px;height:auto;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5246ab14321c23422aa">{"x":{"html":"<ul>\n  <li><span class='match'>eleven<\/span><\/li>\n  <li><span class='match'>pineapple<\/span><\/li>\n  <li>football<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-<pre><code>Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
+<div id="htmlwidget-47296a9c9646a6a6cba8" style="width:960px;height:auto;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-47296a9c9646a6a6cba8">{"x":{"html":"<ul>\n  <li><span class='match'>eleven<\/span><\/li>\n  <li><span class='match'>pineapple<\/span><\/li>\n  <li>football<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="for-each-of-the-following-challenges-try-solving-it-by-using-both-a-single-regular-expression-and-a-combination-of-multiple-str_detect-calls." class="section level2">
+<h2><span class="header-section-number">2.22</span> For each of the following challenges, try solving it by using both a single regular expression, and a combination of multiple str_detect() calls.</h2>
+<ul>
+<li>Find all words that start or end with x.</li>
+</ul>
+<pre class="r"><code>words[str_detect(words, &quot;(x$|^x)&quot;)]</code></pre>
+<pre><code>## [1] &quot;box&quot; &quot;sex&quot; &quot;six&quot; &quot;tax&quot;</code></pre>
+<pre class="r"><code>words[str_detect(words, &quot;^x&quot;) | str_detect(words, &quot;x$&quot;)]</code></pre>
+<pre><code>## [1] &quot;box&quot; &quot;sex&quot; &quot;six&quot; &quot;tax&quot;</code></pre>
+<ul>
+<li>Find all words that start with a vowel and end with a consonant.</li>
+</ul>
+<pre class="r"><code>words[str_detect(words, &quot;^[aeiou].{0,}[^aeiou]$&quot;)]</code></pre>
+<pre><code>##   [1] &quot;about&quot;       &quot;accept&quot;      &quot;account&quot;     &quot;across&quot;      &quot;act&quot;        
+##   [6] &quot;actual&quot;      &quot;add&quot;         &quot;address&quot;     &quot;admit&quot;       &quot;affect&quot;     
+##  [11] &quot;afford&quot;      &quot;after&quot;       &quot;afternoon&quot;   &quot;again&quot;       &quot;against&quot;    
+##  [16] &quot;agent&quot;       &quot;air&quot;         &quot;all&quot;         &quot;allow&quot;       &quot;almost&quot;     
+##  [21] &quot;along&quot;       &quot;already&quot;     &quot;alright&quot;     &quot;although&quot;    &quot;always&quot;     
+##  [26] &quot;amount&quot;      &quot;and&quot;         &quot;another&quot;     &quot;answer&quot;      &quot;any&quot;        
+##  [31] &quot;apart&quot;       &quot;apparent&quot;    &quot;appear&quot;      &quot;apply&quot;       &quot;appoint&quot;    
+##  [36] &quot;approach&quot;    &quot;arm&quot;         &quot;around&quot;      &quot;art&quot;         &quot;as&quot;         
+##  [41] &quot;ask&quot;         &quot;at&quot;          &quot;attend&quot;      &quot;authority&quot;   &quot;away&quot;       
+##  [46] &quot;awful&quot;       &quot;each&quot;        &quot;early&quot;       &quot;east&quot;        &quot;easy&quot;       
+##  [51] &quot;eat&quot;         &quot;economy&quot;     &quot;effect&quot;      &quot;egg&quot;         &quot;eight&quot;      
+##  [56] &quot;either&quot;      &quot;elect&quot;       &quot;electric&quot;    &quot;eleven&quot;      &quot;employ&quot;     
+##  [61] &quot;end&quot;         &quot;english&quot;     &quot;enjoy&quot;       &quot;enough&quot;      &quot;enter&quot;      
+##  [66] &quot;environment&quot; &quot;equal&quot;       &quot;especial&quot;    &quot;even&quot;        &quot;evening&quot;    
+##  [71] &quot;ever&quot;        &quot;every&quot;       &quot;exact&quot;       &quot;except&quot;      &quot;exist&quot;      
+##  [76] &quot;expect&quot;      &quot;explain&quot;     &quot;express&quot;     &quot;identify&quot;    &quot;if&quot;         
+##  [81] &quot;important&quot;   &quot;in&quot;          &quot;indeed&quot;      &quot;individual&quot;  &quot;industry&quot;   
+##  [86] &quot;inform&quot;      &quot;instead&quot;     &quot;interest&quot;    &quot;invest&quot;      &quot;it&quot;         
+##  [91] &quot;item&quot;        &quot;obvious&quot;     &quot;occasion&quot;    &quot;odd&quot;         &quot;of&quot;         
+##  [96] &quot;off&quot;         &quot;offer&quot;       &quot;often&quot;       &quot;okay&quot;        &quot;old&quot;        
+## [101] &quot;on&quot;          &quot;only&quot;        &quot;open&quot;        &quot;opportunity&quot; &quot;or&quot;         
+## [106] &quot;order&quot;       &quot;original&quot;    &quot;other&quot;       &quot;ought&quot;       &quot;out&quot;        
+## [111] &quot;over&quot;        &quot;own&quot;         &quot;under&quot;       &quot;understand&quot;  &quot;union&quot;      
+## [116] &quot;unit&quot;        &quot;university&quot;  &quot;unless&quot;      &quot;until&quot;       &quot;up&quot;         
+## [121] &quot;upon&quot;        &quot;usual&quot;</code></pre>
+<pre class="r"><code>words[str_detect(words, &quot;^[aeiou]&quot;) &amp; !str_detect(words, &quot;[aeiou]$&quot;)]</code></pre>
+<pre><code>##   [1] &quot;about&quot;       &quot;accept&quot;      &quot;account&quot;     &quot;across&quot;      &quot;act&quot;        
+##   [6] &quot;actual&quot;      &quot;add&quot;         &quot;address&quot;     &quot;admit&quot;       &quot;affect&quot;     
+##  [11] &quot;afford&quot;      &quot;after&quot;       &quot;afternoon&quot;   &quot;again&quot;       &quot;against&quot;    
+##  [16] &quot;agent&quot;       &quot;air&quot;         &quot;all&quot;         &quot;allow&quot;       &quot;almost&quot;     
+##  [21] &quot;along&quot;       &quot;already&quot;     &quot;alright&quot;     &quot;although&quot;    &quot;always&quot;     
+##  [26] &quot;amount&quot;      &quot;and&quot;         &quot;another&quot;     &quot;answer&quot;      &quot;any&quot;        
+##  [31] &quot;apart&quot;       &quot;apparent&quot;    &quot;appear&quot;      &quot;apply&quot;       &quot;appoint&quot;    
+##  [36] &quot;approach&quot;    &quot;arm&quot;         &quot;around&quot;      &quot;art&quot;         &quot;as&quot;         
+##  [41] &quot;ask&quot;         &quot;at&quot;          &quot;attend&quot;      &quot;authority&quot;   &quot;away&quot;       
+##  [46] &quot;awful&quot;       &quot;each&quot;        &quot;early&quot;       &quot;east&quot;        &quot;easy&quot;       
+##  [51] &quot;eat&quot;         &quot;economy&quot;     &quot;effect&quot;      &quot;egg&quot;         &quot;eight&quot;      
+##  [56] &quot;either&quot;      &quot;elect&quot;       &quot;electric&quot;    &quot;eleven&quot;      &quot;employ&quot;     
+##  [61] &quot;end&quot;         &quot;english&quot;     &quot;enjoy&quot;       &quot;enough&quot;      &quot;enter&quot;      
+##  [66] &quot;environment&quot; &quot;equal&quot;       &quot;especial&quot;    &quot;even&quot;        &quot;evening&quot;    
+##  [71] &quot;ever&quot;        &quot;every&quot;       &quot;exact&quot;       &quot;except&quot;      &quot;exist&quot;      
+##  [76] &quot;expect&quot;      &quot;explain&quot;     &quot;express&quot;     &quot;identify&quot;    &quot;if&quot;         
+##  [81] &quot;important&quot;   &quot;in&quot;          &quot;indeed&quot;      &quot;individual&quot;  &quot;industry&quot;   
+##  [86] &quot;inform&quot;      &quot;instead&quot;     &quot;interest&quot;    &quot;invest&quot;      &quot;it&quot;         
+##  [91] &quot;item&quot;        &quot;obvious&quot;     &quot;occasion&quot;    &quot;odd&quot;         &quot;of&quot;         
+##  [96] &quot;off&quot;         &quot;offer&quot;       &quot;often&quot;       &quot;okay&quot;        &quot;old&quot;        
+## [101] &quot;on&quot;          &quot;only&quot;        &quot;open&quot;        &quot;opportunity&quot; &quot;or&quot;         
+## [106] &quot;order&quot;       &quot;original&quot;    &quot;other&quot;       &quot;ought&quot;       &quot;out&quot;        
+## [111] &quot;over&quot;        &quot;own&quot;         &quot;under&quot;       &quot;understand&quot;  &quot;union&quot;      
+## [116] &quot;unit&quot;        &quot;university&quot;  &quot;unless&quot;      &quot;until&quot;       &quot;up&quot;         
+## [121] &quot;upon&quot;        &quot;usual&quot;</code></pre>
+<p>*Are there any words that contain at least one of each different vowel?</p>
+<pre class="r"><code>words[str_detect(words, &quot;a&quot;) &amp; str_detect(words, &quot;e&quot;) &amp; str_detect(words, &quot;i&quot;) &amp; 
+  str_detect(words, &quot;o&quot;) &amp; str_detect(words, &quot;u&quot;)]</code></pre>
+<pre><code>## character(0)</code></pre>
+</div>
+<div id="what-word-has-the-highest-number-of-vowels-what-word-has-the-highest-proportion-of-vowels-hint-what-is-the-denominator" class="section level2">
+<h2><span class="header-section-number">2.23</span> What word has the highest number of vowels? What word has the highest proportion of vowels? (Hint: what is the denominator?)</h2>
+<pre class="r"><code>df_vowel_count &lt;- tibble(
+  words = words, 
+  vowel_count = str_count(words, &quot;[aeiou]&quot;),
+  word_length = str_length(words),
+  prop = vowel_count / word_length
+)
 
-Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)</code></pre>
+df_vowel_count %&gt;% filter(vowel_count == max(vowel_count))</code></pre>
+<pre><code>## # A tibble: 8 × 4
+##         words vowel_count word_length      prop
+##         &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;     &lt;dbl&gt;
+## 1 appropriate           5          11 0.4545455
+## 2   associate           5           9 0.5555556
+## 3   available           5           9 0.5555556
+## 4   colleague           5           9 0.5555556
+## 5   encourage           5           9 0.5555556
+## 6  experience           5          10 0.5000000
+## 7  individual           5          10 0.5000000
+## 8  television           5          10 0.5000000</code></pre>
+<pre class="r"><code>df_vowel_count %&gt;% arrange(desc(prop))</code></pre>
+<pre><code>## # A tibble: 980 × 4
+##     words vowel_count word_length      prop
+##     &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;     &lt;dbl&gt;
+## 1       a           1           1 1.0000000
+## 2    area           3           4 0.7500000
+## 3    idea           3           4 0.7500000
+## 4     age           2           3 0.6666667
+## 5     ago           2           3 0.6666667
+## 6     air           2           3 0.6666667
+## 7     die           2           3 0.6666667
+## 8     due           2           3 0.6666667
+## 9     eat           2           3 0.6666667
+## 10 europe           4           6 0.6666667
+## # ... with 970 more rows</code></pre>
+</div>
+<div id="in-the-previous-example-you-might-have-noticed-that-the-regular-expression-matched-flickered-which-is-not-a-colour.-modify-the-regex-to-fix-the-problem." class="section level2">
+<h2><span class="header-section-number">2.24</span> In the previous example, you might have noticed that the regular expression matched “flickered”, which is not a colour. Modify the regex to fix the problem.</h2>
+<pre class="r"><code>sentences</code></pre>
+<pre><code>##   [1] &quot;The birch canoe slid on the smooth planks.&quot;               
+##   [2] &quot;Glue the sheet to the dark blue background.&quot;              
+##   [3] &quot;It's easy to tell the depth of a well.&quot;                   
+##   [4] &quot;These days a chicken leg is a rare dish.&quot;                 
+##   [5] &quot;Rice is often served in round bowls.&quot;                     
+##   [6] &quot;The juice of lemons makes fine punch.&quot;                    
+##   [7] &quot;The box was thrown beside the parked truck.&quot;              
+##   [8] &quot;The hogs were fed chopped corn and garbage.&quot;              
+##   [9] &quot;Four hours of steady work faced us.&quot;                      
+##  [10] &quot;Large size in stockings is hard to sell.&quot;                 
+##  [11] &quot;The boy was there when the sun rose.&quot;                     
+##  [12] &quot;A rod is used to catch pink salmon.&quot;                      
+##  [13] &quot;The source of the huge river is the clear spring.&quot;        
+##  [14] &quot;Kick the ball straight and follow through.&quot;               
+##  [15] &quot;Help the woman get back to her feet.&quot;                     
+##  [16] &quot;A pot of tea helps to pass the evening.&quot;                  
+##  [17] &quot;Smoky fires lack flame and heat.&quot;                         
+##  [18] &quot;The soft cushion broke the man's fall.&quot;                   
+##  [19] &quot;The salt breeze came across from the sea.&quot;                
+##  [20] &quot;The girl at the booth sold fifty bonds.&quot;                  
+##  [21] &quot;The small pup gnawed a hole in the sock.&quot;                 
+##  [22] &quot;The fish twisted and turned on the bent hook.&quot;            
+##  [23] &quot;Press the pants and sew a button on the vest.&quot;            
+##  [24] &quot;The swan dive was far short of perfect.&quot;                  
+##  [25] &quot;The beauty of the view stunned the young boy.&quot;            
+##  [26] &quot;Two blue fish swam in the tank.&quot;                          
+##  [27] &quot;Her purse was full of useless trash.&quot;                     
+##  [28] &quot;The colt reared and threw the tall rider.&quot;                
+##  [29] &quot;It snowed, rained, and hailed the same morning.&quot;          
+##  [30] &quot;Read verse out loud for pleasure.&quot;                        
+##  [31] &quot;Hoist the load to your left shoulder.&quot;                    
+##  [32] &quot;Take the winding path to reach the lake.&quot;                 
+##  [33] &quot;Note closely the size of the gas tank.&quot;                   
+##  [34] &quot;Wipe the grease off his dirty face.&quot;                      
+##  [35] &quot;Mend the coat before you go out.&quot;                         
+##  [36] &quot;The wrist was badly strained and hung limp.&quot;              
+##  [37] &quot;The stray cat gave birth to kittens.&quot;                     
+##  [38] &quot;The young girl gave no clear response.&quot;                   
+##  [39] &quot;The meal was cooked before the bell rang.&quot;                
+##  [40] &quot;What joy there is in living.&quot;                             
+##  [41] &quot;A king ruled the state in the early days.&quot;                
+##  [42] &quot;The ship was torn apart on the sharp reef.&quot;               
+##  [43] &quot;Sickness kept him home the third week.&quot;                   
+##  [44] &quot;The wide road shimmered in the hot sun.&quot;                  
+##  [45] &quot;The lazy cow lay in the cool grass.&quot;                      
+##  [46] &quot;Lift the square stone over the fence.&quot;                    
+##  [47] &quot;The rope will bind the seven books at once.&quot;              
+##  [48] &quot;Hop over the fence and plunge in.&quot;                        
+##  [49] &quot;The friendly gang left the drug store.&quot;                   
+##  [50] &quot;Mesh mire keeps chicks inside.&quot;                           
+##  [51] &quot;The frosty air passed through the coat.&quot;                  
+##  [52] &quot;The crooked maze failed to fool the mouse.&quot;               
+##  [53] &quot;Adding fast leads to wrong sums.&quot;                         
+##  [54] &quot;The show was a flop from the very start.&quot;                 
+##  [55] &quot;A saw is a tool used for making boards.&quot;                  
+##  [56] &quot;The wagon moved on well oiled wheels.&quot;                    
+##  [57] &quot;March the soldiers past the next hill.&quot;                   
+##  [58] &quot;A cup of sugar makes sweet fudge.&quot;                        
+##  [59] &quot;Place a rosebush near the porch steps.&quot;                   
+##  [60] &quot;Both lost their lives in the raging storm.&quot;               
+##  [61] &quot;We talked of the slide show in the circus.&quot;               
+##  [62] &quot;Use a pencil to write the first draft.&quot;                   
+##  [63] &quot;He ran half way to the hardware store.&quot;                   
+##  [64] &quot;The clock struck to mark the third period.&quot;               
+##  [65] &quot;A small creek cut across the field.&quot;                      
+##  [66] &quot;Cars and busses stalled in snow drifts.&quot;                  
+##  [67] &quot;The set of china hit, the floor with a crash.&quot;            
+##  [68] &quot;This is a grand season for hikes on the road.&quot;            
+##  [69] &quot;The dune rose from the edge of the water.&quot;                
+##  [70] &quot;Those words were the cue for the actor to leave.&quot;         
+##  [71] &quot;A yacht slid around the point into the bay.&quot;              
+##  [72] &quot;The two met while playing on the sand.&quot;                   
+##  [73] &quot;The ink stain dried on the finished page.&quot;                
+##  [74] &quot;The walled town was seized without a fight.&quot;              
+##  [75] &quot;The lease ran out in sixteen weeks.&quot;                      
+##  [76] &quot;A tame squirrel makes a nice pet.&quot;                        
+##  [77] &quot;The horn of the car woke the sleeping cop.&quot;               
+##  [78] &quot;The heart beat strongly and with firm strokes.&quot;           
+##  [79] &quot;The pearl was worn in a thin silver ring.&quot;                
+##  [80] &quot;The fruit peel was cut in thick slices.&quot;                  
+##  [81] &quot;The Navy attacked the big task force.&quot;                    
+##  [82] &quot;See the cat glaring at the scared mouse.&quot;                 
+##  [83] &quot;There are more than two factors here.&quot;                    
+##  [84] &quot;The hat brim was wide and too droopy.&quot;                    
+##  [85] &quot;The lawyer tried to lose his case.&quot;                       
+##  [86] &quot;The grass curled around the fence post.&quot;                  
+##  [87] &quot;Cut the pie into large parts.&quot;                            
+##  [88] &quot;Men strive but seldom get rich.&quot;                          
+##  [89] &quot;Always close the barn door tight.&quot;                        
+##  [90] &quot;He lay prone and hardly moved a limb.&quot;                    
+##  [91] &quot;The slush lay deep along the street.&quot;                     
+##  [92] &quot;A wisp of cloud hung in the blue air.&quot;                    
+##  [93] &quot;A pound of sugar costs more than eggs.&quot;                   
+##  [94] &quot;The fin was sharp and cut the clear water.&quot;               
+##  [95] &quot;The play seems dull and quite stupid.&quot;                    
+##  [96] &quot;Bail the boat, to stop it from sinking.&quot;                  
+##  [97] &quot;The term ended in late June that year.&quot;                   
+##  [98] &quot;A tusk is used to make costly gifts.&quot;                     
+##  [99] &quot;Ten pins were set in order.&quot;                              
+## [100] &quot;The bill as paid every third week.&quot;                       
+## [101] &quot;Oak is strong and also gives shade.&quot;                      
+## [102] &quot;Cats and dogs each hate the other.&quot;                       
+## [103] &quot;The pipe began to rust while new.&quot;                        
+## [104] &quot;Open the crate but don't break the glass.&quot;                
+## [105] &quot;Add the sum to the product of these three.&quot;               
+## [106] &quot;Thieves who rob friends deserve jail.&quot;                    
+## [107] &quot;The ripe taste of cheese improves with age.&quot;              
+## [108] &quot;Act on these orders with great speed.&quot;                    
+## [109] &quot;The hog crawled under the high fence.&quot;                    
+## [110] &quot;Move the vat over the hot fire.&quot;                          
+## [111] &quot;The bark of the pine tree was shiny and dark.&quot;            
+## [112] &quot;Leaves turn brown and yellow in the fall.&quot;                
+## [113] &quot;The pennant waved when the wind blew.&quot;                    
+## [114] &quot;Split the log with a quick, sharp blow.&quot;                  
+## [115] &quot;Burn peat after the logs give out.&quot;                       
+## [116] &quot;He ordered peach pie with ice cream.&quot;                     
+## [117] &quot;Weave the carpet on the right hand side.&quot;                 
+## [118] &quot;Hemp is a weed found in parts of the tropics.&quot;            
+## [119] &quot;A lame back kept his score low.&quot;                          
+## [120] &quot;We find joy in the simplest things.&quot;                      
+## [121] &quot;Type out three lists of orders.&quot;                          
+## [122] &quot;The harder he tried the less he got done.&quot;                
+## [123] &quot;The boss ran the show with a watchful eye.&quot;               
+## [124] &quot;The cup cracked and spilled its contents.&quot;                
+## [125] &quot;Paste can cleanse the most dirty brass.&quot;                  
+## [126] &quot;The slang word for raw whiskey is booze.&quot;                 
+## [127] &quot;It caught its hind paw in a rusty trap.&quot;                  
+## [128] &quot;The wharf could be seen at the farther shore.&quot;            
+## [129] &quot;Feel the heat of the weak dying flame.&quot;                   
+## [130] &quot;The tiny girl took off her hat.&quot;                          
+## [131] &quot;A cramp is no small danger on a swim.&quot;                    
+## [132] &quot;He said the same phrase thirty times.&quot;                    
+## [133] &quot;Pluck the bright rose without leaves.&quot;                    
+## [134] &quot;Two plus seven is less than ten.&quot;                         
+## [135] &quot;The glow deepened in the eyes of the sweet girl.&quot;         
+## [136] &quot;Bring your problems to the wise chief.&quot;                   
+## [137] &quot;Write a fond note to the friend you cherish.&quot;             
+## [138] &quot;Clothes and lodging are free to new men.&quot;                 
+## [139] &quot;We frown when events take a bad turn.&quot;                    
+## [140] &quot;Port is a strong wine with s smoky taste.&quot;                
+## [141] &quot;The young kid jumped the rusty gate.&quot;                     
+## [142] &quot;Guess the results from the first scores.&quot;                 
+## [143] &quot;A salt pickle tastes fine with ham.&quot;                      
+## [144] &quot;The just claim got the right verdict.&quot;                    
+## [145] &quot;These thistles bend in a high wind.&quot;                      
+## [146] &quot;Pure bred poodles have curls.&quot;                            
+## [147] &quot;The tree top waved in a graceful way.&quot;                    
+## [148] &quot;The spot on the blotter was made by green ink.&quot;           
+## [149] &quot;Mud was spattered on the front of his white shirt.&quot;       
+## [150] &quot;The cigar burned a hole in the desk top.&quot;                 
+## [151] &quot;The empty flask stood on the tin tray.&quot;                   
+## [152] &quot;A speedy man can beat this track mark.&quot;                   
+## [153] &quot;He broke a new shoelace that day.&quot;                        
+## [154] &quot;The coffee stand is too high for the couch.&quot;              
+## [155] &quot;The urge to write short stories is rare.&quot;                 
+## [156] &quot;The pencils have all been used.&quot;                          
+## [157] &quot;The pirates seized the crew of the lost ship.&quot;            
+## [158] &quot;We tried to replace the coin but failed.&quot;                 
+## [159] &quot;She sewed the torn coat quite neatly.&quot;                    
+## [160] &quot;The sofa cushion is red and of light weight.&quot;             
+## [161] &quot;The jacket hung on the back of the wide chair.&quot;           
+## [162] &quot;At that high level the air is pure.&quot;                      
+## [163] &quot;Drop the two when you add the figures.&quot;                   
+## [164] &quot;A filing case is now hard to buy.&quot;                        
+## [165] &quot;An abrupt start does not win the prize.&quot;                  
+## [166] &quot;Wood is best for making toys and blocks.&quot;                 
+## [167] &quot;The office paint was a dull sad tan.&quot;                     
+## [168] &quot;He knew the skill of the great young actress.&quot;            
+## [169] &quot;A rag will soak up spilled water.&quot;                        
+## [170] &quot;A shower of dirt fell from the hot pipes.&quot;                
+## [171] &quot;Steam hissed from the broken valve.&quot;                      
+## [172] &quot;The child almost hurt the small dog.&quot;                     
+## [173] &quot;There was a sound of dry leaves outside.&quot;                 
+## [174] &quot;The sky that morning was clear and bright blue.&quot;          
+## [175] &quot;Torn scraps littered the stone floor.&quot;                    
+## [176] &quot;Sunday is the best part of the week.&quot;                     
+## [177] &quot;The doctor cured him with these pills.&quot;                   
+## [178] &quot;The new girl was fired today at noon.&quot;                    
+## [179] &quot;They felt gay when the ship arrived in port.&quot;             
+## [180] &quot;Add the store's account to the last cent.&quot;                
+## [181] &quot;Acid burns holes in wool cloth.&quot;                          
+## [182] &quot;Fairy tales should be fun to write.&quot;                      
+## [183] &quot;Eight miles of woodland burned to waste.&quot;                 
+## [184] &quot;The third act was dull and tired the players.&quot;            
+## [185] &quot;A young child should not suffer fright.&quot;                  
+## [186] &quot;Add the column and put the sum here.&quot;                     
+## [187] &quot;We admire and love a good cook.&quot;                          
+## [188] &quot;There the flood mark is ten inches.&quot;                      
+## [189] &quot;He carved a head from the round block of marble.&quot;         
+## [190] &quot;She has st smart way of wearing clothes.&quot;                 
+## [191] &quot;The fruit of a fig tree is apple-shaped.&quot;                 
+## [192] &quot;Corn cobs can be used to kindle a fire.&quot;                  
+## [193] &quot;Where were they when the noise started.&quot;                  
+## [194] &quot;The paper box is full of thumb tacks.&quot;                    
+## [195] &quot;Sell your gift to a buyer at a good gain.&quot;                
+## [196] &quot;The tongs lay beside the ice pail.&quot;                       
+## [197] &quot;The petals fall with the next puff of wind.&quot;              
+## [198] &quot;Bring your best compass to the third class.&quot;              
+## [199] &quot;They could laugh although they were sad.&quot;                 
+## [200] &quot;Farmers came in to thresh the oat crop.&quot;                  
+## [201] &quot;The brown house was on fire to the attic.&quot;                
+## [202] &quot;The lure is used to catch trout and flounder.&quot;            
+## [203] &quot;Float the soap on top of the bath water.&quot;                 
+## [204] &quot;A blue crane is a tall wading bird.&quot;                      
+## [205] &quot;A fresh start will work such wonders.&quot;                    
+## [206] &quot;The club rented the rink for the fifth night.&quot;            
+## [207] &quot;After the dance they went straight home.&quot;                 
+## [208] &quot;The hostess taught the new maid to serve.&quot;                
+## [209] &quot;He wrote his last novel there at the inn.&quot;                
+## [210] &quot;Even the worst will beat his low score.&quot;                  
+## [211] &quot;The cement had dried when he moved it.&quot;                   
+## [212] &quot;The loss of the second ship was hard to take.&quot;            
+## [213] &quot;The fly made its way along the wall.&quot;                     
+## [214] &quot;Do that with a wooden stick.&quot;                             
+## [215] &quot;Lire wires should be kept covered.&quot;                       
+## [216] &quot;The large house had hot water taps.&quot;                      
+## [217] &quot;It is hard to erase blue or red ink.&quot;                     
+## [218] &quot;Write at once or you may forget it.&quot;                      
+## [219] &quot;The doorknob was made of bright clean brass.&quot;             
+## [220] &quot;The wreck occurred by the bank on Main Street.&quot;           
+## [221] &quot;A pencil with black lead writes best.&quot;                    
+## [222] &quot;Coax a young calf to drink from a bucket.&quot;                
+## [223] &quot;Schools for ladies teach charm and grace.&quot;                
+## [224] &quot;The lamp shone with a steady green flame.&quot;                
+## [225] &quot;They took the axe and the saw to the forest.&quot;             
+## [226] &quot;The ancient coin was quite dull and worn.&quot;                
+## [227] &quot;The shaky barn fell with a loud crash.&quot;                   
+## [228] &quot;Jazz and swing fans like fast music.&quot;                     
+## [229] &quot;Rake the rubbish up and then burn it.&quot;                    
+## [230] &quot;Slash the gold cloth into fine ribbons.&quot;                  
+## [231] &quot;Try to have the court decide the case.&quot;                   
+## [232] &quot;They are pushed back each time they attack.&quot;              
+## [233] &quot;He broke his ties with groups of former friends.&quot;         
+## [234] &quot;They floated on the raft to sun their white backs.&quot;       
+## [235] &quot;The map had an X that meant nothing.&quot;                     
+## [236] &quot;Whitings are small fish caught in nets.&quot;                  
+## [237] &quot;Some ads serve to cheat buyers.&quot;                          
+## [238] &quot;Jerk the rope and the bell rings weakly.&quot;                 
+## [239] &quot;A waxed floor makes us lose balance.&quot;                     
+## [240] &quot;Madam, this is the best brand of corn.&quot;                   
+## [241] &quot;On the islands the sea breeze is soft and mild.&quot;          
+## [242] &quot;The play began as soon as we sat down.&quot;                   
+## [243] &quot;This will lead the world to more sound and fury&quot;          
+## [244] &quot;Add salt before you fry the egg.&quot;                         
+## [245] &quot;The rush for funds reached its peak Tuesday.&quot;             
+## [246] &quot;The birch looked stark white and lonesome.&quot;               
+## [247] &quot;The box is held by a bright red snapper.&quot;                 
+## [248] &quot;To make pure ice, you freeze water.&quot;                      
+## [249] &quot;The first worm gets snapped early.&quot;                       
+## [250] &quot;Jump the fence and hurry up the bank.&quot;                    
+## [251] &quot;Yell and clap as the curtain slides back.&quot;                
+## [252] &quot;They are men nho walk the middle of the road.&quot;            
+## [253] &quot;Both brothers wear the same size.&quot;                        
+## [254] &quot;In some forin or other we need fun.&quot;                      
+## [255] &quot;The prince ordered his head chopped off.&quot;                 
+## [256] &quot;The houses are built of red clay bricks.&quot;                 
+## [257] &quot;Ducks fly north but lack a compass.&quot;                      
+## [258] &quot;Fruit flavors are used in fizz drinks.&quot;                   
+## [259] &quot;These pills do less good than others.&quot;                    
+## [260] &quot;Canned pears lack full flavor.&quot;                           
+## [261] &quot;The dark pot hung in the front closet.&quot;                   
+## [262] &quot;Carry the pail to the wall and spill it there.&quot;           
+## [263] &quot;The train brought our hero to the big town.&quot;              
+## [264] &quot;We are sure that one war is enough.&quot;                      
+## [265] &quot;Gray paint stretched for miles around.&quot;                   
+## [266] &quot;The rude laugh filled the empty room.&quot;                    
+## [267] &quot;High seats are best for football fans.&quot;                   
+## [268] &quot;Tea served from the brown jug is tasty.&quot;                  
+## [269] &quot;A dash of pepper spoils beef stew.&quot;                       
+## [270] &quot;A zestful food is the hot-cross bun.&quot;                     
+## [271] &quot;The horse trotted around the field at a brisk pace.&quot;      
+## [272] &quot;Find the twin who stole the pearl necklace.&quot;              
+## [273] &quot;Cut the cord that binds the box tightly.&quot;                 
+## [274] &quot;The red tape bound the smuggled food.&quot;                    
+## [275] &quot;Look in the corner to find the tan shirt.&quot;                
+## [276] &quot;The cold drizzle will halt the bond drive.&quot;               
+## [277] &quot;Nine men were hired to dig the ruins.&quot;                    
+## [278] &quot;The junk yard had a mouldy smell.&quot;                        
+## [279] &quot;The flint sputtered and lit a pine torch.&quot;                
+## [280] &quot;Soak the cloth and drown the sharp odor.&quot;                 
+## [281] &quot;The shelves were bare of both jam or crackers.&quot;           
+## [282] &quot;A joy to every child is the swan boat.&quot;                   
+## [283] &quot;All sat frozen and watched the screen.&quot;                   
+## [284] &quot;ii cloud of dust stung his tender eyes.&quot;                  
+## [285] &quot;To reach the end he needs much courage.&quot;                  
+## [286] &quot;Shape the clay gently into block form.&quot;                   
+## [287] &quot;The ridge on a smooth surface is a bump or flaw.&quot;         
+## [288] &quot;Hedge apples may stain your hands green.&quot;                 
+## [289] &quot;Quench your thirst, then eat the crackers.&quot;               
+## [290] &quot;Tight curls get limp on rainy days.&quot;                      
+## [291] &quot;The mute muffled the high tones of the horn.&quot;             
+## [292] &quot;The gold ring fits only a pierced ear.&quot;                   
+## [293] &quot;The old pan was covered with hard fudge.&quot;                 
+## [294] &quot;Watch the log float in the wide river.&quot;                   
+## [295] &quot;The node on the stalk of wheat grew daily.&quot;               
+## [296] &quot;The heap of fallen leaves was set on fire.&quot;               
+## [297] &quot;Write fast, if you want to finish early.&quot;                 
+## [298] &quot;His shirt was clean but one button was gone.&quot;             
+## [299] &quot;The barrel of beer was a brew of malt and hops.&quot;          
+## [300] &quot;Tin cans are absent from store shelves.&quot;                  
+## [301] &quot;Slide the box into that empty space.&quot;                     
+## [302] &quot;The plant grew large and green in the window.&quot;            
+## [303] &quot;The beam dropped down on the workmen's head.&quot;             
+## [304] &quot;Pink clouds floated JTith the breeze.&quot;                    
+## [305] &quot;She danced like a swan, tall and graceful.&quot;               
+## [306] &quot;The tube was blown and the tire flat and useless.&quot;        
+## [307] &quot;It is late morning on the old wall clock.&quot;                
+## [308] &quot;Let's all join as we sing the last chorus.&quot;               
+## [309] &quot;The last switch cannot be turned off.&quot;                    
+## [310] &quot;The fight will end in just six minutes.&quot;                  
+## [311] &quot;The store walls were lined with colored frocks.&quot;          
+## [312] &quot;The peace league met to discuss their plans.&quot;             
+## [313] &quot;The rise to fame of a person takes luck.&quot;                 
+## [314] &quot;Paper is scarce, so write with much care.&quot;                
+## [315] &quot;The quick fox jumped on the sleeping cat.&quot;                
+## [316] &quot;The nozzle of the fire hose was bright brass.&quot;            
+## [317] &quot;Screw the round cap on as tight as needed.&quot;               
+## [318] &quot;Time brings us many changes.&quot;                             
+## [319] &quot;The purple tie was ten years old.&quot;                        
+## [320] &quot;Men think and plan and sometimes act.&quot;                    
+## [321] &quot;Fill the ink jar with sticky glue.&quot;                       
+## [322] &quot;He smoke a big pipe with strong contents.&quot;                
+## [323] &quot;We need grain to keep our mules healthy.&quot;                 
+## [324] &quot;Pack the records in a neat thin case.&quot;                    
+## [325] &quot;The crunch of feet in the snow was the only sound.&quot;       
+## [326] &quot;The copper bowl shone in the sun's rays.&quot;                 
+## [327] &quot;Boards will warp unless kept dry.&quot;                        
+## [328] &quot;The plush chair leaned against the wall.&quot;                 
+## [329] &quot;Glass will clink when struck by metal.&quot;                   
+## [330] &quot;Bathe and relax in the cool green grass.&quot;                 
+## [331] &quot;Nine rows of soldiers stood in line.&quot;                     
+## [332] &quot;The beach is dry and shallow at low tide.&quot;                
+## [333] &quot;The idea is to sew both edges straight.&quot;                  
+## [334] &quot;The kitten chased the dog down the street.&quot;               
+## [335] &quot;Pages bound in cloth make a book.&quot;                        
+## [336] &quot;Try to trace the fine lines of the painting.&quot;             
+## [337] &quot;Women form less than half of the group.&quot;                  
+## [338] &quot;The zones merge in the central part of town.&quot;             
+## [339] &quot;A gem in the rough needs work to polish.&quot;                 
+## [340] &quot;Code is used when secrets are sent.&quot;                      
+## [341] &quot;Most of the new is easy for us to hear.&quot;                  
+## [342] &quot;He used the lathe to make brass objects.&quot;                 
+## [343] &quot;The vane on top of the pole revolved in the wind.&quot;        
+## [344] &quot;Mince pie is a dish served to children.&quot;                  
+## [345] &quot;The clan gathered on each dull night.&quot;                    
+## [346] &quot;Let it burn, it gives us warmth and comfort.&quot;             
+## [347] &quot;A castle built from sand fails to endure.&quot;                
+## [348] &quot;A child's wit saved the day for us.&quot;                      
+## [349] &quot;Tack the strip of carpet to the worn floor.&quot;              
+## [350] &quot;Next Tuesday we must vote.&quot;                               
+## [351] &quot;Pour the stew from the pot into the plate.&quot;               
+## [352] &quot;Each penny shone like new.&quot;                               
+## [353] &quot;The man went to the woods to gather sticks.&quot;              
+## [354] &quot;The dirt piles were lines along the road.&quot;                
+## [355] &quot;The logs fell and tumbled into the clear stream.&quot;         
+## [356] &quot;Just hoist it up and take it away,&quot;                       
+## [357] &quot;A ripe plum is fit for a king's palate.&quot;                  
+## [358] &quot;Our plans right now are hazy.&quot;                            
+## [359] &quot;Brass rings are sold by these natives.&quot;                   
+## [360] &quot;It takes a good trap to capture a bear.&quot;                  
+## [361] &quot;Feed the white mouse some flower seeds.&quot;                  
+## [362] &quot;The thaw came early and freed the stream.&quot;                
+## [363] &quot;He took the lead and kept it the whole distance.&quot;         
+## [364] &quot;The key you designed will fit the lock.&quot;                  
+## [365] &quot;Plead to the council to free the poor thief.&quot;             
+## [366] &quot;Better hash is made of rare beef.&quot;                        
+## [367] &quot;This plank was made for walking on.&quot;                      
+## [368] &quot;The lake sparkled in the red hot sun.&quot;                    
+## [369] &quot;He crawled with care along the ledge.&quot;                    
+## [370] &quot;Tend the sheep while the dog wanders.&quot;                    
+## [371] &quot;It takes a lot of help to finish these.&quot;                  
+## [372] &quot;Mark the spot with a sign painted red.&quot;                   
+## [373] &quot;Take two shares as a fair profit.&quot;                        
+## [374] &quot;The fur of cats goes by many names.&quot;                      
+## [375] &quot;North winds bring colds and fevers.&quot;                      
+## [376] &quot;He asks no person to vouch for him.&quot;                      
+## [377] &quot;Go now and come here later.&quot;                              
+## [378] &quot;A sash of gold silk will trim her dress.&quot;                 
+## [379] &quot;Soap can wash most dirt away.&quot;                            
+## [380] &quot;That move means the game is over.&quot;                        
+## [381] &quot;He wrote down a long list of items.&quot;                      
+## [382] &quot;A siege will crack the strong defense.&quot;                   
+## [383] &quot;Grape juice and water mix well.&quot;                          
+## [384] &quot;Roads are paved with sticky tar.&quot;                         
+## [385] &quot;Fake &amp;ones shine but cost little.&quot;                        
+## [386] &quot;The drip of the rain made a pleasant sound.&quot;              
+## [387] &quot;Smoke poured out of every crack.&quot;                         
+## [388] &quot;Serve the hot rum to the tired heroes.&quot;                   
+## [389] &quot;Much of the story makes good sense.&quot;                      
+## [390] &quot;The sun came up to light the eastern sky.&quot;                
+## [391] &quot;Heave the line over the port side.&quot;                       
+## [392] &quot;A lathe cuts and trims any wood.&quot;                         
+## [393] &quot;It's a dense crowd in two distinct ways.&quot;                 
+## [394] &quot;His hip struck the knee of the next player.&quot;              
+## [395] &quot;The stale smell of old beer lingers.&quot;                     
+## [396] &quot;The desk was firm on the shaky floor.&quot;                    
+## [397] &quot;It takes heat to bring out the odor.&quot;                     
+## [398] &quot;Beef is scarcer than some lamb.&quot;                          
+## [399] &quot;Raise the sail and steer the ship northward.&quot;             
+## [400] &quot;The cone costs five cents on Mondays.&quot;                    
+## [401] &quot;A pod is what peas always grow in.&quot;                       
+## [402] &quot;Jerk the dart from the cork target.&quot;                      
+## [403] &quot;No cement will hold hard wood.&quot;                           
+## [404] &quot;We now have a new base for shipping.&quot;                     
+## [405] &quot;The list of names is carved around the base.&quot;             
+## [406] &quot;The sheep were led home by a dog.&quot;                        
+## [407] &quot;Three for a dime, the young peddler cried.&quot;               
+## [408] &quot;The sense of smell is better than that of touch.&quot;         
+## [409] &quot;No hardship seemed to keep him sad.&quot;                      
+## [410] &quot;Grace makes up for lack of beauty.&quot;                       
+## [411] &quot;Nudge gently but wake her now.&quot;                           
+## [412] &quot;The news struck doubt into restless minds.&quot;               
+## [413] &quot;Once we stood beside the shore.&quot;                          
+## [414] &quot;A chink in the wall allowed a draft to blow.&quot;             
+## [415] &quot;Fasten two pins on each side.&quot;                            
+## [416] &quot;A cold dip restores health and zest.&quot;                     
+## [417] &quot;He takes the oath of office each March.&quot;                  
+## [418] &quot;The sand drifts over the sill of the old house.&quot;          
+## [419] &quot;The point of the steel pen was bent and twisted.&quot;         
+## [420] &quot;There is a lag between thought and act.&quot;                  
+## [421] &quot;Seed is needed to plant the spring corn.&quot;                 
+## [422] &quot;Draw the chart with heavy black lines.&quot;                   
+## [423] &quot;The boy owed his pal thirty cents.&quot;                       
+## [424] &quot;The chap slipped into the crowd and was lost.&quot;            
+## [425] &quot;Hats are worn to tea and not to dinner.&quot;                  
+## [426] &quot;The ramp led up to the wide highway.&quot;                     
+## [427] &quot;Beat the dust from the rug onto the lawn.&quot;                
+## [428] &quot;Say it slow!y but make it ring clear.&quot;                    
+## [429] &quot;The straw nest housed five robins.&quot;                       
+## [430] &quot;Screen the porch with woven straw mats.&quot;                  
+## [431] &quot;This horse will nose his way to the finish.&quot;              
+## [432] &quot;The dry wax protects the deep scratch.&quot;                   
+## [433] &quot;He picked up the dice for a second roll.&quot;                 
+## [434] &quot;These coins will be needed to pay his debt.&quot;              
+## [435] &quot;The nag pulled the frail cart along.&quot;                     
+## [436] &quot;Twist the valve and release hot steam.&quot;                   
+## [437] &quot;The vamp of the shoe had a gold buckle.&quot;                  
+## [438] &quot;The smell of burned rags itches my nose.&quot;                 
+## [439] &quot;Xew pants lack cuffs and pockets.&quot;                        
+## [440] &quot;The marsh will freeze when cold enough.&quot;                  
+## [441] &quot;They slice the sausage thin with a knife.&quot;                
+## [442] &quot;The bloom of the rose lasts a few days.&quot;                  
+## [443] &quot;A gray mare walked before the colt.&quot;                      
+## [444] &quot;Breakfast buns are fine with a hot drink.&quot;                
+## [445] &quot;Bottles hold four kinds of rum.&quot;                          
+## [446] &quot;The man wore a feather in his felt hat.&quot;                  
+## [447] &quot;He wheeled the bike past. the winding road.&quot;              
+## [448] &quot;Drop the ashes on the worn old rug.&quot;                      
+## [449] &quot;The desk and both chairs were painted tan.&quot;               
+## [450] &quot;Throw out the used paper cup and plate.&quot;                  
+## [451] &quot;A clean neck means a neat collar.&quot;                        
+## [452] &quot;The couch cover and hall drapes were blue.&quot;               
+## [453] &quot;The stems of the tall glasses cracked and broke.&quot;         
+## [454] &quot;The wall phone rang loud and often.&quot;                      
+## [455] &quot;The clothes dried on a thin wooden rack.&quot;                 
+## [456] &quot;Turn on the lantern which gives us light.&quot;                
+## [457] &quot;The cleat sank deeply into the soft turf.&quot;                
+## [458] &quot;The bills were mailed promptly on the tenth of the month.&quot;
+## [459] &quot;To have is better than to wait and hope.&quot;                 
+## [460] &quot;The price is fair for a good antique clock.&quot;              
+## [461] &quot;The music played on while they talked.&quot;                   
+## [462] &quot;Dispense with a vest on a day like this.&quot;                 
+## [463] &quot;The bunch of grapes was pressed into wine.&quot;               
+## [464] &quot;He sent the figs, but kept the ripe cherries.&quot;            
+## [465] &quot;The hinge on the door creaked with old age.&quot;              
+## [466] &quot;The screen before the fire kept in the sparks.&quot;           
+## [467] &quot;Fly by night, and you waste little time.&quot;                 
+## [468] &quot;Thick glasses helped him read the print.&quot;                 
+## [469] &quot;Birth and death mark the limits of life.&quot;                 
+## [470] &quot;The chair looked strong but had no bottom.&quot;               
+## [471] &quot;The kite flew wildly in the high wind.&quot;                   
+## [472] &quot;A fur muff is stylish once more.&quot;                         
+## [473] &quot;The tin box held priceless stones.&quot;                       
+## [474] &quot;We need an end of all such matter.&quot;                       
+## [475] &quot;The case was puzzling to the old and wise.&quot;               
+## [476] &quot;The bright lanterns were gay on the dark lawn.&quot;           
+## [477] &quot;We don't get much money but we have fun.&quot;                 
+## [478] &quot;The youth drove with zest, but little skill.&quot;             
+## [479] &quot;Five years he lived with a shaggy dog.&quot;                   
+## [480] &quot;A fence cuts through the corner lot.&quot;                     
+## [481] &quot;The way to save money is not to spend much.&quot;              
+## [482] &quot;Shut the hatch before the waves push it in.&quot;              
+## [483] &quot;The odor of spring makes young hearts jump.&quot;              
+## [484] &quot;Crack the walnut with your sharp side teeth.&quot;             
+## [485] &quot;He offered proof in the form of a lsrge chart.&quot;           
+## [486] &quot;Send the stuff in a thick paper bag.&quot;                     
+## [487] &quot;A quart of milk is water for the most part.&quot;              
+## [488] &quot;They told wild tales to frighten him.&quot;                    
+## [489] &quot;The three story house was built of stone.&quot;                
+## [490] &quot;In the rear of the ground floor was a large passage.&quot;     
+## [491] &quot;A man in a blue sweater sat at the desk.&quot;                 
+## [492] &quot;Oats are a food eaten by horse and man.&quot;                  
+## [493] &quot;Their eyelids droop for want. of sleep.&quot;                  
+## [494] &quot;The sip of tea revives his tired friend.&quot;                 
+## [495] &quot;There are many ways to do these things.&quot;                  
+## [496] &quot;Tuck the sheet under the edge of the mat.&quot;                
+## [497] &quot;A force equal to that would move the earth.&quot;              
+## [498] &quot;We like to see clear weather.&quot;                            
+## [499] &quot;The work of the tailor is seen on each side.&quot;             
+## [500] &quot;Take a chance and win a china doll.&quot;                      
+## [501] &quot;Shake the dust from your shoes, stranger.&quot;                
+## [502] &quot;She was kind to sick old people.&quot;                         
+## [503] &quot;The dusty bench stood by the stone wall.&quot;                 
+## [504] &quot;The square wooden crate was packed to be shipped.&quot;        
+## [505] &quot;We dress to suit the weather of most days.&quot;               
+## [506] &quot;Smile when you say nasty words.&quot;                          
+## [507] &quot;A bowl of rice is free with chicken stew.&quot;                
+## [508] &quot;The water in this well is a source of good health.&quot;       
+## [509] &quot;Take shelter in this tent, but keep still.&quot;               
+## [510] &quot;That guy is the writer of a few banned books.&quot;            
+## [511] &quot;The little tales they tell are false.&quot;                    
+## [512] &quot;The door was barred, locked, and bolted as well.&quot;         
+## [513] &quot;Ripe pears are fit for a queen's table.&quot;                  
+## [514] &quot;A big wet stain was on the round carpet.&quot;                 
+## [515] &quot;The kite dipped and swayed, but stayed aloft.&quot;            
+## [516] &quot;The pleasant hours fly by much too soon.&quot;                 
+## [517] &quot;The room was crowded with a wild mob.&quot;                    
+## [518] &quot;This strong arm shall shield your honor.&quot;                 
+## [519] &quot;She blushed when he gave her a white orchid.&quot;             
+## [520] &quot;The beetle droned in the hot June sun.&quot;                   
+## [521] &quot;Press the pedal with your left foot.&quot;                     
+## [522] &quot;Neat plans fail without luck.&quot;                            
+## [523] &quot;The black trunk fell from the landing.&quot;                   
+## [524] &quot;The bank pressed for payment of the debt.&quot;                
+## [525] &quot;The theft of the pearl pin was kept secret.&quot;              
+## [526] &quot;Shake hands with this friendly child.&quot;                    
+## [527] &quot;The vast space stretched into the far distance.&quot;          
+## [528] &quot;A rich farm is rare in this sandy waste.&quot;                 
+## [529] &quot;His wide grin earned many friends.&quot;                       
+## [530] &quot;Flax makes a fine brand of paper.&quot;                        
+## [531] &quot;Hurdle the pit with the aid of a long pole.&quot;              
+## [532] &quot;A strong bid may scare your partner stiff.&quot;               
+## [533] &quot;Even a just cause needs power to win.&quot;                    
+## [534] &quot;Peep under the tent and see the clowns.&quot;                  
+## [535] &quot;The leaf drifts along with a slow spin.&quot;                  
+## [536] &quot;Cheap clothes are flashy but don??????t last.&quot;            
+## [537] &quot;A thing of small note can cause despair.&quot;                 
+## [538] &quot;Flood the mails with requests for this book.&quot;             
+## [539] &quot;A thick coat of black paint covered all.&quot;                 
+## [540] &quot;The pencil was cut to be sharp at both ends.&quot;             
+## [541] &quot;Those last words were a strong statement.&quot;                
+## [542] &quot;He wrote his name boldly at the top of tile sheet.&quot;       
+## [543] &quot;Dill pickles are sour but taste fine.&quot;                    
+## [544] &quot;Down that road is the way to the grain farmer.&quot;           
+## [545] &quot;Either mud or dust are found at all times.&quot;               
+## [546] &quot;The best method is to fix it in place with clips.&quot;        
+## [547] &quot;If you mumble your speech will be lost.&quot;                  
+## [548] &quot;At night the alarm roused him from a deep sleep.&quot;         
+## [549] &quot;Read just what the meter says.&quot;                           
+## [550] &quot;Fill your pack with bright trinkets for the poor.&quot;        
+## [551] &quot;The small red neon lamp went out.&quot;                        
+## [552] &quot;Clams are small, round, soft, and tasty.&quot;                 
+## [553] &quot;The fan whirled its round blades softly.&quot;                 
+## [554] &quot;The line where the edges join was clean.&quot;                 
+## [555] &quot;Breathe deep and smell the piny air.&quot;                     
+## [556] &quot;It matters not if he reads these words or those.&quot;         
+## [557] &quot;A brown leather bag hung from its strap.&quot;                 
+## [558] &quot;A toad and a frog are hard to tell apart.&quot;                
+## [559] &quot;A white silk jacket goes with any shoes.&quot;                 
+## [560] &quot;A break in the dam almost caused a flood.&quot;                
+## [561] &quot;Paint the sockets in the wall dull green.&quot;                
+## [562] &quot;The child crawled into the dense grass.&quot;                  
+## [563] &quot;Bribes fail where honest men work.&quot;                       
+## [564] &quot;Trample the spark, else the flames will spread.&quot;          
+## [565] &quot;The hilt. of the sword was carved with fine designs.&quot;     
+## [566] &quot;A round hole was drilled through the thin board.&quot;         
+## [567] &quot;Footprints showed the path he took up the beach.&quot;         
+## [568] &quot;She was waiting at my front lawn.&quot;                        
+## [569] &quot;A vent near the edge brought in fresh air.&quot;               
+## [570] &quot;Prod the old mule with a crooked stick.&quot;                  
+## [571] &quot;It is a band of steel three inches wide.&quot;                 
+## [572] &quot;The pipe ran almost the length of the ditch.&quot;             
+## [573] &quot;It was hidden from sight by a mass of leaves and shrubs.&quot; 
+## [574] &quot;The weight. of the package was seen on the high scale.&quot;   
+## [575] &quot;Wake and rise, and step into the green outdoors.&quot;         
+## [576] &quot;The green light in the brown box flickered.&quot;              
+## [577] &quot;The brass tube circled the high wall.&quot;                    
+## [578] &quot;The lobes of her ears were pierced to hold rings.&quot;        
+## [579] &quot;Hold the hammer near the end to drive the nail.&quot;          
+## [580] &quot;Next Sunday is the twelfth of the month.&quot;                 
+## [581] &quot;Every word and phrase he speaks is true.&quot;                 
+## [582] &quot;He put his last cartridge into the gun and fired.&quot;        
+## [583] &quot;They took their kids from the public school.&quot;             
+## [584] &quot;Drive the screw straight into the wood.&quot;                  
+## [585] &quot;Keep the hatch tight and the watch constant.&quot;             
+## [586] &quot;Sever the twine with a quick snip of the knife.&quot;          
+## [587] &quot;Paper will dry out when wet.&quot;                             
+## [588] &quot;Slide the catch back and open the desk.&quot;                  
+## [589] &quot;Help the weak to preserve their strength.&quot;                
+## [590] &quot;A sullen smile gets few friends.&quot;                         
+## [591] &quot;Stop whistling and watch the boys march.&quot;                 
+## [592] &quot;Jerk the cord, and out tumbles the gold.&quot;                 
+## [593] &quot;Slidc the tray across the glass top.&quot;                     
+## [594] &quot;The cloud moved in a stately way and was gone.&quot;           
+## [595] &quot;Light maple makes for a swell room.&quot;                      
+## [596] &quot;Set the piece here and say nothing.&quot;                      
+## [597] &quot;Dull stories make her laugh.&quot;                             
+## [598] &quot;A stiff cord will do to fasten your shoe.&quot;                
+## [599] &quot;Get the trust fund to the bank early.&quot;                    
+## [600] &quot;Choose between the high road and the low.&quot;                
+## [601] &quot;A plea for funds seems to come again.&quot;                    
+## [602] &quot;He lent his coat to the tall gaunt stranger.&quot;             
+## [603] &quot;There is a strong chance it will happen once more.&quot;       
+## [604] &quot;The duke left the park in a silver coach.&quot;                
+## [605] &quot;Greet the new guests and leave quickly.&quot;                  
+## [606] &quot;When the frost has come it is time for turkey.&quot;           
+## [607] &quot;Sweet words work better than fierce.&quot;                     
+## [608] &quot;A thin stripe runs down the middle.&quot;                      
+## [609] &quot;A six comes up more often than a ten.&quot;                    
+## [610] &quot;Lush fern grow on the lofty rocks.&quot;                       
+## [611] &quot;The ram scared the school children off.&quot;                  
+## [612] &quot;The team with the best timing looks good.&quot;                
+## [613] &quot;The farmer swapped his horse for a brown ox.&quot;             
+## [614] &quot;Sit on the perch and tell the others what to do.&quot;         
+## [615] &quot;A steep trail is painful for our feet.&quot;                   
+## [616] &quot;The early phase of life moves fast.&quot;                      
+## [617] &quot;Green moss grows on the northern side.&quot;                   
+## [618] &quot;Tea in thin china has a sweet taste.&quot;                     
+## [619] &quot;Pitch the straw through the door of the stable.&quot;          
+## [620] &quot;The latch on the beck gate needed a nail.&quot;                
+## [621] &quot;The goose was brought straight from the old market.&quot;      
+## [622] &quot;The sink is the thing in which we pile dishes.&quot;           
+## [623] &quot;A whiff of it will cure the most stubborn cold.&quot;          
+## [624] &quot;The facts don&lt;U+0092&gt;t always show who is right.&quot;         
+## [625] &quot;She flaps her cape as she parades the street.&quot;            
+## [626] &quot;The loss of the cruiser was a blow to the fleet.&quot;         
+## [627] &quot;Loop the braid to the left and then over.&quot;                
+## [628] &quot;Plead with the lawyer to drop the lost cause.&quot;            
+## [629] &quot;Calves thrive on tender spring grass.&quot;                    
+## [630] &quot;Post no bills on this office wall.&quot;                       
+## [631] &quot;Tear a thin sheet from the yellow pad.&quot;                   
+## [632] &quot;A cruise in warm waters in a sleek yacht is fun.&quot;         
+## [633] &quot;A streak of color ran down the left edge.&quot;                
+## [634] &quot;It was done before the boy could see it.&quot;                 
+## [635] &quot;Crouch before you jump or miss the mark.&quot;                 
+## [636] &quot;Pack the kits and don&lt;U+0092&gt;t forget the salt.&quot;          
+## [637] &quot;The square peg will settle in the round hole.&quot;            
+## [638] &quot;Fine soap saves tender skin.&quot;                             
+## [639] &quot;Poached eggs and tea must suffice.&quot;                       
+## [640] &quot;Bad nerves are jangled by a door slam.&quot;                   
+## [641] &quot;Ship maps are different from those for planes.&quot;           
+## [642] &quot;Dimes showered down from all sides.&quot;                      
+## [643] &quot;They sang the same tunes at each party.&quot;                  
+## [644] &quot;The sky in the west is tinged with orange red.&quot;           
+## [645] &quot;The pods of peas ferment in bare fields.&quot;                 
+## [646] &quot;The horse balked and threw the tall rider.&quot;               
+## [647] &quot;The hitch between the horse and cart broke.&quot;              
+## [648] &quot;Pile the coal high in the shed corner.&quot;                   
+## [649] &quot;The gold vase is both rare and costly.&quot;                   
+## [650] &quot;The knife was hung inside its bright sheath.&quot;             
+## [651] &quot;The rarest spice comes from the far East.&quot;                
+## [652] &quot;The roof should be tilted at a sharp slant.&quot;              
+## [653] &quot;A smatter of French is worse than none.&quot;                  
+## [654] &quot;The mule trod the treadmill day and night.&quot;               
+## [655] &quot;The aim of the contest is to raise a great fund.&quot;         
+## [656] &quot;To send it. now in large amounts is bad.&quot;                 
+## [657] &quot;There is a fine hard tang in salty air.&quot;                  
+## [658] &quot;Cod is the main business of the north shore.&quot;             
+## [659] &quot;The slab was hewn from heavy blocks of slat&lt;U+0092&gt;e.&quot;    
+## [660] &quot;Dunk the stale biscuits into strong drink.&quot;               
+## [661] &quot;Hang tinsel from both branches.&quot;                          
+## [662] &quot;Cap the jar with a tight brass cover.&quot;                    
+## [663] &quot;The poor boy missed the boat again.&quot;                      
+## [664] &quot;Be sure to set the lamp firmly in the hole.&quot;              
+## [665] &quot;Pick a card and slip it. under the pack.&quot;                 
+## [666] &quot;A round mat will cover the dull spot.&quot;                    
+## [667] &quot;The first part of the plan needs changing.&quot;               
+## [668] &quot;The good book informs of what we ought to know.&quot;          
+## [669] &quot;The mail comes in three batches per day.&quot;                 
+## [670] &quot;You cannot brew tea in a cold pot.&quot;                       
+## [671] &quot;Dots of light betrayed the black cat.&quot;                    
+## [672] &quot;Put the chart on the mantel and tack it down.&quot;            
+## [673] &quot;The night shift men rate extra pay.&quot;                      
+## [674] &quot;The red paper brightened the dim stage.&quot;                  
+## [675] &quot;See the player scoot to third base.&quot;                      
+## [676] &quot;Slide the bill between the two leaves.&quot;                   
+## [677] &quot;Many hands help get the job done.&quot;                        
+## [678] &quot;We don't like to admit our small faults.&quot;                 
+## [679] &quot;No doubt about the way the wind blows.&quot;                   
+## [680] &quot;Dig deep in the earth for pirate's gold.&quot;                 
+## [681] &quot;The steady drip is worse than a drenching rain.&quot;          
+## [682] &quot;A flat pack takes less luggage space.&quot;                    
+## [683] &quot;Green ice frosted the punch bowl.&quot;                        
+## [684] &quot;A stuffed chair slipped from the moving van.&quot;             
+## [685] &quot;The stitch will serve but needs to be shortened.&quot;         
+## [686] &quot;A thin book fits in the side pocket.&quot;                     
+## [687] &quot;The gloss on top made it unfit to read.&quot;                  
+## [688] &quot;The hail pattered on the burnt brown grass.&quot;              
+## [689] &quot;Seven seals were stamped on great sheets.&quot;                
+## [690] &quot;Our troops are set to strike heavy blows.&quot;                
+## [691] &quot;The store was jammed before the sale could start.&quot;        
+## [692] &quot;It was a bad error on the part of the new judge.&quot;         
+## [693] &quot;One step more and the board will collapse.&quot;               
+## [694] &quot;Take the match and strike it against your shoe.&quot;          
+## [695] &quot;The pot boiled, but the contents failed to jell.&quot;         
+## [696] &quot;The baby puts his right foot in his mouth.&quot;               
+## [697] &quot;The bombs left most of the town in ruins.&quot;                
+## [698] &quot;Stop and stare at the hard working man.&quot;                  
+## [699] &quot;The streets are narrow and full of sharp turns.&quot;          
+## [700] &quot;The pup jerked the leash as he saw a feline shape.&quot;       
+## [701] &quot;Open your book to the first page.&quot;                        
+## [702] &quot;Fish evade the net, and swim off.&quot;                        
+## [703] &quot;Dip the pail once and let it settle.&quot;                     
+## [704] &quot;Will you please answer that phone.&quot;                       
+## [705] &quot;The big red apple fell to the ground.&quot;                    
+## [706] &quot;The curtain rose and the show was on.&quot;                    
+## [707] &quot;The young prince became heir to the throne.&quot;              
+## [708] &quot;He sent the boy on a short errand.&quot;                       
+## [709] &quot;Leave now and you will arrive on time.&quot;                   
+## [710] &quot;The corner store was robbed last night.&quot;                  
+## [711] &quot;A gold ring will please most any girl.&quot;                   
+## [712] &quot;The long journey home took a year.&quot;                       
+## [713] &quot;She saw a cat in the neighbor's house.&quot;                   
+## [714] &quot;A pink shell was found on the sandy beach.&quot;               
+## [715] &quot;Small children came to see him.&quot;                          
+## [716] &quot;The grass and bushes were wet with dew.&quot;                  
+## [717] &quot;The blind man counted his old coins.&quot;                     
+## [718] &quot;A severe storm tore down the barn.&quot;                       
+## [719] &quot;She called his name many times.&quot;                          
+## [720] &quot;When you hear the bell, come quickly.&quot;</code></pre>
+<pre class="r"><code>colors &lt;- c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;purple&quot;) 
+color_match &lt;- str_c(&quot;\\b(&quot;, str_c(colors, collapse = &quot;|&quot;), &quot;)\\b&quot;)
+
+sentences[str_count(sentences, color_match) &gt; 1]</code></pre>
+<pre><code>## [1] &quot;It is hard to erase blue or red ink.&quot;          
+## [2] &quot;The sky in the west is tinged with orange red.&quot;</code></pre>
+</div>
+<div id="from-the-harvard-sentences-data-extract" class="section level2">
+<h2><span class="header-section-number">2.25</span> From the Harvard sentences data, extract:</h2>
+<ul>
+<li>The first word from each sentence.</li>
+</ul>
+<pre class="r"><code>str_extract(sentences, &quot;[(a-z)|(A-Z)]+&quot;)</code></pre>
+<pre><code>##   [1] &quot;The&quot;        &quot;Glue&quot;       &quot;It&quot;         &quot;These&quot;      &quot;Rice&quot;      
+##   [6] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Four&quot;       &quot;Large&quot;     
+##  [11] &quot;The&quot;        &quot;A&quot;          &quot;The&quot;        &quot;Kick&quot;       &quot;Help&quot;      
+##  [16] &quot;A&quot;          &quot;Smoky&quot;      &quot;The&quot;        &quot;The&quot;        &quot;The&quot;       
+##  [21] &quot;The&quot;        &quot;The&quot;        &quot;Press&quot;      &quot;The&quot;        &quot;The&quot;       
+##  [26] &quot;Two&quot;        &quot;Her&quot;        &quot;The&quot;        &quot;It&quot;         &quot;Read&quot;      
+##  [31] &quot;Hoist&quot;      &quot;Take&quot;       &quot;Note&quot;       &quot;Wipe&quot;       &quot;Mend&quot;      
+##  [36] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;What&quot;      
+##  [41] &quot;A&quot;          &quot;The&quot;        &quot;Sickness&quot;   &quot;The&quot;        &quot;The&quot;       
+##  [46] &quot;Lift&quot;       &quot;The&quot;        &quot;Hop&quot;        &quot;The&quot;        &quot;Mesh&quot;      
+##  [51] &quot;The&quot;        &quot;The&quot;        &quot;Adding&quot;     &quot;The&quot;        &quot;A&quot;         
+##  [56] &quot;The&quot;        &quot;March&quot;      &quot;A&quot;          &quot;Place&quot;      &quot;Both&quot;      
+##  [61] &quot;We&quot;         &quot;Use&quot;        &quot;He&quot;         &quot;The&quot;        &quot;A&quot;         
+##  [66] &quot;Cars&quot;       &quot;The&quot;        &quot;This&quot;       &quot;The&quot;        &quot;Those&quot;     
+##  [71] &quot;A&quot;          &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;The&quot;       
+##  [76] &quot;A&quot;          &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;The&quot;       
+##  [81] &quot;The&quot;        &quot;See&quot;        &quot;There&quot;      &quot;The&quot;        &quot;The&quot;       
+##  [86] &quot;The&quot;        &quot;Cut&quot;        &quot;Men&quot;        &quot;Always&quot;     &quot;He&quot;        
+##  [91] &quot;The&quot;        &quot;A&quot;          &quot;A&quot;          &quot;The&quot;        &quot;The&quot;       
+##  [96] &quot;Bail&quot;       &quot;The&quot;        &quot;A&quot;          &quot;Ten&quot;        &quot;The&quot;       
+## [101] &quot;Oak&quot;        &quot;Cats&quot;       &quot;The&quot;        &quot;Open&quot;       &quot;Add&quot;       
+## [106] &quot;Thieves&quot;    &quot;The&quot;        &quot;Act&quot;        &quot;The&quot;        &quot;Move&quot;      
+## [111] &quot;The&quot;        &quot;Leaves&quot;     &quot;The&quot;        &quot;Split&quot;      &quot;Burn&quot;      
+## [116] &quot;He&quot;         &quot;Weave&quot;      &quot;Hemp&quot;       &quot;A&quot;          &quot;We&quot;        
+## [121] &quot;Type&quot;       &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Paste&quot;     
+## [126] &quot;The&quot;        &quot;It&quot;         &quot;The&quot;        &quot;Feel&quot;       &quot;The&quot;       
+## [131] &quot;A&quot;          &quot;He&quot;         &quot;Pluck&quot;      &quot;Two&quot;        &quot;The&quot;       
+## [136] &quot;Bring&quot;      &quot;Write&quot;      &quot;Clothes&quot;    &quot;We&quot;         &quot;Port&quot;      
+## [141] &quot;The&quot;        &quot;Guess&quot;      &quot;A&quot;          &quot;The&quot;        &quot;These&quot;     
+## [146] &quot;Pure&quot;       &quot;The&quot;        &quot;The&quot;        &quot;Mud&quot;        &quot;The&quot;       
+## [151] &quot;The&quot;        &quot;A&quot;          &quot;He&quot;         &quot;The&quot;        &quot;The&quot;       
+## [156] &quot;The&quot;        &quot;The&quot;        &quot;We&quot;         &quot;She&quot;        &quot;The&quot;       
+## [161] &quot;The&quot;        &quot;At&quot;         &quot;Drop&quot;       &quot;A&quot;          &quot;An&quot;        
+## [166] &quot;Wood&quot;       &quot;The&quot;        &quot;He&quot;         &quot;A&quot;          &quot;A&quot;         
+## [171] &quot;Steam&quot;      &quot;The&quot;        &quot;There&quot;      &quot;The&quot;        &quot;Torn&quot;      
+## [176] &quot;Sunday&quot;     &quot;The&quot;        &quot;The&quot;        &quot;They&quot;       &quot;Add&quot;       
+## [181] &quot;Acid&quot;       &quot;Fairy&quot;      &quot;Eight&quot;      &quot;The&quot;        &quot;A&quot;         
+## [186] &quot;Add&quot;        &quot;We&quot;         &quot;There&quot;      &quot;He&quot;         &quot;She&quot;       
+## [191] &quot;The&quot;        &quot;Corn&quot;       &quot;Where&quot;      &quot;The&quot;        &quot;Sell&quot;      
+## [196] &quot;The&quot;        &quot;The&quot;        &quot;Bring&quot;      &quot;They&quot;       &quot;Farmers&quot;   
+## [201] &quot;The&quot;        &quot;The&quot;        &quot;Float&quot;      &quot;A&quot;          &quot;A&quot;         
+## [206] &quot;The&quot;        &quot;After&quot;      &quot;The&quot;        &quot;He&quot;         &quot;Even&quot;      
+## [211] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Do&quot;         &quot;Lire&quot;      
+## [216] &quot;The&quot;        &quot;It&quot;         &quot;Write&quot;      &quot;The&quot;        &quot;The&quot;       
+## [221] &quot;A&quot;          &quot;Coax&quot;       &quot;Schools&quot;    &quot;The&quot;        &quot;They&quot;      
+## [226] &quot;The&quot;        &quot;The&quot;        &quot;Jazz&quot;       &quot;Rake&quot;       &quot;Slash&quot;     
+## [231] &quot;Try&quot;        &quot;They&quot;       &quot;He&quot;         &quot;They&quot;       &quot;The&quot;       
+## [236] &quot;Whitings&quot;   &quot;Some&quot;       &quot;Jerk&quot;       &quot;A&quot;          &quot;Madam&quot;     
+## [241] &quot;On&quot;         &quot;The&quot;        &quot;This&quot;       &quot;Add&quot;        &quot;The&quot;       
+## [246] &quot;The&quot;        &quot;The&quot;        &quot;To&quot;         &quot;The&quot;        &quot;Jump&quot;      
+## [251] &quot;Yell&quot;       &quot;They&quot;       &quot;Both&quot;       &quot;In&quot;         &quot;The&quot;       
+## [256] &quot;The&quot;        &quot;Ducks&quot;      &quot;Fruit&quot;      &quot;These&quot;      &quot;Canned&quot;    
+## [261] &quot;The&quot;        &quot;Carry&quot;      &quot;The&quot;        &quot;We&quot;         &quot;Gray&quot;      
+## [266] &quot;The&quot;        &quot;High&quot;       &quot;Tea&quot;        &quot;A&quot;          &quot;A&quot;         
+## [271] &quot;The&quot;        &quot;Find&quot;       &quot;Cut&quot;        &quot;The&quot;        &quot;Look&quot;      
+## [276] &quot;The&quot;        &quot;Nine&quot;       &quot;The&quot;        &quot;The&quot;        &quot;Soak&quot;      
+## [281] &quot;The&quot;        &quot;A&quot;          &quot;All&quot;        &quot;ii&quot;         &quot;To&quot;        
+## [286] &quot;Shape&quot;      &quot;The&quot;        &quot;Hedge&quot;      &quot;Quench&quot;     &quot;Tight&quot;     
+## [291] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Watch&quot;      &quot;The&quot;       
+## [296] &quot;The&quot;        &quot;Write&quot;      &quot;His&quot;        &quot;The&quot;        &quot;Tin&quot;       
+## [301] &quot;Slide&quot;      &quot;The&quot;        &quot;The&quot;        &quot;Pink&quot;       &quot;She&quot;       
+## [306] &quot;The&quot;        &quot;It&quot;         &quot;Let&quot;        &quot;The&quot;        &quot;The&quot;       
+## [311] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Paper&quot;      &quot;The&quot;       
+## [316] &quot;The&quot;        &quot;Screw&quot;      &quot;Time&quot;       &quot;The&quot;        &quot;Men&quot;       
+## [321] &quot;Fill&quot;       &quot;He&quot;         &quot;We&quot;         &quot;Pack&quot;       &quot;The&quot;       
+## [326] &quot;The&quot;        &quot;Boards&quot;     &quot;The&quot;        &quot;Glass&quot;      &quot;Bathe&quot;     
+## [331] &quot;Nine&quot;       &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Pages&quot;     
+## [336] &quot;Try&quot;        &quot;Women&quot;      &quot;The&quot;        &quot;A&quot;          &quot;Code&quot;      
+## [341] &quot;Most&quot;       &quot;He&quot;         &quot;The&quot;        &quot;Mince&quot;      &quot;The&quot;       
+## [346] &quot;Let&quot;        &quot;A&quot;          &quot;A&quot;          &quot;Tack&quot;       &quot;Next&quot;      
+## [351] &quot;Pour&quot;       &quot;Each&quot;       &quot;The&quot;        &quot;The&quot;        &quot;The&quot;       
+## [356] &quot;Just&quot;       &quot;A&quot;          &quot;Our&quot;        &quot;Brass&quot;      &quot;It&quot;        
+## [361] &quot;Feed&quot;       &quot;The&quot;        &quot;He&quot;         &quot;The&quot;        &quot;Plead&quot;     
+## [366] &quot;Better&quot;     &quot;This&quot;       &quot;The&quot;        &quot;He&quot;         &quot;Tend&quot;      
+## [371] &quot;It&quot;         &quot;Mark&quot;       &quot;Take&quot;       &quot;The&quot;        &quot;North&quot;     
+## [376] &quot;He&quot;         &quot;Go&quot;         &quot;A&quot;          &quot;Soap&quot;       &quot;That&quot;      
+## [381] &quot;He&quot;         &quot;A&quot;          &quot;Grape&quot;      &quot;Roads&quot;      &quot;Fake&quot;      
+## [386] &quot;The&quot;        &quot;Smoke&quot;      &quot;Serve&quot;      &quot;Much&quot;       &quot;The&quot;       
+## [391] &quot;Heave&quot;      &quot;A&quot;          &quot;It&quot;         &quot;His&quot;        &quot;The&quot;       
+## [396] &quot;The&quot;        &quot;It&quot;         &quot;Beef&quot;       &quot;Raise&quot;      &quot;The&quot;       
+## [401] &quot;A&quot;          &quot;Jerk&quot;       &quot;No&quot;         &quot;We&quot;         &quot;The&quot;       
+## [406] &quot;The&quot;        &quot;Three&quot;      &quot;The&quot;        &quot;No&quot;         &quot;Grace&quot;     
+## [411] &quot;Nudge&quot;      &quot;The&quot;        &quot;Once&quot;       &quot;A&quot;          &quot;Fasten&quot;    
+## [416] &quot;A&quot;          &quot;He&quot;         &quot;The&quot;        &quot;The&quot;        &quot;There&quot;     
+## [421] &quot;Seed&quot;       &quot;Draw&quot;       &quot;The&quot;        &quot;The&quot;        &quot;Hats&quot;      
+## [426] &quot;The&quot;        &quot;Beat&quot;       &quot;Say&quot;        &quot;The&quot;        &quot;Screen&quot;    
+## [431] &quot;This&quot;       &quot;The&quot;        &quot;He&quot;         &quot;These&quot;      &quot;The&quot;       
+## [436] &quot;Twist&quot;      &quot;The&quot;        &quot;The&quot;        &quot;Xew&quot;        &quot;The&quot;       
+## [441] &quot;They&quot;       &quot;The&quot;        &quot;A&quot;          &quot;Breakfast&quot;  &quot;Bottles&quot;   
+## [446] &quot;The&quot;        &quot;He&quot;         &quot;Drop&quot;       &quot;The&quot;        &quot;Throw&quot;     
+## [451] &quot;A&quot;          &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;The&quot;       
+## [456] &quot;Turn&quot;       &quot;The&quot;        &quot;The&quot;        &quot;To&quot;         &quot;The&quot;       
+## [461] &quot;The&quot;        &quot;Dispense&quot;   &quot;The&quot;        &quot;He&quot;         &quot;The&quot;       
+## [466] &quot;The&quot;        &quot;Fly&quot;        &quot;Thick&quot;      &quot;Birth&quot;      &quot;The&quot;       
+## [471] &quot;The&quot;        &quot;A&quot;          &quot;The&quot;        &quot;We&quot;         &quot;The&quot;       
+## [476] &quot;The&quot;        &quot;We&quot;         &quot;The&quot;        &quot;Five&quot;       &quot;A&quot;         
+## [481] &quot;The&quot;        &quot;Shut&quot;       &quot;The&quot;        &quot;Crack&quot;      &quot;He&quot;        
+## [486] &quot;Send&quot;       &quot;A&quot;          &quot;They&quot;       &quot;The&quot;        &quot;In&quot;        
+## [491] &quot;A&quot;          &quot;Oats&quot;       &quot;Their&quot;      &quot;The&quot;        &quot;There&quot;     
+## [496] &quot;Tuck&quot;       &quot;A&quot;          &quot;We&quot;         &quot;The&quot;        &quot;Take&quot;      
+## [501] &quot;Shake&quot;      &quot;She&quot;        &quot;The&quot;        &quot;The&quot;        &quot;We&quot;        
+## [506] &quot;Smile&quot;      &quot;A&quot;          &quot;The&quot;        &quot;Take&quot;       &quot;That&quot;      
+## [511] &quot;The&quot;        &quot;The&quot;        &quot;Ripe&quot;       &quot;A&quot;          &quot;The&quot;       
+## [516] &quot;The&quot;        &quot;The&quot;        &quot;This&quot;       &quot;She&quot;        &quot;The&quot;       
+## [521] &quot;Press&quot;      &quot;Neat&quot;       &quot;The&quot;        &quot;The&quot;        &quot;The&quot;       
+## [526] &quot;Shake&quot;      &quot;The&quot;        &quot;A&quot;          &quot;His&quot;        &quot;Flax&quot;      
+## [531] &quot;Hurdle&quot;     &quot;A&quot;          &quot;Even&quot;       &quot;Peep&quot;       &quot;The&quot;       
+## [536] &quot;Cheap&quot;      &quot;A&quot;          &quot;Flood&quot;      &quot;A&quot;          &quot;The&quot;       
+## [541] &quot;Those&quot;      &quot;He&quot;         &quot;Dill&quot;       &quot;Down&quot;       &quot;Either&quot;    
+## [546] &quot;The&quot;        &quot;If&quot;         &quot;At&quot;         &quot;Read&quot;       &quot;Fill&quot;      
+## [551] &quot;The&quot;        &quot;Clams&quot;      &quot;The&quot;        &quot;The&quot;        &quot;Breathe&quot;   
+## [556] &quot;It&quot;         &quot;A&quot;          &quot;A&quot;          &quot;A&quot;          &quot;A&quot;         
+## [561] &quot;Paint&quot;      &quot;The&quot;        &quot;Bribes&quot;     &quot;Trample&quot;    &quot;The&quot;       
+## [566] &quot;A&quot;          &quot;Footprints&quot; &quot;She&quot;        &quot;A&quot;          &quot;Prod&quot;      
+## [571] &quot;It&quot;         &quot;The&quot;        &quot;It&quot;         &quot;The&quot;        &quot;Wake&quot;      
+## [576] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Hold&quot;       &quot;Next&quot;      
+## [581] &quot;Every&quot;      &quot;He&quot;         &quot;They&quot;       &quot;Drive&quot;      &quot;Keep&quot;      
+## [586] &quot;Sever&quot;      &quot;Paper&quot;      &quot;Slide&quot;      &quot;Help&quot;       &quot;A&quot;         
+## [591] &quot;Stop&quot;       &quot;Jerk&quot;       &quot;Slidc&quot;      &quot;The&quot;        &quot;Light&quot;     
+## [596] &quot;Set&quot;        &quot;Dull&quot;       &quot;A&quot;          &quot;Get&quot;        &quot;Choose&quot;    
+## [601] &quot;A&quot;          &quot;He&quot;         &quot;There&quot;      &quot;The&quot;        &quot;Greet&quot;     
+## [606] &quot;When&quot;       &quot;Sweet&quot;      &quot;A&quot;          &quot;A&quot;          &quot;Lush&quot;      
+## [611] &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;Sit&quot;        &quot;A&quot;         
+## [616] &quot;The&quot;        &quot;Green&quot;      &quot;Tea&quot;        &quot;Pitch&quot;      &quot;The&quot;       
+## [621] &quot;The&quot;        &quot;The&quot;        &quot;A&quot;          &quot;The&quot;        &quot;She&quot;       
+## [626] &quot;The&quot;        &quot;Loop&quot;       &quot;Plead&quot;      &quot;Calves&quot;     &quot;Post&quot;      
+## [631] &quot;Tear&quot;       &quot;A&quot;          &quot;A&quot;          &quot;It&quot;         &quot;Crouch&quot;    
+## [636] &quot;Pack&quot;       &quot;The&quot;        &quot;Fine&quot;       &quot;Poached&quot;    &quot;Bad&quot;       
+## [641] &quot;Ship&quot;       &quot;Dimes&quot;      &quot;They&quot;       &quot;The&quot;        &quot;The&quot;       
+## [646] &quot;The&quot;        &quot;The&quot;        &quot;Pile&quot;       &quot;The&quot;        &quot;The&quot;       
+## [651] &quot;The&quot;        &quot;The&quot;        &quot;A&quot;          &quot;The&quot;        &quot;The&quot;       
+## [656] &quot;To&quot;         &quot;There&quot;      &quot;Cod&quot;        &quot;The&quot;        &quot;Dunk&quot;      
+## [661] &quot;Hang&quot;       &quot;Cap&quot;        &quot;The&quot;        &quot;Be&quot;         &quot;Pick&quot;      
+## [666] &quot;A&quot;          &quot;The&quot;        &quot;The&quot;        &quot;The&quot;        &quot;You&quot;       
+## [671] &quot;Dots&quot;       &quot;Put&quot;        &quot;The&quot;        &quot;The&quot;        &quot;See&quot;       
+## [676] &quot;Slide&quot;      &quot;Many&quot;       &quot;We&quot;         &quot;No&quot;         &quot;Dig&quot;       
+## [681] &quot;The&quot;        &quot;A&quot;          &quot;Green&quot;      &quot;A&quot;          &quot;The&quot;       
+## [686] &quot;A&quot;          &quot;The&quot;        &quot;The&quot;        &quot;Seven&quot;      &quot;Our&quot;       
+## [691] &quot;The&quot;        &quot;It&quot;         &quot;One&quot;        &quot;Take&quot;       &quot;The&quot;       
+## [696] &quot;The&quot;        &quot;The&quot;        &quot;Stop&quot;       &quot;The&quot;        &quot;The&quot;       
+## [701] &quot;Open&quot;       &quot;Fish&quot;       &quot;Dip&quot;        &quot;Will&quot;       &quot;The&quot;       
+## [706] &quot;The&quot;        &quot;The&quot;        &quot;He&quot;         &quot;Leave&quot;      &quot;The&quot;       
+## [711] &quot;A&quot;          &quot;The&quot;        &quot;She&quot;        &quot;A&quot;          &quot;Small&quot;     
+## [716] &quot;The&quot;        &quot;The&quot;        &quot;A&quot;          &quot;She&quot;        &quot;When&quot;</code></pre>
+<ul>
+<li>All words ending in ing.</li>
+</ul>
+<pre class="r"><code>ing_pattern &lt;- &quot;\\b[(a-z)|(A-z)]+ing\\b&quot;
+sentences_with_ing &lt;- str_detect(sentences, ing_pattern)
+str_extract_all(sentences[sentences_with_ing], ing_pattern, simplify = TRUE)</code></pre>
+<pre><code>##       [,1]       
+##  [1,] &quot;spring&quot;   
+##  [2,] &quot;evening&quot;  
+##  [3,] &quot;morning&quot;  
+##  [4,] &quot;winding&quot;  
+##  [5,] &quot;living&quot;   
+##  [6,] &quot;king&quot;     
+##  [7,] &quot;Adding&quot;   
+##  [8,] &quot;making&quot;   
+##  [9,] &quot;raging&quot;   
+## [10,] &quot;playing&quot;  
+## [11,] &quot;sleeping&quot; 
+## [12,] &quot;ring&quot;     
+## [13,] &quot;glaring&quot;  
+## [14,] &quot;sinking&quot;  
+## [15,] &quot;dying&quot;    
+## [16,] &quot;Bring&quot;    
+## [17,] &quot;lodging&quot;  
+## [18,] &quot;filing&quot;   
+## [19,] &quot;making&quot;   
+## [20,] &quot;morning&quot;  
+## [21,] &quot;wearing&quot;  
+## [22,] &quot;Bring&quot;    
+## [23,] &quot;wading&quot;   
+## [24,] &quot;swing&quot;    
+## [25,] &quot;nothing&quot;  
+## [26,] &quot;ring&quot;     
+## [27,] &quot;morning&quot;  
+## [28,] &quot;sing&quot;     
+## [29,] &quot;sleeping&quot; 
+## [30,] &quot;painting&quot; 
+## [31,] &quot;king&quot;     
+## [32,] &quot;walking&quot;  
+## [33,] &quot;bring&quot;    
+## [34,] &quot;bring&quot;    
+## [35,] &quot;shipping&quot; 
+## [36,] &quot;spring&quot;   
+## [37,] &quot;ring&quot;     
+## [38,] &quot;winding&quot;  
+## [39,] &quot;puzzling&quot; 
+## [40,] &quot;spring&quot;   
+## [41,] &quot;landing&quot;  
+## [42,] &quot;thing&quot;    
+## [43,] &quot;waiting&quot;  
+## [44,] &quot;whistling&quot;
+## [45,] &quot;nothing&quot;  
+## [46,] &quot;timing&quot;   
+## [47,] &quot;thing&quot;    
+## [48,] &quot;spring&quot;   
+## [49,] &quot;changing&quot; 
+## [50,] &quot;drenching&quot;
+## [51,] &quot;moving&quot;   
+## [52,] &quot;working&quot;  
+## [53,] &quot;ring&quot;</code></pre>
+<ul>
+<li>All plurals.</li>
+</ul>
+<pre class="r"><code>plural_pattern &lt;- &quot;\\b[(a-z)|(A-z)]+s\\b&quot;
+sentences_with_plural &lt;- str_detect(sentences, plural_pattern)
+str_extract_all(sentences[sentences_with_plural], plural_pattern, simplify = TRUE)</code></pre>
+<pre><code>##        [,1]         [,2]       [,3]      [,4]     
+##   [1,] &quot;planks&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##   [2,] &quot;days&quot;       &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+##   [3,] &quot;is&quot;         &quot;bowls&quot;    &quot;&quot;        &quot;&quot;       
+##   [4,] &quot;lemons&quot;     &quot;makes&quot;    &quot;&quot;        &quot;&quot;       
+##   [5,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##   [6,] &quot;hogs&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##   [7,] &quot;hours&quot;      &quot;us&quot;       &quot;&quot;        &quot;&quot;       
+##   [8,] &quot;stockings&quot;  &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+##   [9,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [10,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [11,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [12,] &quot;helps&quot;      &quot;pass&quot;     &quot;&quot;        &quot;&quot;       
+##  [13,] &quot;fires&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [14,] &quot;across&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [15,] &quot;bonds&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [16,] &quot;Press&quot;      &quot;pants&quot;    &quot;&quot;        &quot;&quot;       
+##  [17,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [18,] &quot;was&quot;        &quot;useless&quot;  &quot;&quot;        &quot;&quot;       
+##  [19,] &quot;gas&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [20,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [21,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [22,] &quot;kittens&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [23,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [24,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [25,] &quot;days&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [26,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [27,] &quot;Sickness&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [28,] &quot;grass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [29,] &quot;books&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [30,] &quot;keeps&quot;      &quot;chicks&quot;   &quot;&quot;        &quot;&quot;       
+##  [31,] &quot;leads&quot;      &quot;sums&quot;     &quot;&quot;        &quot;&quot;       
+##  [32,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [33,] &quot;is&quot;         &quot;boards&quot;   &quot;&quot;        &quot;&quot;       
+##  [34,] &quot;wheels&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [35,] &quot;soldiers&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [36,] &quot;makes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [37,] &quot;steps&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [38,] &quot;lives&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [39,] &quot;circus&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [40,] &quot;across&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [41,] &quot;Cars&quot;       &quot;busses&quot;   &quot;drifts&quot;  &quot;&quot;       
+##  [42,] &quot;This&quot;       &quot;is&quot;       &quot;hikes&quot;   &quot;&quot;       
+##  [43,] &quot;words&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [44,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [45,] &quot;weeks&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [46,] &quot;makes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [47,] &quot;strokes&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [48,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [49,] &quot;was&quot;        &quot;slices&quot;   &quot;&quot;        &quot;&quot;       
+##  [50,] &quot;factors&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [51,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [52,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [53,] &quot;grass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [54,] &quot;parts&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [55,] &quot;Always&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [56,] &quot;costs&quot;      &quot;eggs&quot;     &quot;&quot;        &quot;&quot;       
+##  [57,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [58,] &quot;seems&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [59,] &quot;is&quot;         &quot;gifts&quot;    &quot;&quot;        &quot;&quot;       
+##  [60,] &quot;pins&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [61,] &quot;as&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [62,] &quot;is&quot;         &quot;gives&quot;    &quot;&quot;        &quot;&quot;       
+##  [63,] &quot;Cats&quot;       &quot;dogs&quot;     &quot;&quot;        &quot;&quot;       
+##  [64,] &quot;glass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [65,] &quot;Thieves&quot;    &quot;friends&quot;  &quot;&quot;        &quot;&quot;       
+##  [66,] &quot;improves&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [67,] &quot;orders&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [68,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [69,] &quot;Leaves&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [70,] &quot;logs&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [71,] &quot;is&quot;         &quot;parts&quot;    &quot;tropics&quot; &quot;&quot;       
+##  [72,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [73,] &quot;things&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [74,] &quot;lists&quot;      &quot;orders&quot;   &quot;&quot;        &quot;&quot;       
+##  [75,] &quot;less&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [76,] &quot;boss&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [77,] &quot;its&quot;        &quot;contents&quot; &quot;&quot;        &quot;&quot;       
+##  [78,] &quot;brass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [79,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [80,] &quot;its&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [81,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [82,] &quot;times&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [83,] &quot;leaves&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [84,] &quot;plus&quot;       &quot;is&quot;       &quot;less&quot;    &quot;&quot;       
+##  [85,] &quot;eyes&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [86,] &quot;problems&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [87,] &quot;Clothes&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [88,] &quot;events&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [89,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [90,] &quot;Guess&quot;      &quot;results&quot;  &quot;scores&quot;  &quot;&quot;       
+##  [91,] &quot;tastes&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [92,] &quot;thistles&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [93,] &quot;poodles&quot;    &quot;curls&quot;    &quot;&quot;        &quot;&quot;       
+##  [94,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [95,] &quot;was&quot;        &quot;his&quot;      &quot;&quot;        &quot;&quot;       
+##  [96,] &quot;this&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [97,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+##  [98,] &quot;stories&quot;    &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+##  [99,] &quot;pencils&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [100,] &quot;pirates&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [101,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [102,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [103,] &quot;figures&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [104,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [105,] &quot;does&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [106,] &quot;is&quot;         &quot;toys&quot;     &quot;blocks&quot;  &quot;&quot;       
+## [107,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [108,] &quot;actress&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [109,] &quot;pipes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [110,] &quot;was&quot;        &quot;leaves&quot;   &quot;&quot;        &quot;&quot;       
+## [111,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [112,] &quot;scraps&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [113,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [114,] &quot;pills&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [115,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [116,] &quot;burns&quot;      &quot;holes&quot;    &quot;&quot;        &quot;&quot;       
+## [117,] &quot;tales&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [118,] &quot;miles&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [119,] &quot;was&quot;        &quot;players&quot;  &quot;&quot;        &quot;&quot;       
+## [120,] &quot;is&quot;         &quot;inches&quot;   &quot;&quot;        &quot;&quot;       
+## [121,] &quot;has&quot;        &quot;clothes&quot;  &quot;&quot;        &quot;&quot;       
+## [122,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [123,] &quot;cobs&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [124,] &quot;is&quot;         &quot;tacks&quot;    &quot;&quot;        &quot;&quot;       
+## [125,] &quot;tongs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [126,] &quot;petals&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [127,] &quot;compass&quot;    &quot;class&quot;    &quot;&quot;        &quot;&quot;       
+## [128,] &quot;Farmers&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [129,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [130,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [131,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [132,] &quot;wonders&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [133,] &quot;hostess&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [134,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [135,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [136,] &quot;loss&quot;       &quot;was&quot;      &quot;&quot;        &quot;&quot;       
+## [137,] &quot;its&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [138,] &quot;wires&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [139,] &quot;taps&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [140,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [141,] &quot;was&quot;        &quot;brass&quot;    &quot;&quot;        &quot;&quot;       
+## [142,] &quot;writes&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [143,] &quot;Schools&quot;    &quot;ladies&quot;   &quot;&quot;        &quot;&quot;       
+## [144,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [145,] &quot;fans&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [146,] &quot;ribbons&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [147,] &quot;his&quot;        &quot;ties&quot;     &quot;groups&quot;  &quot;friends&quot;
+## [148,] &quot;backs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [149,] &quot;Whitings&quot;   &quot;nets&quot;     &quot;&quot;        &quot;&quot;       
+## [150,] &quot;ads&quot;        &quot;buyers&quot;   &quot;&quot;        &quot;&quot;       
+## [151,] &quot;rings&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [152,] &quot;makes&quot;      &quot;us&quot;       &quot;&quot;        &quot;&quot;       
+## [153,] &quot;this&quot;       &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [154,] &quot;islands&quot;    &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [155,] &quot;as&quot;         &quot;as&quot;       &quot;&quot;        &quot;&quot;       
+## [156,] &quot;This&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [157,] &quot;funds&quot;      &quot;its&quot;      &quot;&quot;        &quot;&quot;       
+## [158,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [159,] &quot;gets&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [160,] &quot;as&quot;         &quot;slides&quot;   &quot;&quot;        &quot;&quot;       
+## [161,] &quot;brothers&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [162,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [163,] &quot;houses&quot;     &quot;bricks&quot;   &quot;&quot;        &quot;&quot;       
+## [164,] &quot;Ducks&quot;      &quot;compass&quot;  &quot;&quot;        &quot;&quot;       
+## [165,] &quot;flavors&quot;    &quot;drinks&quot;   &quot;&quot;        &quot;&quot;       
+## [166,] &quot;pills&quot;      &quot;less&quot;     &quot;others&quot;  &quot;&quot;       
+## [167,] &quot;pears&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [168,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [169,] &quot;miles&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [170,] &quot;seats&quot;      &quot;fans&quot;     &quot;&quot;        &quot;&quot;       
+## [171,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [172,] &quot;spoils&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [173,] &quot;is&quot;         &quot;cross&quot;    &quot;&quot;        &quot;&quot;       
+## [174,] &quot;binds&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [175,] &quot;ruins&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [176,] &quot;shelves&quot;    &quot;crackers&quot; &quot;&quot;        &quot;&quot;       
+## [177,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [178,] &quot;his&quot;        &quot;eyes&quot;     &quot;&quot;        &quot;&quot;       
+## [179,] &quot;needs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [180,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [181,] &quot;apples&quot;     &quot;hands&quot;    &quot;&quot;        &quot;&quot;       
+## [182,] &quot;crackers&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [183,] &quot;curls&quot;      &quot;days&quot;     &quot;&quot;        &quot;&quot;       
+## [184,] &quot;tones&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [185,] &quot;fits&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [186,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [187,] &quot;leaves&quot;     &quot;was&quot;      &quot;&quot;        &quot;&quot;       
+## [188,] &quot;His&quot;        &quot;was&quot;      &quot;was&quot;     &quot;&quot;       
+## [189,] &quot;was&quot;        &quot;hops&quot;     &quot;&quot;        &quot;&quot;       
+## [190,] &quot;cans&quot;       &quot;shelves&quot;  &quot;&quot;        &quot;&quot;       
+## [191,] &quot;clouds&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [192,] &quot;was&quot;        &quot;useless&quot;  &quot;&quot;        &quot;&quot;       
+## [193,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [194,] &quot;as&quot;         &quot;chorus&quot;   &quot;&quot;        &quot;&quot;       
+## [195,] &quot;minutes&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [196,] &quot;walls&quot;      &quot;frocks&quot;   &quot;&quot;        &quot;&quot;       
+## [197,] &quot;discuss&quot;    &quot;plans&quot;    &quot;&quot;        &quot;&quot;       
+## [198,] &quot;takes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [199,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [200,] &quot;was&quot;        &quot;brass&quot;    &quot;&quot;        &quot;&quot;       
+## [201,] &quot;as&quot;         &quot;as&quot;       &quot;&quot;        &quot;&quot;       
+## [202,] &quot;brings&quot;     &quot;us&quot;       &quot;changes&quot; &quot;&quot;       
+## [203,] &quot;was&quot;        &quot;years&quot;    &quot;&quot;        &quot;&quot;       
+## [204,] &quot;sometimes&quot;  &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [205,] &quot;contents&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [206,] &quot;mules&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [207,] &quot;records&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [208,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [209,] &quot;rays&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [210,] &quot;Boards&quot;     &quot;unless&quot;   &quot;&quot;        &quot;&quot;       
+## [211,] &quot;Glass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [212,] &quot;grass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [213,] &quot;rows&quot;       &quot;soldiers&quot; &quot;&quot;        &quot;&quot;       
+## [214,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [215,] &quot;is&quot;         &quot;edges&quot;    &quot;&quot;        &quot;&quot;       
+## [216,] &quot;Pages&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [217,] &quot;lines&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [218,] &quot;less&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [219,] &quot;zones&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [220,] &quot;needs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [221,] &quot;is&quot;         &quot;secrets&quot;  &quot;&quot;        &quot;&quot;       
+## [222,] &quot;is&quot;         &quot;us&quot;       &quot;&quot;        &quot;&quot;       
+## [223,] &quot;brass&quot;      &quot;objects&quot;  &quot;&quot;        &quot;&quot;       
+## [224,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [225,] &quot;gives&quot;      &quot;us&quot;       &quot;&quot;        &quot;&quot;       
+## [226,] &quot;fails&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [227,] &quot;us&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [228,] &quot;woods&quot;      &quot;sticks&quot;   &quot;&quot;        &quot;&quot;       
+## [229,] &quot;piles&quot;      &quot;lines&quot;    &quot;&quot;        &quot;&quot;       
+## [230,] &quot;logs&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [231,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [232,] &quot;plans&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [233,] &quot;Brass&quot;      &quot;rings&quot;    &quot;natives&quot; &quot;&quot;       
+## [234,] &quot;takes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [235,] &quot;seeds&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [236,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [237,] &quot;This&quot;       &quot;was&quot;      &quot;&quot;        &quot;&quot;       
+## [238,] &quot;wanders&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [239,] &quot;takes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [240,] &quot;shares&quot;     &quot;as&quot;       &quot;&quot;        &quot;&quot;       
+## [241,] &quot;cats&quot;       &quot;goes&quot;     &quot;names&quot;   &quot;&quot;       
+## [242,] &quot;winds&quot;      &quot;colds&quot;    &quot;fevers&quot;  &quot;&quot;       
+## [243,] &quot;asks&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [244,] &quot;dress&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [245,] &quot;means&quot;      &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [246,] &quot;items&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [247,] &quot;Roads&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [248,] &quot;ones&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [249,] &quot;heroes&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [250,] &quot;makes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [251,] &quot;cuts&quot;       &quot;trims&quot;    &quot;&quot;        &quot;&quot;       
+## [252,] &quot;ways&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [253,] &quot;His&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [254,] &quot;lingers&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [255,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [256,] &quot;takes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [257,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [258,] &quot;costs&quot;      &quot;cents&quot;    &quot;Mondays&quot; &quot;&quot;       
+## [259,] &quot;is&quot;         &quot;peas&quot;     &quot;always&quot;  &quot;&quot;       
+## [260,] &quot;names&quot;      &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [261,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [262,] &quot;makes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [263,] &quot;news&quot;       &quot;restless&quot; &quot;minds&quot;   &quot;&quot;       
+## [264,] &quot;pins&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [265,] &quot;restores&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [266,] &quot;takes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [267,] &quot;drifts&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [268,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [269,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [270,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [271,] &quot;lines&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [272,] &quot;his&quot;        &quot;cents&quot;    &quot;&quot;        &quot;&quot;       
+## [273,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [274,] &quot;Hats&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [275,] &quot;robins&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [276,] &quot;mats&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [277,] &quot;This&quot;       &quot;his&quot;      &quot;&quot;        &quot;&quot;       
+## [278,] &quot;protects&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [279,] &quot;coins&quot;      &quot;his&quot;      &quot;&quot;        &quot;&quot;       
+## [280,] &quot;rags&quot;       &quot;itches&quot;   &quot;&quot;        &quot;&quot;       
+## [281,] &quot;pants&quot;      &quot;cuffs&quot;    &quot;pockets&quot; &quot;&quot;       
+## [282,] &quot;lasts&quot;      &quot;days&quot;     &quot;&quot;        &quot;&quot;       
+## [283,] &quot;buns&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [284,] &quot;Bottles&quot;    &quot;kinds&quot;    &quot;&quot;        &quot;&quot;       
+## [285,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [286,] &quot;ashes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [287,] &quot;chairs&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [288,] &quot;means&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [289,] &quot;drapes&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [290,] &quot;stems&quot;      &quot;glasses&quot;  &quot;&quot;        &quot;&quot;       
+## [291,] &quot;clothes&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [292,] &quot;gives&quot;      &quot;us&quot;       &quot;&quot;        &quot;&quot;       
+## [293,] &quot;bills&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [294,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [295,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [296,] &quot;this&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [297,] &quot;grapes&quot;     &quot;was&quot;      &quot;&quot;        &quot;&quot;       
+## [298,] &quot;figs&quot;       &quot;cherries&quot; &quot;&quot;        &quot;&quot;       
+## [299,] &quot;sparks&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [300,] &quot;glasses&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [301,] &quot;limits&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [302,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [303,] &quot;priceless&quot;  &quot;stones&quot;   &quot;&quot;        &quot;&quot;       
+## [304,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [305,] &quot;lanterns&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [306,] &quot;years&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [307,] &quot;cuts&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [308,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [309,] &quot;waves&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [310,] &quot;makes&quot;      &quot;hearts&quot;   &quot;&quot;        &quot;&quot;       
+## [311,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [312,] &quot;tales&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [313,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [314,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [315,] &quot;Oats&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [316,] &quot;eyelids&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [317,] &quot;revives&quot;    &quot;his&quot;      &quot;&quot;        &quot;&quot;       
+## [318,] &quot;ways&quot;       &quot;things&quot;   &quot;&quot;        &quot;&quot;       
+## [319,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [320,] &quot;shoes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [321,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [322,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [323,] &quot;dress&quot;      &quot;days&quot;     &quot;&quot;        &quot;&quot;       
+## [324,] &quot;words&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [325,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [326,] &quot;this&quot;       &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [327,] &quot;this&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [328,] &quot;is&quot;         &quot;books&quot;    &quot;&quot;        &quot;&quot;       
+## [329,] &quot;tales&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [330,] &quot;was&quot;        &quot;as&quot;       &quot;&quot;        &quot;&quot;       
+## [331,] &quot;pears&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [332,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [333,] &quot;hours&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [334,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [335,] &quot;This&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [336,] &quot;Press&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [337,] &quot;plans&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [338,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [339,] &quot;hands&quot;      &quot;this&quot;     &quot;&quot;        &quot;&quot;       
+## [340,] &quot;is&quot;         &quot;this&quot;     &quot;&quot;        &quot;&quot;       
+## [341,] &quot;His&quot;        &quot;friends&quot;  &quot;&quot;        &quot;&quot;       
+## [342,] &quot;makes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [343,] &quot;needs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [344,] &quot;clowns&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [345,] &quot;drifts&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [346,] &quot;clothes&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [347,] &quot;mails&quot;      &quot;requests&quot; &quot;this&quot;    &quot;&quot;       
+## [348,] &quot;was&quot;        &quot;ends&quot;     &quot;&quot;        &quot;&quot;       
+## [349,] &quot;words&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [350,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [351,] &quot;pickles&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [352,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [353,] &quot;times&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [354,] &quot;is&quot;         &quot;clips&quot;    &quot;&quot;        &quot;&quot;       
+## [355,] &quot;says&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [356,] &quot;trinkets&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [357,] &quot;Clams&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [358,] &quot;its&quot;        &quot;blades&quot;   &quot;&quot;        &quot;&quot;       
+## [359,] &quot;edges&quot;      &quot;was&quot;      &quot;&quot;        &quot;&quot;       
+## [360,] &quot;matters&quot;    &quot;reads&quot;    &quot;words&quot;   &quot;&quot;       
+## [361,] &quot;its&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [362,] &quot;goes&quot;       &quot;shoes&quot;    &quot;&quot;        &quot;&quot;       
+## [363,] &quot;sockets&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [364,] &quot;grass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [365,] &quot;Bribes&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [366,] &quot;flames&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [367,] &quot;was&quot;        &quot;designs&quot;  &quot;&quot;        &quot;&quot;       
+## [368,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [369,] &quot;Footprints&quot; &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [370,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [371,] &quot;is&quot;         &quot;inches&quot;   &quot;&quot;        &quot;&quot;       
+## [372,] &quot;was&quot;        &quot;mass&quot;     &quot;leaves&quot;  &quot;shrubs&quot; 
+## [373,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [374,] &quot;outdoors&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [375,] &quot;brass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [376,] &quot;lobes&quot;      &quot;ears&quot;     &quot;rings&quot;   &quot;&quot;       
+## [377,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [378,] &quot;speaks&quot;     &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [379,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [380,] &quot;kids&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [381,] &quot;gets&quot;       &quot;friends&quot;  &quot;&quot;        &quot;&quot;       
+## [382,] &quot;boys&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [383,] &quot;tumbles&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [384,] &quot;across&quot;     &quot;glass&quot;    &quot;&quot;        &quot;&quot;       
+## [385,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [386,] &quot;makes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [387,] &quot;stories&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [388,] &quot;funds&quot;      &quot;seems&quot;    &quot;&quot;        &quot;&quot;       
+## [389,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [390,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [391,] &quot;guests&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [392,] &quot;has&quot;        &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [393,] &quot;words&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [394,] &quot;runs&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [395,] &quot;comes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [396,] &quot;rocks&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [397,] &quot;looks&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [398,] &quot;his&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [399,] &quot;others&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [400,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [401,] &quot;moves&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [402,] &quot;moss&quot;       &quot;grows&quot;    &quot;&quot;        &quot;&quot;       
+## [403,] &quot;has&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [404,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [405,] &quot;is&quot;         &quot;dishes&quot;   &quot;&quot;        &quot;&quot;       
+## [406,] &quot;facts&quot;      &quot;always&quot;   &quot;is&quot;      &quot;&quot;       
+## [407,] &quot;flaps&quot;      &quot;as&quot;       &quot;parades&quot; &quot;&quot;       
+## [408,] &quot;loss&quot;       &quot;was&quot;      &quot;&quot;        &quot;&quot;       
+## [409,] &quot;Calves&quot;     &quot;grass&quot;    &quot;&quot;        &quot;&quot;       
+## [410,] &quot;bills&quot;      &quot;this&quot;     &quot;&quot;        &quot;&quot;       
+## [411,] &quot;waters&quot;     &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [412,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [413,] &quot;miss&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [414,] &quot;kits&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [415,] &quot;saves&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [416,] &quot;eggs&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [417,] &quot;nerves&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [418,] &quot;maps&quot;       &quot;planes&quot;   &quot;&quot;        &quot;&quot;       
+## [419,] &quot;Dimes&quot;      &quot;sides&quot;    &quot;&quot;        &quot;&quot;       
+## [420,] &quot;tunes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [421,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [422,] &quot;pods&quot;       &quot;peas&quot;     &quot;fields&quot;  &quot;&quot;       
+## [423,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [424,] &quot;was&quot;        &quot;its&quot;      &quot;&quot;        &quot;&quot;       
+## [425,] &quot;comes&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [426,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [427,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [428,] &quot;amounts&quot;    &quot;is&quot;       &quot;&quot;        &quot;&quot;       
+## [429,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [430,] &quot;is&quot;         &quot;business&quot; &quot;&quot;        &quot;&quot;       
+## [431,] &quot;was&quot;        &quot;blocks&quot;   &quot;&quot;        &quot;&quot;       
+## [432,] &quot;biscuits&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [433,] &quot;branches&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [434,] &quot;brass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [435,] &quot;needs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [436,] &quot;informs&quot;    &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [437,] &quot;comes&quot;      &quot;batches&quot;  &quot;&quot;        &quot;&quot;       
+## [438,] &quot;Dots&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [439,] &quot;leaves&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [440,] &quot;hands&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [441,] &quot;faults&quot;     &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [442,] &quot;blows&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [443,] &quot;is&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [444,] &quot;takes&quot;      &quot;less&quot;     &quot;&quot;        &quot;&quot;       
+## [445,] &quot;needs&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [446,] &quot;fits&quot;       &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [447,] &quot;gloss&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [448,] &quot;grass&quot;      &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [449,] &quot;seals&quot;      &quot;sheets&quot;   &quot;&quot;        &quot;&quot;       
+## [450,] &quot;troops&quot;     &quot;blows&quot;    &quot;&quot;        &quot;&quot;       
+## [451,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [452,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [453,] &quot;contents&quot;   &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [454,] &quot;puts&quot;       &quot;his&quot;      &quot;his&quot;     &quot;&quot;       
+## [455,] &quot;bombs&quot;      &quot;ruins&quot;    &quot;&quot;        &quot;&quot;       
+## [456,] &quot;streets&quot;    &quot;turns&quot;    &quot;&quot;        &quot;&quot;       
+## [457,] &quot;as&quot;         &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [458,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [459,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [460,] &quot;was&quot;        &quot;&quot;         &quot;&quot;        &quot;&quot;       
+## [461,] &quot;grass&quot;      &quot;bushes&quot;   &quot;&quot;        &quot;&quot;       
+## [462,] &quot;his&quot;        &quot;coins&quot;    &quot;&quot;        &quot;&quot;       
+## [463,] &quot;his&quot;        &quot;times&quot;    &quot;&quot;        &quot;&quot;</code></pre>
+</div>
+<div id="find-all-words-that-come-after-a-number-like-one-two-three-etc.-pull-out-both-the-number-and-the-word." class="section level2">
+<h2><span class="header-section-number">2.26</span> Find all words that come after a “number” like “one”, “two”, “three” etc. Pull out both the number and the word.</h2>
+<pre class="r"><code>numbers &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, 
+  &quot;nine&quot;, &quot;ten&quot;)
+numbers_match &lt;- str_c(numbers, collapse = &quot;|&quot;)
+numbers_word_match &lt;- str_c(&quot;(&quot;, numbers_match, &quot;) ([^ ]+)&quot;)
+
+sentences[str_detect(sentences, numbers_word_match)] %&gt;% 
+  str_extract_all(numbers_word_match, simplify = TRUE)</code></pre>
+<pre><code>##       [,1]            [,2]        
+##  [1,] &quot;ten served&quot;    &quot;&quot;          
+##  [2,] &quot;one over&quot;      &quot;&quot;          
+##  [3,] &quot;seven books&quot;   &quot;&quot;          
+##  [4,] &quot;two met&quot;       &quot;&quot;          
+##  [5,] &quot;two factors&quot;   &quot;&quot;          
+##  [6,] &quot;one and&quot;       &quot;&quot;          
+##  [7,] &quot;three lists&quot;   &quot;&quot;          
+##  [8,] &quot;seven is&quot;      &quot;&quot;          
+##  [9,] &quot;two when&quot;      &quot;&quot;          
+## [10,] &quot;one floor.&quot;    &quot;&quot;          
+## [11,] &quot;ten inches.&quot;   &quot;&quot;          
+## [12,] &quot;one with&quot;      &quot;&quot;          
+## [13,] &quot;one war&quot;       &quot;&quot;          
+## [14,] &quot;one button&quot;    &quot;&quot;          
+## [15,] &quot;six minutes.&quot;  &quot;&quot;          
+## [16,] &quot;ten years&quot;     &quot;&quot;          
+## [17,] &quot;one in&quot;        &quot;&quot;          
+## [18,] &quot;ten chased&quot;    &quot;&quot;          
+## [19,] &quot;one like&quot;      &quot;&quot;          
+## [20,] &quot;two shares&quot;    &quot;&quot;          
+## [21,] &quot;two distinct&quot;  &quot;&quot;          
+## [22,] &quot;one costs&quot;     &quot;five cents&quot;
+## [23,] &quot;ten two&quot;       &quot;&quot;          
+## [24,] &quot;five robins.&quot;  &quot;&quot;          
+## [25,] &quot;four kinds&quot;    &quot;&quot;          
+## [26,] &quot;one rang&quot;      &quot;&quot;          
+## [27,] &quot;ten him.&quot;      &quot;&quot;          
+## [28,] &quot;three story&quot;   &quot;&quot;          
+## [29,] &quot;ten by&quot;        &quot;&quot;          
+## [30,] &quot;one wall.&quot;     &quot;&quot;          
+## [31,] &quot;three inches&quot;  &quot;&quot;          
+## [32,] &quot;ten your&quot;      &quot;&quot;          
+## [33,] &quot;six comes&quot;     &quot;ten than&quot;  
+## [34,] &quot;one before&quot;    &quot;&quot;          
+## [35,] &quot;three batches&quot; &quot;&quot;          
+## [36,] &quot;two leaves.&quot;   &quot;&quot;</code></pre>
+</div>
+<div id="find-all-contractions.-separate-out-the-pieces-before-and-after-the-apostrophe" class="section level2">
+<h2><span class="header-section-number">2.27</span> Find all contractions. Separate out the pieces before and after the apostrophe</h2>
+<pre class="r"><code>contractions_match &lt;- &quot;([^ ]+)'([^ ]+)&quot;
+sentences[str_detect(sentences, contractions_match)] %&gt;% 
+  str_extract_all(contractions_match, simplify = TRUE)</code></pre>
+<pre><code>##       [,1]        
+##  [1,] &quot;It's&quot;      
+##  [2,] &quot;man's&quot;     
+##  [3,] &quot;don't&quot;     
+##  [4,] &quot;store's&quot;   
+##  [5,] &quot;workmen's&quot; 
+##  [6,] &quot;Let's&quot;     
+##  [7,] &quot;sun's&quot;     
+##  [8,] &quot;child's&quot;   
+##  [9,] &quot;king's&quot;    
+## [10,] &quot;It's&quot;      
+## [11,] &quot;don't&quot;     
+## [12,] &quot;queen's&quot;   
+## [13,] &quot;don't&quot;     
+## [14,] &quot;pirate's&quot;  
+## [15,] &quot;neighbor's&quot;</code></pre>
+</div>
+<div id="replace-all-forward-slashes-in-a-string-with-backslashes." class="section level2">
+<h2><span class="header-section-number">2.28</span> Replace all forward slashes in a string with backslashes.</h2>
+<pre class="r"><code>test &lt;- &quot;sdfasdf/test&quot;
+str_detect(test, &quot;/&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>str_replace(test, &quot;\\/&quot;, &quot;\\&quot;)</code></pre>
+<pre><code>## [1] &quot;sdfasdftest&quot;</code></pre>
+</div>
+<div id="implement-a-simple-version-of-str_to_lower-using-replace_all." class="section level2">
+<h2><span class="header-section-number">2.29</span> Implement a simple version of <code>str_to_lower()</code> using <code>replace_all()</code>.</h2>
+<pre class="r"><code>duju_to_lower &lt;- function(string) {
+  duju_letters &lt;- letters
+  names(duju_letters) &lt;- toupper(letters)
+  str_replace_all(string, duju_letters)
+}
+
+duju_to_lower(&quot;AAbisEEWaioT&quot;)</code></pre>
+<pre><code>## [1] &quot;aabiseewaiot&quot;</code></pre>
+</div>
+<div id="switch-the-first-and-last-letters-in-words.-which-of-those-strings-are-still-words" class="section level2">
+<h2><span class="header-section-number">2.30</span> Switch the first and last letters in words. Which of those strings are still words?</h2>
+<pre class="r"><code>words_switched &lt;- str_replace(words, &quot;(^.)(.{0,})(.$)&quot;, &quot;\\3\\2\\1&quot;)
+words_switched[str_detect(words, words_switched)]</code></pre>
+<pre><code>##  [1] &quot;a&quot;          &quot;america&quot;    &quot;area&quot;       &quot;dad&quot;        &quot;dead&quot;      
+##  [6] &quot;depend&quot;     &quot;educate&quot;    &quot;else&quot;       &quot;encourage&quot;  &quot;engine&quot;    
+## [11] &quot;europe&quot;     &quot;evidence&quot;   &quot;example&quot;    &quot;excuse&quot;     &quot;exercise&quot;  
+## [16] &quot;expense&quot;    &quot;experience&quot; &quot;eye&quot;        &quot;health&quot;     &quot;high&quot;      
+## [21] &quot;knock&quot;      &quot;level&quot;      &quot;local&quot;      &quot;nation&quot;     &quot;non&quot;       
+## [26] &quot;rather&quot;     &quot;refer&quot;      &quot;remember&quot;   &quot;serious&quot;    &quot;stairs&quot;    
+## [31] &quot;test&quot;       &quot;tonight&quot;    &quot;transport&quot;  &quot;treat&quot;      &quot;trust&quot;     
+## [36] &quot;window&quot;     &quot;yesterday&quot;</code></pre>
+</div>
+<div id="split-up-a-string-like-apples-pears-and-bananas-into-individual-components" class="section level2">
+<h2><span class="header-section-number">2.31</span> Split up a string like “apples, pears, and bananas” into individual components</h2>
+<pre class="r"><code>&quot;apples, pears, and bananas&quot; %&gt;% 
+  str_split(pattern = &quot;, |\\s&quot;) %&gt;% 
+  .[[1]]</code></pre>
+<pre><code>## [1] &quot;apples&quot;  &quot;pears&quot;   &quot;and&quot;     &quot;bananas&quot;</code></pre>
+</div>
+<div id="why-is-it-better-to-split-up-by-boundaryword-than" class="section level2">
+<h2><span class="header-section-number">2.32</span> Why is it better to split up by <code>boundary(&quot;word&quot;)</code> than <code>&quot; &quot;</code>?</h2>
+<p>For example there could be two whitespaces.</p>
+</div>
+<div id="what-does-splitting-with-an-empty-string-do-experiment-and-then-read-the-documentation." class="section level2">
+<h2><span class="header-section-number">2.33</span> What does splitting with an empty string (“”) do? Experiment, and then read the documentation.</h2>
+<pre class="r"><code>str_split(&quot;Hallo was passiert dann?&quot;, pattern = &quot;&quot;)</code></pre>
+<pre><code>## [[1]]
+##  [1] &quot;H&quot; &quot;a&quot; &quot;l&quot; &quot;l&quot; &quot;o&quot; &quot; &quot; &quot;w&quot; &quot;a&quot; &quot;s&quot; &quot; &quot; &quot;p&quot; &quot;a&quot; &quot;s&quot; &quot;s&quot; &quot;i&quot; &quot;e&quot; &quot;r&quot;
+## [18] &quot;t&quot; &quot; &quot; &quot;d&quot; &quot;a&quot; &quot;n&quot; &quot;n&quot; &quot;?&quot;</code></pre>
+<pre class="r"><code>#?str_split</code></pre>
+<p>Same as <code>boundary(&quot;character&quot;)</code></p>
+</div>
+<div id="how-would-you-find-all-strings-containing-with-regex-vs.with-fixed" class="section level2">
+<h2><span class="header-section-number">2.34</span> How would you find all strings containing <code>\</code> with <code>regex()</code> vs. with <code>fixed()</code>?</h2>
+<pre class="r"><code>str_subset(c(&quot;a\\b&quot;, &quot;ab&quot;), &quot;\\\\&quot;)</code></pre>
+<pre><code>## [1] &quot;a\\b&quot;</code></pre>
+<pre class="r"><code>#&gt; [1] &quot;a\\b&quot;
+str_subset(c(&quot;a\\b&quot;, &quot;ab&quot;), fixed(&quot;\\&quot;))</code></pre>
+<pre><code>## [1] &quot;a\\b&quot;</code></pre>
+<pre class="r"><code>#&gt; [1] &quot;a\\b&quot;</code></pre>
+</div>
+<div id="what-are-the-five-most-common-words-in-sentences" class="section level2">
+<h2><span class="header-section-number">2.35</span> What are the five most common words in sentences?</h2>
+<pre class="r"><code>df_word_count &lt;- tibble(
+  sentence = sentences, 
+  words = str_extract_all(sentence, boundary(&quot;word&quot;))) %&gt;% 
+  unnest(words) %&gt;% 
+  mutate(words = str_to_lower(words)) %&gt;% 
+  group_by(words) %&gt;% 
+  summarise(anz = n()) %&gt;% 
+  arrange(desc(anz)) %&gt;% 
+  top_n(anz, n = 5)
+
+df_word_count</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   words   anz
+##   &lt;chr&gt; &lt;int&gt;
+## 1   the   751
+## 2     a   202
+## 3    of   132
+## 4    to   123
+## 5   and   118</code></pre>
+</div>
+<div id="find-the-stringi-functions-that" class="section level2">
+<h2><span class="header-section-number">2.36</span> Find the stringi functions that:</h2>
+<ul>
+<li>Count the number of words.</li>
+</ul>
+<pre class="r"><code>stringi::stri_count_words(&quot;Hallo wie geht es dir?&quot;)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<ul>
+<li>Find duplicated strings.</li>
+</ul>
+<pre class="r"><code>stringi::stri_duplicated(c(
+  &quot;Hallo wie Hallo wie geht es dir&quot;, &quot;Hallo&quot;, &quot;Tschüss&quot;, &quot;Hallo&quot;))</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
+<ul>
+<li>Generate random text.</li>
+</ul>
+<pre class="r"><code>stringi::stri_rand_strings(n = 5, length = 12)</code></pre>
+<pre><code>## [1] &quot;GWOyiAebHdew&quot; &quot;CEMSr4lYqRd6&quot; &quot;6WVxH7oCt2K5&quot; &quot;leINOlinI76S&quot;
+## [5] &quot;AzEpcQHDLFz2&quot;</code></pre>
+</div>
+<div id="how-do-you-control-the-language-that-stri_sort-uses-for-sorting" class="section level2">
+<h2><span class="header-section-number">2.37</span> How do you control the language that stri_sort() uses for sorting?</h2>
+<ul>
+<li>Through its <code>locale</code> argument</li>
+</ul>
 </div>
 </div>
 
@@ -727,7 +2419,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
